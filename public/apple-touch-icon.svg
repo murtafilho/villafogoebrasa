@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <defs>
+    <linearGradient id="flameGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#c45c26"/>
+      <stop offset="50%" style="stop-color:#e8723a"/>
+      <stop offset="100%" style="stop-color:#c9a962"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="180" height="180" rx="22" fill="#1a1714"/>
+  <!-- Flame -->
+  <path d="M90 22c0 0-34 45-34 79c0 22 14 39 34 39s34-17 34-39c0-34-34-79-34-79z" fill="url(#flameGradient)"/>
+  <!-- Inner flame -->
+  <path d="M90 67c0 0-17 22-17 45c0 11 7 20 17 20s17-9 17-20c0-23-17-45-17-45z" fill="#c9a962" opacity="0.8"/>
+</svg>
