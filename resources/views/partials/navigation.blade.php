@@ -22,10 +22,17 @@
             </div>
 
             <!-- CTA Button -->
-            <a href="#reservas" class="hidden lg:inline-flex items-center gap-2 px-6 py-3 bg-villa-ember hover:bg-villa-flame text-white text-sm tracking-wider uppercase transition-all duration-300 ember-glow">
-                <i data-lucide="calendar" class="w-4 h-4"></i>
-                Reservar Mesa
-            </a>
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="#reservas" class="inline-flex items-center gap-2 px-6 py-3 bg-villa-ember hover:bg-villa-flame text-white text-sm tracking-wider uppercase transition-all duration-300 ember-glow">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    Reservar Mesa
+                </a>
+                @guest
+                    <a href="{{ route('login') }}" class="text-villa-ember hover:text-villa-flame transition-colors" title="Login">
+                        <i data-lucide="lock" class="w-5 h-5"></i>
+                    </a>
+                @endguest
+            </div>
 
             <!-- Mobile Menu Button -->
             <button id="mobile-menu-btn" class="lg:hidden text-villa-cream p-2">
@@ -52,6 +59,12 @@
                 <i data-lucide="calendar" class="w-4 h-4"></i>
                 Reservar Mesa
             </a>
+            @guest
+                <a href="{{ route('login') }}" class="inline-flex items-center gap-2 text-villa-ember hover:text-villa-flame transition-colors">
+                    <i data-lucide="lock" class="w-5 h-5"></i>
+                    <span class="text-sm tracking-widest uppercase">Login</span>
+                </a>
+            @endguest
         </div>
     </div>
 </nav>
