@@ -3,7 +3,10 @@
     "allow": [
       "Bash(npm run build:*)",
       "Bash(ssh taiyo \"cd ~/villafogoebrasa && composer install --no-dev --optimize-autoloader && cp .env.example .env && php artisan key:generate\")",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(ssh taiyo \"cd ~/villafogoebrasa && git pull && php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear && php artisan optimize\")"
     ],
     "deny": [],
     "ask": []
