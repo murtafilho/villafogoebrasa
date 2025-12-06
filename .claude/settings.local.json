@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npm run build:*)",
-      "Bash(ssh taiyo \"cd ~/villafogoebrasa && composer install --no-dev --optimize-autoloader && cp .env.example .env && php artisan key:generate\")"
+      "Bash(ssh taiyo \"cd ~/villafogoebrasa && composer install --no-dev --optimize-autoloader && cp .env.example .env && php artisan key:generate\")",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
