@@ -23,7 +23,7 @@
             </p>
 
             <div class="mb-6 opacity-0 animate-fadeInUp stagger-1">
-                <img src="{{ asset('img/logo.webp') }}" alt="Villa Fogo & Brasa" class="h-32 md:h-44 lg:h-56 w-auto mx-auto">
+                <img src="{{ asset('img/logo.webp') }}" alt="Villa Fogo & Brasa" class="h-32 md:h-44 lg:h-56 w-auto mx-auto opacity-80 drop-shadow-[0_0_35px_rgba(217,83,30,0.7)]">
             </div>
 
             <p class="font-body text-lg md:text-xl text-villa-cream/70 max-w-2xl mx-auto mb-10 opacity-0 animate-fadeInUp stagger-2">
