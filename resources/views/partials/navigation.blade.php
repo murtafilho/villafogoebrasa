@@ -14,11 +14,6 @@
                 <a href="#experience" class="nav-link text-sm tracking-widest uppercase text-villa-cream/90 hover:text-villa-gold transition-colors">Experiência</a>
                 <a href="#gallery" class="nav-link text-sm tracking-widest uppercase text-villa-cream/90 hover:text-villa-gold transition-colors">Galeria</a>
                 <a href="#contact" class="nav-link text-sm tracking-widest uppercase text-villa-cream/90 hover:text-villa-gold transition-colors">Contato</a>
-                @auth
-                    @if(auth()->user()->hasRole('admin'))
-                        <a href="{{ asset('Proposta_Comercial.html') }}" target="_blank" class="nav-link text-sm tracking-widest uppercase text-villa-ember hover:text-villa-flame transition-colors font-semibold">Proposta</a>
-                    @endif
-                @endauth
             </div>
 
             <!-- CTA Button -->
@@ -50,11 +45,6 @@
             <a href="#experience" class="block text-sm tracking-widest uppercase text-villa-cream/90 hover:text-villa-gold transition-colors">Experiência</a>
             <a href="#gallery" class="block text-sm tracking-widest uppercase text-villa-cream/90 hover:text-villa-gold transition-colors">Galeria</a>
             <a href="#contact" class="block text-sm tracking-widest uppercase text-villa-cream/90 hover:text-villa-gold transition-colors">Contato</a>
-            @auth
-                @if(auth()->user()->hasRole('admin'))
-                    <a href="{{ asset('Proposta_Comercial.html') }}" target="_blank" class="block text-sm tracking-widest uppercase text-villa-ember hover:text-villa-flame transition-colors font-semibold">Proposta</a>
-                @endif
-            @endauth
             <a href="#reservas" class="inline-flex items-center gap-2 px-6 py-3 bg-villa-ember text-white text-sm tracking-wider uppercase">
                 <i data-lucide="calendar" class="w-4 h-4"></i>
                 Reservar Mesa
