@@ -510,11 +510,11 @@
   <div class="container">
     <!-- CAPA -->
     <div class="capa">
-      <img src="img/logo.webp" alt="Villa Fogo & Brasa" class="capa-logo">
+      <img src="{{ asset('img/logo.webp') }}" alt="Villa Fogo & Brasa" class="capa-logo">
       <h1>Proposta Comercial</h1>
       <p class="subtitulo">Desenvolvimento de Plataforma Digital</p>
       <p class="dominio">villafogoebrasa.com.br</p>
-      <p class="data" id="data-hoje"></p>
+      <p class="data">{{ now()->locale('pt_BR')->isoFormat('D [de] MMMM [de] YYYY') }}</p>
       <p class="confidencial">Documento Confidencial</p>
     </div>
 
@@ -571,7 +571,7 @@
           <li><strong>Configuração do Domínio:</strong> Apontamento DNS do villafogoebrasa.com.br para os servidores</li>
           <li><strong>Hospedagem Profissional:</strong> Setup de servidor otimizado com SSL/HTTPS gratuito (Let's Encrypt)</li>
           <li><strong>Certificado de Segurança:</strong> Instalação e configuração de HTTPS para proteção de dados</li>
-          <li><strong>Configuração de E-mail:</strong> Criação de e-mails profissionais @villafogoebrasa.com.br</li>
+          <li><strong>Configuração de E-mail:</strong> Criação de e-mails profissionais &#64;villafogoebrasa.com.br</li>
         </ul>
       </div>
 
@@ -751,17 +751,10 @@
 
     <!-- FOOTER -->
     <div class="footer">
-      <img src="img/logo.webp" alt="Villa Fogo & Brasa" class="footer-logo">
+      <img src="{{ asset('img/logo.webp') }}" alt="Villa Fogo & Brasa" class="footer-logo">
       <h4>Dúvidas? Entre em contato!</h4>
       <p class="contatos">📧 contato@villafogoebrasa.com.br &nbsp;|&nbsp; 📱 (31) 9xxxx-xxxx</p>
     </div>
   </div>
-
-  <script>
-    // Formatar data atual
-    const opcoes = { day: '2-digit', month: 'long', year: 'numeric' };
-    const dataFormatada = new Date().toLocaleDateString('pt-BR', opcoes);
-    document.getElementById('data-hoje').textContent = dataFormatada;
-  </script>
 </body>
 </html>

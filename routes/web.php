@@ -14,6 +14,9 @@ Route::prefix('admin')
     ->name('admin.')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/proposta', function () {
+            return view('admin.proposta');
+        })->name('proposta');
     });
 
 // Profile Routes (Breeze)
