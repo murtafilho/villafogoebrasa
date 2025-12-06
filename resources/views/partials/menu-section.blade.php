@@ -34,7 +34,7 @@
             <!-- Menu Item 1 -->
             <div class="group card-hover bg-villa-espresso/50 p-6 border border-villa-coffee/30 hover:border-villa-ember/50">
                 <div class="aspect-[4/3] mb-6 overflow-hidden bg-villa-coffee">
-                    <img src="https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=600" alt="Picanha" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
+                    <img src="{{ asset('img/2.png') }}" alt="Picanha" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
                 </div>
                 <div class="flex justify-between items-start mb-3">
                     <h3 class="font-display text-2xl text-villa-cream">Picanha Premium</h3>
