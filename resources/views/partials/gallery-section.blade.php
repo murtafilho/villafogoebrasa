@@ -15,7 +15,7 @@
                 <img src="{{ asset('img/IMG_20251101_125030.jpg') }}" alt="Equipe Villa Fogo & Brasa" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
             </div>
             <div class="aspect-square overflow-hidden group">
-                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400" alt="Interior" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                <img src="{{ asset('img/2.png') }}" alt="Interior" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
             </div>
             <div class="aspect-square overflow-hidden group">
                 <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400" alt="Mesa" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
