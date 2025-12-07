@@ -37,7 +37,7 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="lg:hidden hidden bg-villa-charcoal/98 backdrop-blur-lg border-t border-villa-coffee">
+    <div id="mobile-menu" class="lg:hidden hidden absolute top-full left-0 right-0 bg-villa-charcoal/98 backdrop-blur-lg border-t border-villa-coffee z-50">
         <div class="px-6 py-8 space-y-6">
             <a href="#home" class="block text-sm tracking-widest uppercase text-villa-cream/90 hover:text-villa-gold transition-colors">Início</a>
             <a href="#about" class="block text-sm tracking-widest uppercase text-villa-cream/90 hover:text-villa-gold transition-colors">Quem Somos</a>
