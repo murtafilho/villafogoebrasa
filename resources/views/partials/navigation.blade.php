@@ -49,17 +49,17 @@
 
     <!-- Mobile Menu Panel -->
     <div id="mobile-menu" class="lg:hidden hidden">
-        <div class="bg-villa-charcoal border-t border-villa-coffee shadow-2xl">
-            <div class="px-4 py-6 space-y-4">
-                <a href="#home" onclick="closeMobileMenu()" class="block py-3 px-4 text-base tracking-widest uppercase text-villa-cream hover:text-villa-gold hover:bg-villa-coffee/50 rounded-lg transition-colors">Início</a>
-                <a href="#about" onclick="closeMobileMenu()" class="block py-3 px-4 text-base tracking-widest uppercase text-villa-cream hover:text-villa-gold hover:bg-villa-coffee/50 rounded-lg transition-colors">Quem Somos</a>
-                <a href="#menu" onclick="closeMobileMenu()" class="block py-3 px-4 text-base tracking-widest uppercase text-villa-cream hover:text-villa-gold hover:bg-villa-coffee/50 rounded-lg transition-colors">Cardápio</a>
-                <a href="#experience" onclick="closeMobileMenu()" class="block py-3 px-4 text-base tracking-widest uppercase text-villa-cream hover:text-villa-gold hover:bg-villa-coffee/50 rounded-lg transition-colors">Experiência</a>
-                <a href="#gallery" onclick="closeMobileMenu()" class="block py-3 px-4 text-base tracking-widest uppercase text-villa-cream hover:text-villa-gold hover:bg-villa-coffee/50 rounded-lg transition-colors">Galeria</a>
-                <a href="#contact" onclick="closeMobileMenu()" class="block py-3 px-4 text-base tracking-widest uppercase text-villa-cream hover:text-villa-gold hover:bg-villa-coffee/50 rounded-lg transition-colors">Contato</a>
+        <div style="background-color: #1a1714; border-top: 1px solid #3d352e;">
+            <div style="padding: 24px 16px;">
+                <a href="#home" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Início</a>
+                <a href="#about" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Quem Somos</a>
+                <a href="#menu" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Cardápio</a>
+                <a href="#experience" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Experiência</a>
+                <a href="#gallery" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Galeria</a>
+                <a href="#contact" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Contato</a>
 
-                <div class="pt-4 border-t border-villa-coffee">
-                    <a href="#reservas" onclick="closeMobileMenu()" class="flex items-center justify-center gap-2 w-full py-4 px-6 bg-villa-ember hover:bg-villa-flame text-white text-base tracking-wider uppercase rounded-lg transition-colors">
+                <div style="padding-top: 16px; margin-top: 16px; border-top: 1px solid #3d352e;">
+                    <a href="#reservas" onclick="closeMobileMenu()" style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 16px 24px; background-color: #d9531e; color: white; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; border-radius: 8px;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
@@ -68,8 +68,8 @@
                 </div>
 
                 @guest
-                <div class="pt-2">
-                    <a href="{{ route('login') }}" onclick="closeMobileMenu()" class="flex items-center justify-center gap-2 w-full py-3 px-6 border-2 border-villa-ember text-villa-ember hover:bg-villa-ember hover:text-white text-base tracking-wider uppercase rounded-lg transition-colors">
+                <div style="padding-top: 8px;">
+                    <a href="{{ route('login') }}" onclick="closeMobileMenu()" style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 24px; border: 2px solid #d9531e; color: #d9531e; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; border-radius: 8px;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
