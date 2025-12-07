@@ -7,7 +7,9 @@
       "Bash(git commit:*)",
       "Bash(git push)",
       "Bash(ssh taiyo \"cd ~/villafogoebrasa && git pull && php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear && php artisan optimize\")",
-      "Bash(ssh:*)"
+      "Bash(ssh:*)",
+      "Bash(scp:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []

@@ -66,8 +66,7 @@
                     <div>
                         <h4 class="font-display text-xl text-villa-cream mb-2">Telefone</h4>
                         <p class="text-villa-cream/70">
-                            (31) 99999-9999<br>
-                            (31) 3333-3333
+                            55 31 985528192
                         </p>
                     </div>
                 </div>

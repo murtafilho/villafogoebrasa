@@ -22,7 +22,7 @@
                         </div>
                         <div>
                             <p class="text-villa-cream/60 text-sm">Telefone / WhatsApp</p>
-                            <p class="text-villa-cream font-display text-lg">(31) 99999-9999</p>
+                            <p class="text-villa-cream font-display text-lg">55 31 985528192</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
@@ -39,7 +39,7 @@
 
             <!-- Form -->
             <div class="bg-villa-coffee/30 p-8 lg:p-10 border border-villa-coffee/50">
-                <form class="space-y-6" action="#" method="POST">
+                <form id="reservationForm" class="space-y-6" action="#" method="POST">
                     @csrf
                     <div class="grid sm:grid-cols-2 gap-6">
                         <div>
@@ -92,3 +92,34 @@
         </div>
     </div>
 </section>
+
+<script>
+    document.getElementById('reservationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+        
+        // Format date to Brazilian format if possible
+        let dateStr = data.date;
+        if (dateStr) {
+            const [year, month, day] = dateStr.split('-');
+            dateStr = `${day}/${month}/${year}`;
+        }
+
+        const message = `*Nova Reserva - Villa Fogo & Brasa*
+
+*Nome:* ${data.name}
+*Telefone:* ${data.phone}
+*Data:* ${dateStr}
+*Horário:* ${data.time}
+*Pessoas:* ${data.guests}
+*Observações:* ${data.notes || 'Nenhuma'}
+
+Este é SOMENTE UM TESTE DE RESERVA PELO FORMULÁRIO DO SISTEMA VILLAFOGOEBRASA`;
+
+        const whatsappUrl = `https://wa.me/5531985528192?text=${encodeURIComponent(message)}`;
+        
+        window.open(whatsappUrl, '_blank');
+    });
+</script>

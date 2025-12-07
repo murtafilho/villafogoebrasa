@@ -64,11 +64,7 @@
 <!-- Quick Actions -->
 <div class="bg-white rounded-xl shadow-sm p-6">
     <h3 class="text-lg font-semibold text-gray-800 mb-4">Acesso Rápido</h3>
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-        <a href="{{ route('admin.proposta') }}" target="_blank" class="flex flex-col items-center gap-2 p-4 rounded-lg border-2 border-villa-ember bg-villa-ember/10 hover:bg-villa-ember/20 transition-colors">
-            <i data-lucide="file-text" class="w-8 h-8 text-villa-ember"></i>
-            <span class="text-sm text-villa-ember font-semibold">Proposta Comercial</span>
-        </a>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <a href="#" class="flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 hover:border-villa-ember hover:bg-villa-ember/5 transition-colors">
             <i data-lucide="calendar-plus" class="w-8 h-8 text-villa-ember"></i>
             <span class="text-sm text-gray-700">Nova Reserva</span>
