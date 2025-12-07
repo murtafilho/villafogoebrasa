@@ -37,14 +37,14 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="lg:hidden hidden absolute top-full left-0 right-0 bg-villa-charcoal/98 backdrop-blur-lg border-t border-villa-coffee z-50">
+    <div id="mobile-menu" class="lg:hidden hidden absolute top-20 left-0 right-0 bg-villa-charcoal border-t border-villa-coffee" style="z-index: 9999;">
         <div class="px-6 py-8 space-y-6">
-            <a href="#home" class="block text-sm tracking-widest uppercase text-villa-cream/90 hover:text-villa-gold transition-colors">Início</a>
-            <a href="#about" class="block text-sm tracking-widest uppercase text-villa-cream/90 hover:text-villa-gold transition-colors">Quem Somos</a>
-            <a href="#menu" class="block text-sm tracking-widest uppercase text-villa-cream/90 hover:text-villa-gold transition-colors">Cardápio</a>
-            <a href="#experience" class="block text-sm tracking-widest uppercase text-villa-cream/90 hover:text-villa-gold transition-colors">Experiência</a>
-            <a href="#gallery" class="block text-sm tracking-widest uppercase text-villa-cream/90 hover:text-villa-gold transition-colors">Galeria</a>
-            <a href="#contact" class="block text-sm tracking-widest uppercase text-villa-cream/90 hover:text-villa-gold transition-colors">Contato</a>
+            <a href="#home" class="block text-sm tracking-widest uppercase text-villa-cream hover:text-villa-gold transition-colors">Início</a>
+            <a href="#about" class="block text-sm tracking-widest uppercase text-villa-cream hover:text-villa-gold transition-colors">Quem Somos</a>
+            <a href="#menu" class="block text-sm tracking-widest uppercase text-villa-cream hover:text-villa-gold transition-colors">Cardápio</a>
+            <a href="#experience" class="block text-sm tracking-widest uppercase text-villa-cream hover:text-villa-gold transition-colors">Experiência</a>
+            <a href="#gallery" class="block text-sm tracking-widest uppercase text-villa-cream hover:text-villa-gold transition-colors">Galeria</a>
+            <a href="#contact" class="block text-sm tracking-widest uppercase text-villa-cream hover:text-villa-gold transition-colors">Contato</a>
             <a href="#reservas" class="inline-flex items-center gap-2 px-6 py-3 bg-villa-ember text-white text-sm tracking-wider uppercase">
                 <i data-lucide="calendar" class="w-4 h-4"></i>
                 Reservar Mesa
