@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposta Comercial - Villa Fogo & Brasa</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --cor-charcoal: #1a1714;
+      --cor-espresso: #2d2520;
+      --cor-coffee: #3d352e;
+      --cor-ember: #d9531e;
+      --cor-flame: #e86b35;
+      --cor-gold: #c9a227;
+      --cor-cream: #f5f0e8;
+      --cor-texto: #333333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--cor-texto);
+      background: #fff;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* CAPA */
+    .capa {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--cor-charcoal) 0%, var(--cor-espresso) 50%, #0d0b0a 100%);
+      color: var(--cor-cream);
+      padding: 40px 20px;
+      margin: -20px -20px 0 -20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .capa::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at center, rgba(217, 83, 30, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .capa-logo {
+      width: 280px;
+      max-width: 80%;
+      height: auto;
+      margin-bottom: 30px;
+      filter: drop-shadow(0 0 30px rgba(217, 83, 30, 0.5));
+    }
+
+    .capa h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      letter-spacing: 6px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .capa .subtitulo {
+      font-size: 1rem;
+      opacity: 0.8;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+    }
+
+    .capa .cliente {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--cor-gold);
+      margin-bottom: 10px;
+    }
+
+    .capa .dominio {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 60px;
+      color: var(--cor-ember);
+    }
+
+    .capa .data {
+      font-size: 0.95rem;
+      opacity: 0.7;
+    }
+
+    .capa .confidencial {
+      font-size: 0.85rem;
+      font-style: italic;
+      opacity: 0.5;
+      margin-top: 10px;
+    }
+
+    /* SEÇÕES */
+    section {
+      padding: 40px 0;
+      border-bottom: 1px solid #e0d8cc;
+    }
+
+    section:last-child {
+      border-bottom: none;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--cor-charcoal);
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--cor-ember);
+      display: inline-block;
+    }
+
+    h3 {
+      color: var(--cor-ember);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 30px 0 15px 0;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    strong {
+      color: var(--cor-charcoal);
+    }
+
+    /* CARDS DE BENEFÍCIOS */
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .beneficio-card {
+      background: var(--cor-cream);
+      padding: 25px;
+      border-radius: 10px;
+      border-left: 4px solid var(--cor-ember);
+    }
+
+    .beneficio-card h4 {
+      color: var(--cor-charcoal);
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+
+    .beneficio-card p {
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    /* FASES */
+    .fase {
+      background: white;
+      border: 1px solid #e0d8cc;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .fase-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .fase-numero {
+      background: var(--cor-charcoal);
+      color: var(--cor-cream);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .fase-titulo {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .fase-titulo h3 {
+      margin: 0;
+      color: var(--cor-charcoal);
+    }
+
+    .fase-titulo .objetivo {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    .fase-meta {
+      text-align: right;
+    }
+
+    .fase-prazo {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .fase-valor {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--cor-ember);
+    }
+
+    .fase ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .fase li {
+      padding: 8px 0 8px 28px;
+      position: relative;
+      border-bottom: 1px solid var(--cor-cream);
+    }
+
+    .fase li:last-child {
+      border-bottom: none;
+    }
+
+    .fase li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--cor-ember);
+      font-weight: bold;
+    }
+
+    /* TABELA CRONOGRAMA */
+    .tabela-wrapper {
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 500px;
+    }
+
+    th {
+      background: var(--cor-charcoal);
+      color: var(--cor-cream);
+      padding: 15px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 15px;
+      border-bottom: 1px solid #e0d8cc;
+    }
+
+    tr:nth-child(even) {
+      background: var(--cor-cream);
+    }
+
+    tr.total {
+      background: var(--cor-ember);
+      color: white;
+      font-weight: 700;
+    }
+
+    tr.total td {
+      border-bottom: none;
+    }
+
+    .valor-destaque {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--cor-ember);
+    }
+
+    /* CONDIÇÕES */
+    .box-destaque {
+      background: linear-gradient(135deg, var(--cor-charcoal) 0%, var(--cor-espresso) 100%);
+      color: var(--cor-cream);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+
+    .box-destaque h3 {
+      color: var(--cor-gold);
+      margin-top: 0;
+    }
+
+    .preco-avista {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .preco-desconto {
+      color: var(--cor-ember);
+      font-size: 1.5rem;
+    }
+
+    .parcelamento {
+      opacity: 0.9;
+      margin-top: 10px;
+    }
+
+    /* LISTAS */
+    ul.lista-simples {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul.lista-simples li {
+      padding: 10px 0 10px 30px;
+      position: relative;
+    }
+
+    ul.lista-simples li::before {
+      content: "•";
+      position: absolute;
+      left: 10px;
+      color: var(--cor-ember);
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    /* SEO GRID */
+    .seo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .seo-item {
+      background: var(--cor-cream);
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .seo-item h4 {
+      color: var(--cor-charcoal);
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .seo-item h4::before {
+      content: "🔥";
+    }
+
+    .seo-item p {
+      font-size: 0.9rem;
+      margin: 0;
+      color: #555;
+    }
+
+    /* ACEITE */
+    .aceite {
+      background: var(--cor-cream);
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .aceite h3 {
+      color: var(--cor-charcoal);
+      margin-top: 0;
+    }
+
+    .linha-assinatura {
+      border-bottom: 1px solid var(--cor-texto);
+      width: 80%;
+      max-width: 400px;
+      margin: 40px auto 5px auto;
+    }
+
+    .label-assinatura {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--cor-charcoal);
+      color: var(--cor-cream);
+      margin: 40px -20px -20px -20px;
+    }
+
+    .footer-logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+
+    .footer h4 {
+      margin-bottom: 15px;
+      font-weight: 400;
+      color: var(--cor-gold);
+    }
+
+    .footer .contatos {
+      opacity: 0.8;
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      .capa {
+        min-height: auto;
+        padding: 60px 20px;
+        page-break-after: always;
+      }
+
+      section {
+        page-break-inside: avoid;
+      }
+
+      .fase {
+        page-break-inside: avoid;
+      }
+
+      body {
+        font-size: 12pt;
+      }
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 600px) {
+      .capa h1 {
+        font-size: 1.6rem;
+        letter-spacing: 3px;
+      }
+
+      .capa .cliente {
+        font-size: 1.8rem;
+      }
+
+      .capa-logo {
+        width: 200px;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .fase-header {
+        flex-direction: column;
+      }
+
+      .fase-meta {
+        text-align: left;
+      }
+
+      .box-destaque {
+        padding: 20px;
+      }
+
+      .preco-avista {
+        font-size: 1.5rem;
+      }
+
+      .preco-desconto {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- CAPA -->
+    <div class="capa">
+      <img src="img/logo.webp" alt="Villa Fogo & Brasa" class="capa-logo">
+      <h1>Proposta Comercial</h1>
+      <p class="subtitulo">Desenvolvimento de Plataforma Digital</p>
+      <p class="dominio">villafogoebrasa.com.br</p>
+      <p class="data" id="data-hoje"></p>
+      <p class="confidencial">Documento Confidencial</p>
+    </div>
+
+    <!-- SUMÁRIO EXECUTIVO -->
+    <section>
+      <h2>1. Sumário Executivo</h2>
+      <p>Esta proposta apresenta o projeto completo de desenvolvimento da plataforma digital para o <strong>Villa Fogo & Brasa</strong>, contemplando configuração de domínio, hospedagem profissional, criação de site responsivo mobile-first, sistema de autenticação, notificações e gestão de conteúdo.</p>
+
+      <h3>Por que ter um site profissional?</h3>
+      <div class="beneficios-grid">
+        <div class="beneficio-card">
+          <h4>🏆 Construção de Autoridade Digital</h4>
+          <p>Um site próprio estabelece presença oficial na internet, transmitindo credibilidade e profissionalismo. Diferente de redes sociais, o site é um território exclusivo da marca, onde o Villa Fogo & Brasa controla totalmente a narrativa e a experiência do cliente.</p>
+        </div>
+        <div class="beneficio-card">
+          <h4>📋 Central de Informações Confiável</h4>
+          <p>O site funciona como fonte única e atualizada de informações: cardápio, horários de funcionamento, localização, eventos especiais e promoções. Elimina dúvidas e reduz volume de ligações e mensagens repetitivas.</p>
+        </div>
+        <div class="beneficio-card">
+          <h4>🔗 Distribuição Facilitada de Conteúdo</h4>
+          <p>Links de eventos, reservas e promoções podem ser compartilhados facilmente em todas as plataformas. Um único link leva o cliente diretamente à informação relevante, aumentando conversões.</p>
+        </div>
+        <div class="beneficio-card">
+          <h4>🔍 Otimização para Buscadores (SEO)</h4>
+          <p>Com meta tags configuradas corretamente, o Villa Fogo & Brasa aparecerá nas primeiras posições do Google quando clientes buscarem por churrascarias e restaurantes em Nova Lima.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESCOPO DO PROJETO -->
+    <section>
+      <h2>2. Escopo do Projeto</h2>
+      <p>O projeto está organizado em 3 fases, partindo do layout já aprovado, com conclusão em <strong>1 semana (5 dias úteis)</strong>.</p>
+
+      <div class="box-destaque" style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-color: #4caf50; margin-bottom: 25px;">
+        <h3 style="color: #2e7d32;">✅ Layout Aprovado</h3>
+        <p style="margin-bottom: 0;">O design visual do site já foi desenvolvido e aprovado. As próximas etapas focam na configuração técnica e publicação.</p>
+      </div>
+
+      <!-- FASE 1 -->
+      <div class="fase">
+        <div class="fase-header">
+          <div class="fase-numero">1</div>
+          <div class="fase-titulo">
+            <h3>Configuração de Domínio e Hospedagem</h3>
+            <p class="objetivo">Preparar infraestrutura para publicação do site</p>
+          </div>
+          <div class="fase-meta">
+            <p class="fase-prazo">⏱️ 1 dia útil</p>
+            <p class="fase-valor">R$ 450,00</p>
+          </div>
+        </div>
+        <ul>
+          <li><strong>Configuração do Domínio:</strong> Apontamento DNS do villafogoebrasa.com.br para os servidores</li>
+          <li><strong>Hospedagem Profissional:</strong> Setup de servidor otimizado com SSL/HTTPS gratuito (Let's Encrypt)</li>
+          <li><strong>Certificado de Segurança:</strong> Instalação e configuração de HTTPS para proteção de dados</li>
+          <li><strong>Configuração de E-mail:</strong> Criação de e-mails profissionais @villafogoebrasa.com.br</li>
+        </ul>
+      </div>
+
+      <!-- FASE 2 -->
+      <div class="fase">
+        <div class="fase-header">
+          <div class="fase-numero">2</div>
+          <div class="fase-titulo">
+            <h3>Publicação e Ajustes Finais</h3>
+            <p class="objetivo">Colocar o site no ar com conteúdo definitivo</p>
+          </div>
+          <div class="fase-meta">
+            <p class="fase-prazo">⏱️ 2 dias úteis</p>
+            <p class="fase-valor">R$ 1.200,00</p>
+          </div>
+        </div>
+        <ul>
+          <li><strong>Deploy do Site:</strong> Publicação do site no servidor de produção com todas as otimizações</li>
+          <li><strong>Conteúdo Definitivo:</strong> Inserção de textos, imagens e informações finais aprovados pelo cliente</li>
+          <li><strong>Otimização de Performance:</strong> Compressão de imagens, lazy loading, minificação de CSS/JS</li>
+          <li><strong>SEO Técnico:</strong> Meta tags, Open Graph, Schema.org, sitemap XML e robots.txt</li>
+        </ul>
+      </div>
+
+      <!-- FASE 3 -->
+      <div class="fase">
+        <div class="fase-header">
+          <div class="fase-numero">3</div>
+          <div class="fase-titulo">
+            <h3>Testes e Homologação</h3>
+            <p class="objetivo">Garantir funcionamento perfeito em todos os dispositivos</p>
+          </div>
+          <div class="fase-meta">
+            <p class="fase-prazo">⏱️ 2 dias úteis</p>
+            <p class="fase-valor">R$ 350,00</p>
+          </div>
+        </div>
+        <ul>
+          <li><strong>Testes de Responsividade:</strong> Verificação em smartphones, tablets e desktops</li>
+          <li><strong>Testes de Performance:</strong> Análise de velocidade de carregamento e otimizações finais</li>
+          <li><strong>Validação de Links:</strong> Conferência de todos os links, formulários e integrações</li>
+          <li><strong>Homologação com Cliente:</strong> Apresentação final e aprovação para go-live</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CRONOGRAMA -->
+    <section>
+      <h2>3. Cronograma de Implantação</h2>
+      <p>Prazo total: <strong>5 dias úteis (1 semana)</strong> a partir da aprovação do layout</p>
+
+      <div class="tabela-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Fase</th>
+              <th>Descrição</th>
+              <th>Prazo</th>
+              <th>Investimento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Configuração de Domínio e Hospedagem</td>
+              <td>1 dia útil</td>
+              <td class="valor-destaque">R$ 450,00</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Publicação e Ajustes Finais</td>
+              <td>2 dias úteis</td>
+              <td class="valor-destaque">R$ 1.200,00</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Testes e Homologação</td>
+              <td>2 dias úteis</td>
+              <td class="valor-destaque">R$ 350,00</td>
+            </tr>
+            <tr class="total">
+              <td colspan="2"><strong>TOTAL</strong></td>
+              <td><strong>5 dias úteis</strong></td>
+              <td><strong>R$ 2.000,00</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CONDIÇÕES COMERCIAIS -->
+    <section>
+      <h2>4. Condições Comerciais</h2>
+
+      <div class="box-destaque">
+        <h3>💰 Investimento Total</h3>
+        <p class="preco-avista">R$ 2.000,00 à vista</p>
+        <p class="preco-desconto">Com 10% de desconto = R$ 1.800,00</p>
+        <p class="parcelamento">Parcelamento: 2x de R$ 1.000,00 sem juros</p>
+      </div>
+
+      <h3>Forma de Pagamento</h3>
+      <ul class="lista-simples">
+        <li><strong>50%</strong> na aprovação da proposta (sinal) - R$ 1.000,00</li>
+        <li><strong>50%</strong> na conclusão e homologação final - R$ 1.000,00</li>
+      </ul>
+
+      <h3>Custos Recorrentes (não inclusos)</h3>
+      <ul class="lista-simples">
+        <li><strong>Hospedagem:</strong> R$ 50 a R$ 150/mês (dependendo do plano)</li>
+        <li><strong>Domínio:</strong> R$ 40 a R$ 60/ano (renovação)</li>
+        <li><strong>E-mail profissional:</strong> R$ 15 a R$ 30/mês por caixa (opcional)</li>
+      </ul>
+    </section>
+
+    <!-- GARANTIAS -->
+    <section>
+      <h2>5. Garantias e Suporte</h2>
+      <ul class="lista-simples">
+        <li><strong>30 dias de garantia:</strong> Correção de bugs sem custo adicional após entrega</li>
+        <li><strong>Treinamento incluso:</strong> 2 horas de capacitação para uso do painel administrativo</li>
+        <li><strong>Documentação:</strong> Manual de uso do sistema entregue junto com o projeto</li>
+        <li><strong>Código-fonte:</strong> Propriedade integral do cliente após quitação total</li>
+        <li><strong>Suporte técnico:</strong> Primeiro mês gratuito; após, planos a partir de R$ 200/mês</li>
+      </ul>
+    </section>
+
+    <!-- SEO -->
+    <section>
+      <h2>6. Estratégias de SEO Incluídas</h2>
+      <p>O projeto contempla as principais técnicas de otimização para mecanismos de busca:</p>
+
+      <div class="seo-grid">
+        <div class="seo-item">
+          <h4>Meta Tags Essenciais</h4>
+          <p>Title tags otimizadas, meta descriptions persuasivas e keywords relevantes para churrascarias em Nova Lima</p>
+        </div>
+        <div class="seo-item">
+          <h4>Open Graph e Redes Sociais</h4>
+          <p>Configuração para compartilhamento otimizado em Facebook, Instagram e WhatsApp</p>
+        </div>
+        <div class="seo-item">
+          <h4>Schema.org (Dados Estruturados)</h4>
+          <p>Marcação de LocalBusiness e Restaurant para rich snippets no Google (estrelas, horários, endereço)</p>
+        </div>
+        <div class="seo-item">
+          <h4>Performance (Core Web Vitals)</h4>
+          <p>Otimização para LCP, FID e CLS - fatores de ranqueamento do Google</p>
+        </div>
+        <div class="seo-item">
+          <h4>Mobile-First Indexing</h4>
+          <p>Site 100% responsivo, prioridade para experiência mobile</p>
+        </div>
+        <div class="seo-item">
+          <h4>Sitemap e Robots.txt</h4>
+          <p>Configuração para indexação eficiente pelo Google</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALIDADE E ACEITE -->
+    <section>
+      <h2>7. Validade da Proposta</h2>
+      <p>Esta proposta tem validade de <strong>15 dias corridos</strong> a partir da data de emissão.</p>
+
+      <div class="aceite">
+        <h3>📝 Aceite da Proposta</h3>
+        <p>Declaro que li, entendi e aceito os termos desta proposta comercial.</p>
+
+        <div class="linha-assinatura"></div>
+        <p class="label-assinatura">Nome do Responsável</p>
+
+        <div class="linha-assinatura"></div>
+        <p class="label-assinatura">Assinatura e Data</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <img src="img/logo.webp" alt="Villa Fogo & Brasa" class="footer-logo">
+      <h4>Dúvidas? Entre em contato!</h4>
+      <p class="contatos">📧 contato@villafogoebrasa.com.br &nbsp;|&nbsp; 📱 (31) 9xxxx-xxxx</p>
+    </div>
+  </div>
+
+  <script>
+    // Formatar data atual
+    const opcoes = { day: '2-digit', month: 'long', year: 'numeric' };
+    const dataFormatada = new Date().toLocaleDateString('pt-BR', opcoes);
+    document.getElementById('data-hoje').textContent = dataFormatada;
+  </script>
+</body>
+</html>
