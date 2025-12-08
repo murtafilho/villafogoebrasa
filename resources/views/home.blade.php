@@ -53,18 +53,18 @@
 
     <!-- About Section -->
     <section id="about" class="py-24 lg:py-32 bg-villa-espresso texture-overlay relative overflow-hidden">
-        <!-- Decorative Element -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-villa-ember/5 rounded-full blur-3xl"></div>
+        <!-- Decorative Element - hidden on mobile to prevent overflow -->
+        <div class="hidden lg:block absolute top-0 right-0 w-96 h-96 bg-villa-ember/5 rounded-full blur-3xl"></div>
 
         <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <!-- Image -->
-                <div class="relative">
+                <div class="relative overflow-hidden">
                     <div class="aspect-[4/5] bg-villa-coffee overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=800" alt="Churrasqueiro preparando carnes" class="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700">
                     </div>
                     <!-- Floating Badge -->
-                    <div class="absolute -bottom-6 -right-6 lg:-right-12 bg-villa-ember p-6 lg:p-8">
+                    <div class="absolute -bottom-6 right-0 lg:-right-12 bg-villa-ember p-6 lg:p-8">
                         <p class="font-display text-3xl lg:text-4xl font-semibold text-white">Tradição</p>
                         <p class="text-white/80 text-sm tracking-wider uppercase">Gaúcha</p>
                     </div>
