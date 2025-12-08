@@ -114,6 +114,20 @@
                     Contrafilé e filé mignon unidos pelo osso em T, experiência completa em um corte.
                 </p>
             </div>
+
+            <!-- Menu Item 7 - Parmegiana -->
+            <div class="group card-hover bg-villa-espresso/50 p-6 border border-villa-coffee/30 hover:border-villa-ember/50">
+                <div class="aspect-[4/3] mb-6 overflow-hidden bg-villa-coffee">
+                    <img src="{{ asset('img/parmegiana.jpg') }}" alt="Parmegiana Flambada" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
+                </div>
+                <div class="flex justify-between items-start mb-3">
+                    <h3 class="font-display text-2xl text-villa-cream">Parmegiana Flambada</h3>
+                    <span class="text-villa-gold font-display text-xl">R$ 89</span>
+                </div>
+                <p class="text-villa-cream/60 text-sm leading-relaxed">
+                    Filé empanado coberto com queijo gratinado, flambado na mesa. Acompanha arroz, farofa e vinagrete.
+                </p>
+            </div>
         </div>
 
         <!-- CTA -->
