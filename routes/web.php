@@ -1,12 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 // Admin Routes
 Route::prefix('admin')
@@ -14,9 +13,6 @@ Route::prefix('admin')
     ->name('admin.')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('/proposta', function () {
-            return view('admin.proposta');
-        })->name('proposta');
     });
 
 // Profile Routes (Breeze)
