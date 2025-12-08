@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Mobile Reset - Garantir largura total */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #1a1714; }
