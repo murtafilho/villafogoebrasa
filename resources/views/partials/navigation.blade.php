@@ -3,7 +3,7 @@
         <div style="display: flex; align-items: center; justify-content: space-between; height: 64px;">
 
             <!-- Logo -->
-            <a href="#home" style="flex-shrink: 0;">
+            <a href="#home" class="shrink-0">
                 <img src="{{ asset('img/logo.webp') }}" alt="Villa Fogo & Brasa" style="height: 32px; width: auto;">
             </a>
 

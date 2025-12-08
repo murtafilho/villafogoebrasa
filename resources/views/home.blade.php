@@ -93,7 +93,7 @@
                     <!-- Features -->
                     <div class="grid grid-cols-2 gap-6 mt-10">
                         <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-villa-ember/20 flex items-center justify-center">
+                            <div class="shrink-0 w-12 h-12 bg-villa-ember/20 flex items-center justify-center">
                                 <i data-lucide="flame" class="w-6 h-6 text-villa-ember"></i>
                             </div>
                             <div>
@@ -102,7 +102,7 @@
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-villa-ember/20 flex items-center justify-center">
+                            <div class="shrink-0 w-12 h-12 bg-villa-ember/20 flex items-center justify-center">
                                 <i data-lucide="award" class="w-6 h-6 text-villa-ember"></i>
                             </div>
                             <div>

@@ -9,9 +9,16 @@
       "Bash(ssh taiyo \"cd ~/villafogoebrasa && git pull && php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear && php artisan optimize\")",
       "Bash(ssh:*)",
       "Bash(scp:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "mcp__tailwindcss__get_tailwind_config_guide"
     ],
     "deny": [],
     "ask": []
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "laravel-boost",
+    "context7",
+    "tailwindcss"
+  ]
 }

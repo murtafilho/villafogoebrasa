@@ -1,117 +1,149 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Mobile Reset - Garantir largura total */
-html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
+/* ========================================
+   THEME - Cores e variáveis customizadas
+   ======================================== */
+@theme {
+    /* Brand Colors - Villa Fogo & Brasa */
+    --color-villa-charcoal: #1a1714;
+    --color-villa-espresso: #2d2520;
+    --color-villa-coffee: #3d352e;
+    --color-villa-ember: #c45c26;
+    --color-villa-flame: #e8723a;
+    --color-villa-gold: #c9a962;
+    --color-villa-cream: #f5f0e8;
+
+    /* Custom Fonts */
+    --font-display: "Cormorant Garamond", serif;
+    --font-body: "Montserrat", sans-serif;
+
+    /* Custom Animations */
+    --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
+    --animate-flicker: flicker 3s ease-in-out infinite;
+    --animate-ember-glow: ember-glow 2s ease-in-out infinite;
+
+    @keyframes fade-in-up {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes flicker {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.8; }
+    }
+
+    @keyframes ember-glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(196, 92, 38, 0.3); }
+        50% { box-shadow: 0 0 40px rgba(196, 92, 38, 0.5); }
+    }
 }
 
-* {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+/* ========================================
+   BASE - Estilos globais
+   ======================================== */
+@layer base {
+    /* Mobile Reset - Garantir largura total */
+    html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Smooth Scroll */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--color-villa-charcoal); }
+    ::-webkit-scrollbar-thumb { background: var(--color-villa-ember); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--color-villa-flame); }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #1a1714; }
-::-webkit-scrollbar-thumb { background: #c45c26; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #e8723a; }
+/* ========================================
+   COMPONENTS - Componentes reutilizáveis
+   ======================================== */
+@layer components {
+    /* Animation Classes */
+    .animate-fadeInUp {
+        animation: fade-in-up 0.8s ease-out forwards;
+    }
 
-/* Smooth Scroll */
-html { scroll-behavior: smooth; }
+    .animate-flicker {
+        animation: flicker 3s ease-in-out infinite;
+    }
 
-/* Animations */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+    .ember-glow {
+        animation: ember-glow 2s ease-in-out infinite;
+    }
 
-@keyframes flicker {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
-}
+    /* Stagger animations */
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
 
-@keyframes ember-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(196, 92, 38, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(196, 92, 38, 0.5); }
-}
+    /* Hero Gradient Overlay */
+    .hero-overlay {
+        background: linear-gradient(
+            180deg,
+            rgba(26, 23, 20, 0.4) 0%,
+            rgba(26, 23, 20, 0.6) 50%,
+            rgba(26, 23, 20, 0.95) 100%
+        );
+    }
 
-.animate-fadeInUp {
-    animation: fadeInUp 0.8s ease-out forwards;
-}
+    /* Decorative Line */
+    .line-accent::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--color-villa-ember), var(--color-villa-gold));
+        margin: 1rem auto 0;
+    }
 
-.animate-flicker {
-    animation: flicker 3s ease-in-out infinite;
-}
+    /* Card Hover Effect */
+    .card-hover {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+        transform: translateY(-8px);
+    }
 
-.ember-glow {
-    animation: ember-glow 2s ease-in-out infinite;
-}
+    /* Navigation Active State */
+    .nav-link {
+        position: relative;
+    }
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--color-villa-gold);
+        transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+        width: 100%;
+    }
 
-/* Stagger animations */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-
-/* Hero Gradient Overlay */
-.hero-overlay {
-    background: linear-gradient(
-        180deg,
-        rgba(26, 23, 20, 0.4) 0%,
-        rgba(26, 23, 20, 0.6) 50%,
-        rgba(26, 23, 20, 0.95) 100%
-    );
-}
-
-/* Decorative Line */
-.line-accent::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, #c45c26, #c9a962);
-    margin: 1rem auto 0;
-}
-
-/* Card Hover Effect */
-.card-hover {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.card-hover:hover {
-    transform: translateY(-8px);
-}
-
-/* Navigation Active State */
-.nav-link {
-    position: relative;
-}
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: #c9a962;
-    transition: width 0.3s ease;
-}
-.nav-link:hover::after {
-    width: 100%;
-}
-
-/* Texture Overlay */
-.texture-overlay {
-    position: relative;
-}
-.texture-overlay::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.03;
-    pointer-events: none;
+    /* Texture Overlay */
+    .texture-overlay {
+        position: relative;
+    }
+    .texture-overlay::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.03;
+        pointer-events: none;
+    }
 }

@@ -2,6 +2,46 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## ⚠️ TAILWIND CSS v4 - CRÍTICO
+
+**Este projeto usa Tailwind CSS v4. NUNCA use sintaxe do v3.**
+
+### Sintaxe CORRETA (v4):
+```css
+/* Import - usar @import, NÃO @tailwind */
+@import "tailwindcss";
+
+/* Configuração de tema - usar @theme no CSS */
+@theme {
+  --color-villa-ember: #c45c26;
+  --color-villa-gold: #c9a962;
+}
+```
+
+### Sintaxe ERRADA (v3 - NÃO USAR):
+```css
+/* ❌ ERRADO - sintaxe v3 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### Classes depreciadas no v4:
+| ❌ Depreciado (v3) | ✅ Usar (v4) |
+|-------------------|--------------|
+| `bg-opacity-50` | `bg-black/50` |
+| `text-opacity-50` | `text-black/50` |
+| `flex-shrink-0` | `shrink-0` |
+| `flex-grow` | `grow` |
+| `overflow-ellipsis` | `text-ellipsis` |
+
+### Antes de modificar CSS:
+1. Consultar o MCP `tailwindcss` para sintaxe correta
+2. Usar `mcp__tailwindcss__search_tailwind_docs` para verificar utilities
+3. Verificar `resources/css/app.css` para padrões existentes
+
+---
+
 ## Project Overview
 
 Villa Fogo & Brasa is a premium Brazilian steakhouse (churrascaria) website built with Laravel 12 and Tailwind CSS 4. It's a single-page application showcasing the restaurant with sections for menu, experience, gallery, reservations, and contact.

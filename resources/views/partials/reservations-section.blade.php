@@ -17,7 +17,7 @@
                 <!-- Contact Info -->
                 <div class="space-y-4 mb-8">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-villa-ember/20 flex items-center justify-center flex-shrink-0">
+                        <div class="w-12 h-12 bg-villa-ember/20 flex items-center justify-center shrink-0">
                             <i data-lucide="phone" class="w-5 h-5 text-villa-ember"></i>
                         </div>
                         <div>
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-villa-ember/20 flex items-center justify-center flex-shrink-0">
+                        <div class="w-12 h-12 bg-villa-ember/20 flex items-center justify-center shrink-0">
                             <i data-lucide="clock" class="w-5 h-5 text-villa-ember"></i>
                         </div>
                         <div>

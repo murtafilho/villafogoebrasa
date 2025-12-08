@@ -45,7 +45,7 @@
             <div class="space-y-8">
                 <!-- Address -->
                 <div class="flex gap-6">
-                    <div class="w-14 h-14 bg-villa-ember/20 flex items-center justify-center flex-shrink-0">
+                    <div class="w-14 h-14 bg-villa-ember/20 flex items-center justify-center shrink-0">
                         <i data-lucide="map-pin" class="w-6 h-6 text-villa-ember"></i>
                     </div>
                     <div>
@@ -60,7 +60,7 @@
 
                 <!-- Phone -->
                 <div class="flex gap-6">
-                    <div class="w-14 h-14 bg-villa-ember/20 flex items-center justify-center flex-shrink-0">
+                    <div class="w-14 h-14 bg-villa-ember/20 flex items-center justify-center shrink-0">
                         <i data-lucide="phone" class="w-6 h-6 text-villa-ember"></i>
                     </div>
                     <div>
@@ -73,7 +73,7 @@
 
                 <!-- Hours -->
                 <div class="flex gap-6">
-                    <div class="w-14 h-14 bg-villa-ember/20 flex items-center justify-center flex-shrink-0">
+                    <div class="w-14 h-14 bg-villa-ember/20 flex items-center justify-center shrink-0">
                         <i data-lucide="clock" class="w-6 h-6 text-villa-ember"></i>
                     </div>
                     <div>
