@@ -15,6 +15,13 @@
                 "--api-key",
                 "ctx7sk-9e2c75f6-b14d-45df-9a44-636a52c2c6da"
             ]
+        },
+        "tailwindcss": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "tailwindcss-mcp-server"
+            ]
         }
     }
 }
