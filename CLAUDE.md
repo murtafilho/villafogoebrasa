@@ -2,6 +2,30 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## ⚠️ DEPLOY - CRÍTICO (Subdiretório Hostinger)
+
+**Este site está em subdiretório (`/villafogoebrasa`). NUNCA use cache de rotas!**
+
+### Deploy CORRETO:
+```bash
+ssh taiyo "cd ~/villafogoebrasa && git pull && php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear"
+```
+
+### NUNCA usar no deploy:
+```bash
+php artisan optimize      # ❌ PROIBIDO - causa erro 405
+php artisan route:cache   # ❌ PROIBIDO - causa erro 405
+```
+
+### Se der erro "Method Not Allowed":
+```bash
+ssh taiyo "cd ~/villafogoebrasa && rm -rf bootstrap/cache/*.php && php artisan route:clear && php artisan cache:clear && php artisan config:clear"
+```
+
+Ver detalhes em: `PERIGO.md`
+
+---
+
 ## ⚠️ TAILWIND CSS v4 - CRÍTICO
 
 **Este projeto usa Tailwind CSS v4. NUNCA use sintaxe do v3.**
