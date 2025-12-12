@@ -6,15 +6,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Villa Fogo & Brasa is a premium Brazilian steakhouse (churrascaria) website built with Laravel 12 and Tailwind CSS 4. It's a single-page application showcasing the restaurant with sections for menu, experience, gallery, reservations, and contact.
 
+## Environments
+
+| Environment | SSH Alias | Directory | Domain |
+|-------------|-----------|-----------|--------|
+| Stage | `villafogo` | `~/stage.villafogoebrasa.com.br` | stage.villafogoebrasa.com.br |
+| Production | `villafogo` | `~/villafogoebrasa.com.br` | villafogoebrasa.com.br |
+
 ## CRITICAL WARNINGS
 
-### Deploy - Subdiretório Hostinger
-
-**Site runs in subdirectory (`/villafogoebrasa`). NEVER use route cache!**
+### Deploy - NEVER use route cache!
 
 ```bash
-# CORRECT deploy command:
-ssh taiyo "cd ~/villafogoebrasa && git pull && php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear"
+# Deploy to STAGE:
+ssh villafogo "cd ~/stage.villafogoebrasa.com.br && git pull && php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear"
+
+# Deploy to PRODUCTION:
+ssh villafogo "cd ~/villafogoebrasa.com.br && git pull && php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear"
 
 # FORBIDDEN - causes 405 errors:
 php artisan optimize      # NEVER USE
@@ -23,7 +31,7 @@ php artisan route:cache   # NEVER USE
 
 Fix "Method Not Allowed" errors:
 ```bash
-ssh taiyo "cd ~/villafogoebrasa && rm -rf bootstrap/cache/*.php && php artisan route:clear && php artisan cache:clear && php artisan config:clear"
+ssh villafogo "cd ~/villafogoebrasa.com.br && rm -rf bootstrap/cache/*.php && php artisan route:clear && php artisan cache:clear && php artisan config:clear"
 ```
 
 See `PERIGO.md` for details.
