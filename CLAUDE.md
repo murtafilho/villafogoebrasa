@@ -13,17 +13,42 @@ Villa Fogo & Brasa is a premium Brazilian steakhouse (churrascaria) website buil
 | Stage | `villafogo` | `~/stage.villafogoebrasa.com.br` | stage.villafogoebrasa.com.br |
 | Production | `villafogo` | `~/villafogoebrasa.com.br` | villafogoebrasa.com.br |
 
+## Deploy Workflow
+
+### 1. Build assets locally
+```bash
+npm run build
+```
+
+### 2. Commit and push
+```bash
+git add -A && git commit -m "message" && git push
+```
+
+### 3. Deploy to STAGE (test first)
+```bash
+ssh villafogo "cd ~/stage.villafogoebrasa.com.br && git pull && php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear"
+scp -r public/build/* villafogo:~/stage.villafogoebrasa.com.br/public/build/
+```
+
+### 4. Deploy to PRODUCTION (after validating stage)
+```bash
+ssh villafogo "cd ~/villafogoebrasa.com.br && git pull && php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear"
+scp -r public/build/* villafogo:~/villafogoebrasa.com.br/public/build/
+```
+
+### SEO Indexing
+
+| Environment | Indexed by Search Engines |
+|-------------|---------------------------|
+| Stage | ❌ No (robots.txt + noindex meta) |
+| Production | ✅ Yes |
+
 ## CRITICAL WARNINGS
 
-### Deploy - NEVER use route cache!
+### NEVER use route cache!
 
 ```bash
-# Deploy to STAGE:
-ssh villafogo "cd ~/stage.villafogoebrasa.com.br && git pull && php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear"
-
-# Deploy to PRODUCTION:
-ssh villafogo "cd ~/villafogoebrasa.com.br && git pull && php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear"
-
 # FORBIDDEN - causes 405 errors:
 php artisan optimize      # NEVER USE
 php artisan route:cache   # NEVER USE
