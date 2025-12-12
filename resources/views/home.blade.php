@@ -59,7 +59,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <!-- Image -->
-                <div class="relative overflow-hidden">
+                <div class="relative pb-8">
                     <div class="aspect-[4/5] bg-villa-coffee overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=800" alt="Churrasqueiro preparando carnes" class="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700">
                     </div>
