@@ -64,7 +64,7 @@
                         <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=800" alt="Churrasqueiro preparando carnes" class="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700">
                     </div>
                     <!-- Floating Badge -->
-                    <div class="absolute -bottom-6 right-0 lg:-right-12 bg-villa-ember p-6 lg:p-8">
+                    <div class="absolute -bottom-6 right-0 lg:-right-12 bg-villa-ember p-6 lg:p-8 shadow-2xl shadow-orange-600/50">
                         <p class="font-display text-3xl lg:text-4xl font-semibold text-white">Tradição</p>
                         <p class="text-white/80 text-sm tracking-wider uppercase">Gaúcha</p>
                     </div>
