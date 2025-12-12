@@ -55,23 +55,40 @@
         </div>
     </aside>
 
-    <!-- Mobile Top Header -->
-    <header class="lg:hidden fixed top-0 left-0 right-0 z-50 h-16 bg-villa-charcoal shadow-lg">
-        <div class="h-full px-4 flex items-center justify-between">
-            <a href="{{ route('admin.dashboard') }}" class="text-xl font-heading font-bold text-villa-gold">
-                Villa Admin
-            </a>
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-drawer" class="lg:hidden fixed inset-0 z-50 hidden">
+        <!-- Backdrop -->
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black/50"></div>
 
-            <div class="flex items-center gap-3">
-                <a href="{{ url('/') }}" target="_blank" class="text-villa-cream/80 hover:text-villa-gold transition-colors">
-                    <i data-lucide="external-link" class="w-5 h-5"></i>
-                </a>
-                <div class="w-8 h-8 rounded-full bg-villa-ember flex items-center justify-center">
-                    <span class="text-white text-sm font-semibold">{{ substr(auth()->user()->name, 0, 1) }}</span>
+        <!-- Drawer Content -->
+        <div class="absolute bottom-16 left-0 right-0 bg-villa-charcoal border-t border-villa-espresso rounded-t-2xl p-6 transform transition-transform">
+            <!-- User Info -->
+            <div class="flex items-center gap-3 mb-6 pb-4 border-b border-villa-espresso">
+                <div class="w-12 h-12 rounded-full bg-villa-ember flex items-center justify-center">
+                    <span class="text-white text-lg font-semibold">{{ substr(auth()->user()->name, 0, 1) }}</span>
+                </div>
+                <div>
+                    <p class="text-base font-medium text-villa-cream">{{ auth()->user()->name }}</p>
+                    <p class="text-sm text-villa-cream/60">{{ auth()->user()->email }}</p>
                 </div>
             </div>
+
+            <!-- Menu Items -->
+            <nav class="space-y-2">
+                <a href="{{ url('/') }}" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-lg text-villa-cream/80 hover:bg-villa-espresso hover:text-villa-gold transition-colors">
+                    <i data-lucide="globe" class="w-5 h-5"></i>
+                    <span>Ver Site</span>
+                </a>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-villa-cream/80 hover:bg-villa-espresso hover:text-villa-ember transition-colors">
+                        <i data-lucide="log-out" class="w-5 h-5"></i>
+                        <span>Sair</span>
+                    </button>
+                </form>
+            </nav>
         </div>
-    </header>
+    </div>
 
     <!-- Main Content -->
     <div class="lg:ml-64">
@@ -86,7 +103,7 @@
         </header>
 
         <!-- Page Content -->
-        <main class="p-4 lg:p-6 pt-20 lg:pt-6 pb-24 lg:pb-6">
+        <main class="p-4 lg:p-6 pb-24 lg:pb-6">
             @if(session('success'))
                 <div class="mb-6 p-4 bg-green-100 border border-green-300 text-green-800 rounded-lg">
                     {{ session('success') }}
@@ -107,23 +124,16 @@
     </div>
 
     <!-- Mobile Bottom Navigation -->
-    <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-villa-charcoal border-t border-villa-espresso">
-        <div class="flex justify-around items-center py-2">
-            <a href="{{ route('admin.dashboard') }}" class="flex flex-col items-center gap-1 px-4 py-2 {{ request()->routeIs('admin.dashboard') ? 'text-villa-gold' : 'text-villa-cream/70' }} hover:text-villa-gold transition-colors">
-                <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+    <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-villa-charcoal border-t border-villa-espresso safe-area-bottom">
+        <div class="flex justify-around items-center py-3">
+            <a href="{{ route('admin.dashboard') }}" class="flex flex-col items-center gap-1 px-4 py-1 {{ request()->routeIs('admin.dashboard') ? 'text-villa-gold' : 'text-villa-cream/70' }} hover:text-villa-gold transition-colors">
+                <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
                 <span class="text-xs">Dashboard</span>
             </a>
-            <a href="{{ url('/') }}" target="_blank" class="flex flex-col items-center gap-1 px-4 py-2 text-villa-cream/70 hover:text-villa-gold transition-colors">
-                <i data-lucide="globe" class="w-5 h-5"></i>
-                <span class="text-xs">Ver Site</span>
-            </a>
-            <form action="{{ route('logout') }}" method="POST" class="flex flex-col items-center">
-                @csrf
-                <button type="submit" class="flex flex-col items-center gap-1 px-4 py-2 text-villa-cream/70 hover:text-villa-ember transition-colors">
-                    <i data-lucide="log-out" class="w-5 h-5"></i>
-                    <span class="text-xs">Sair</span>
-                </button>
-            </form>
+            <button id="menu-toggle" class="flex flex-col items-center gap-1 px-4 py-1 text-villa-cream/70 hover:text-villa-gold transition-colors">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+                <span class="text-xs">Menu</span>
+            </button>
         </div>
     </nav>
 
@@ -134,6 +144,21 @@
 
     <script>
         lucide.createIcons();
+
+        // Mobile drawer toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerBackdrop = document.getElementById('drawer-backdrop');
+
+        if (menuToggle && mobileDrawer) {
+            menuToggle.addEventListener('click', () => {
+                mobileDrawer.classList.toggle('hidden');
+            });
+
+            drawerBackdrop.addEventListener('click', () => {
+                mobileDrawer.classList.add('hidden');
+            });
+        }
     </script>
 </body>
 </html>
