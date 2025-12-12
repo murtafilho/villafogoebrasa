@@ -1,4 +1,4 @@
-<footer class="py-12 bg-black/50 border-t border-villa-coffee/30">
+<footer class="py-12 pb-24 lg:pb-12 bg-black/50 border-t border-villa-coffee/30">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
             <!-- Logo -->
