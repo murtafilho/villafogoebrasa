@@ -7,6 +7,10 @@
     <meta name="keywords" content="churrascaria, churrasco gaúcho, Nova Lima, carnes nobres, rodízio, restaurante premium">
     <title>@yield('title', 'Villa Fogo & Brasa - Churrascaria Premium em Nova Lima')</title>
 
+    @if(config('app.env') !== 'production')
+    <meta name="robots" content="noindex, nofollow">
+    @endif
+
     <!-- Open Graph / WhatsApp / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
