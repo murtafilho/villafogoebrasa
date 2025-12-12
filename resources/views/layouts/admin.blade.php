@@ -28,10 +28,22 @@
             </a>
         </div>
 
-        <nav class="mt-6 px-4">
+        <nav class="mt-6 px-4 space-y-1">
             <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg text-villa-cream/80 hover:bg-villa-espresso hover:text-villa-gold transition-colors {{ request()->routeIs('admin.dashboard') ? 'bg-villa-espresso text-villa-gold' : '' }}">
                 <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
                 <span>Dashboard</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-villa-cream/80 hover:bg-villa-espresso hover:text-villa-gold transition-colors {{ request()->routeIs('admin.pedidos.*') ? 'bg-villa-espresso text-villa-gold' : '' }}">
+                <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                <span>Pedidos</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-villa-cream/80 hover:bg-villa-espresso hover:text-villa-gold transition-colors {{ request()->routeIs('admin.cardapio.*') ? 'bg-villa-espresso text-villa-gold' : '' }}">
+                <i data-lucide="utensils" class="w-5 h-5"></i>
+                <span>Cardápio</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-villa-cream/80 hover:bg-villa-espresso hover:text-villa-gold transition-colors {{ request()->routeIs('admin.reservas.*') ? 'bg-villa-espresso text-villa-gold' : '' }}">
+                <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                <span>Reservas</span>
             </a>
         </nav>
 
@@ -75,6 +87,21 @@
 
             <!-- Menu Items -->
             <nav class="space-y-2">
+                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-villa-cream/80 hover:bg-villa-espresso hover:text-villa-gold transition-colors">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span>Pedidos</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-villa-cream/80 hover:bg-villa-espresso hover:text-villa-gold transition-colors">
+                    <i data-lucide="utensils" class="w-5 h-5"></i>
+                    <span>Cardápio</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-villa-cream/80 hover:bg-villa-espresso hover:text-villa-gold transition-colors">
+                    <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                    <span>Reservas</span>
+                </a>
+
+                <div class="border-t border-villa-espresso my-3"></div>
+
                 <a href="{{ url('/') }}" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-lg text-villa-cream/80 hover:bg-villa-espresso hover:text-villa-gold transition-colors">
                     <i data-lucide="globe" class="w-5 h-5"></i>
                     <span>Ver Site</span>
