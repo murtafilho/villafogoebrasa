@@ -20,62 +20,94 @@
     @stack('styles')
 </head>
 <body class="bg-gray-100 font-body">
-    <!-- Top Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 h-16 bg-villa-charcoal shadow-lg">
-        <div class="h-full max-w-7xl mx-auto px-4 flex items-center justify-between">
-            <!-- Logo -->
+    <!-- Desktop Sidebar -->
+    <aside class="hidden lg:block fixed inset-y-0 left-0 z-50 w-64 bg-villa-charcoal text-villa-cream">
+        <div class="flex items-center justify-center h-16 border-b border-villa-espresso">
+            <a href="{{ route('admin.dashboard') }}" class="text-xl font-heading font-bold text-villa-gold">
+                Villa Admin
+            </a>
+        </div>
+
+        <nav class="mt-6 px-4">
+            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg text-villa-cream/80 hover:bg-villa-espresso hover:text-villa-gold transition-colors {{ request()->routeIs('admin.dashboard') ? 'bg-villa-espresso text-villa-gold' : '' }}">
+                <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                <span>Dashboard</span>
+            </a>
+        </nav>
+
+        <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-villa-espresso">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-villa-ember flex items-center justify-center">
+                    <span class="text-white font-semibold">{{ substr(auth()->user()->name, 0, 1) }}</span>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-villa-cream">{{ auth()->user()->name }}</p>
+                    <p class="text-xs text-villa-cream/60">{{ auth()->user()->email }}</p>
+                </div>
+            </div>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="flex items-center gap-2 w-full px-4 py-2 text-sm text-villa-cream/80 hover:text-villa-ember transition-colors">
+                    <i data-lucide="log-out" class="w-4 h-4"></i>
+                    <span>Sair</span>
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    <!-- Mobile Top Header -->
+    <header class="lg:hidden fixed top-0 left-0 right-0 z-50 h-16 bg-villa-charcoal shadow-lg">
+        <div class="h-full px-4 flex items-center justify-between">
             <a href="{{ route('admin.dashboard') }}" class="text-xl font-heading font-bold text-villa-gold">
                 Villa Admin
             </a>
 
-            <!-- Page Title - Hidden on mobile -->
-            <h1 class="hidden md:block text-lg font-semibold text-villa-cream">@yield('header', 'Dashboard')</h1>
-
-            <!-- Right Actions -->
-            <div class="flex items-center gap-4">
-                <a href="{{ url('/') }}" target="_blank" class="text-sm text-villa-cream/80 hover:text-villa-gold transition-colors flex items-center gap-1">
-                    <i data-lucide="external-link" class="w-4 h-4"></i>
-                    <span class="hidden sm:inline">Ver Site</span>
+            <div class="flex items-center gap-3">
+                <a href="{{ url('/') }}" target="_blank" class="text-villa-cream/80 hover:text-villa-gold transition-colors">
+                    <i data-lucide="external-link" class="w-5 h-5"></i>
                 </a>
-
-                <!-- User Menu (Desktop) -->
-                <div class="hidden md:flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-villa-ember flex items-center justify-center">
-                        <span class="text-white text-sm font-semibold">{{ substr(auth()->user()->name, 0, 1) }}</span>
-                    </div>
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="text-villa-cream/80 hover:text-villa-ember transition-colors">
-                            <i data-lucide="log-out" class="w-5 h-5"></i>
-                        </button>
-                    </form>
+                <div class="w-8 h-8 rounded-full bg-villa-ember flex items-center justify-center">
+                    <span class="text-white text-sm font-semibold">{{ substr(auth()->user()->name, 0, 1) }}</span>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="pt-20 pb-24 md:pb-8 px-4 max-w-7xl mx-auto">
-        @if(session('success'))
-            <div class="mb-6 p-4 bg-green-100 border border-green-300 text-green-800 rounded-lg">
-                {{ session('success') }}
-            </div>
-        @endif
+    <div class="lg:ml-64">
+        <!-- Desktop Top Bar -->
+        <header class="hidden lg:flex h-16 bg-white shadow-sm items-center justify-between px-6">
+            <h1 class="text-lg font-semibold text-gray-800">@yield('header', 'Dashboard')</h1>
 
-        @if(session('error'))
-            <div class="mb-6 p-4 bg-red-100 border border-red-300 text-red-800 rounded-lg">
-                {{ session('error') }}
-            </div>
-        @endif
+            <a href="{{ url('/') }}" target="_blank" class="text-sm text-gray-600 hover:text-villa-ember transition-colors flex items-center gap-1">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+                Ver Site
+            </a>
+        </header>
 
-        <!-- Page Title (Mobile) -->
-        <h1 class="md:hidden text-xl font-semibold text-gray-800 mb-4">@yield('header', 'Dashboard')</h1>
+        <!-- Page Content -->
+        <main class="p-4 lg:p-6 pt-20 lg:pt-6 pb-24 lg:pb-6">
+            @if(session('success'))
+                <div class="mb-6 p-4 bg-green-100 border border-green-300 text-green-800 rounded-lg">
+                    {{ session('success') }}
+                </div>
+            @endif
 
-        @yield('content')
-    </main>
+            @if(session('error'))
+                <div class="mb-6 p-4 bg-red-100 border border-red-300 text-red-800 rounded-lg">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            <!-- Mobile Page Title -->
+            <h1 class="lg:hidden text-xl font-semibold text-gray-800 mb-4">@yield('header', 'Dashboard')</h1>
+
+            @yield('content')
+        </main>
+    </div>
 
     <!-- Mobile Bottom Navigation -->
-    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-villa-charcoal border-t border-villa-espresso md:hidden">
+    <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-villa-charcoal border-t border-villa-espresso">
         <div class="flex justify-around items-center py-2">
             <a href="{{ route('admin.dashboard') }}" class="flex flex-col items-center gap-1 px-4 py-2 {{ request()->routeIs('admin.dashboard') ? 'text-villa-gold' : 'text-villa-cream/70' }} hover:text-villa-gold transition-colors">
                 <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
