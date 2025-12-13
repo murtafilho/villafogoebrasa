@@ -2,26 +2,48 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
      * Seed the application's database.
      */
     public function run(): void
     {
+        $this->command->info('Starting database seeding...');
+        $this->command->newLine();
+
+        // 1. Create roles first
+        $this->command->info('=== Creating Roles ===');
         $this->call(RoleSeeder::class);
+        $this->command->newLine();
 
-        // User::factory(10)->create();
+        // 2. Create users
+        $this->command->info('=== Creating Users ===');
+        $this->call(UserSeeder::class);
+        $this->command->newLine();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // 3. Create menu categories
+        $this->command->info('=== Creating Menu Categories ===');
+        $this->call(MenuCategorySeeder::class);
+        $this->command->newLine();
+
+        // 4. Create menu items
+        $this->command->info('=== Creating Menu Items ===');
+        $this->call(MenuItemSeeder::class);
+        $this->command->newLine();
+
+        // 5. Create reservations
+        $this->command->info('=== Creating Reservations ===');
+        $this->call(ReservationSeeder::class);
+        $this->command->newLine();
+
+        // 6. Create gallery
+        $this->command->info('=== Creating Gallery ===');
+        $this->call(GallerySeeder::class);
+        $this->command->newLine();
+
+        $this->command->info('Database seeding completed successfully!');
     }
 }
