@@ -69,8 +69,9 @@
             <i data-lucide="calendar-plus" class="w-8 h-8 text-villa-ember"></i>
             <span class="text-sm text-gray-700">Nova Reserva</span>
         </a>
-        <a href="#" class="flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 hover:border-villa-ember hover:bg-villa-ember/5 transition-colors" title="Adicionar Prato">
+        <a href="#" class="flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 hover:border-villa-ember hover:bg-villa-ember/5 transition-colors">
             <i data-lucide="plus-circle" class="w-8 h-8 text-villa-ember"></i>
+            <span class="text-sm text-gray-700">Adicionar Prato</span>
         </a>
         <a href="#" class="flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 hover:border-villa-ember hover:bg-villa-ember/5 transition-colors">
             <i data-lucide="upload" class="w-8 h-8 text-villa-ember"></i>
