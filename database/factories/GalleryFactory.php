@@ -58,55 +58,59 @@ class GalleryFactory extends Factory
     public function definition(): array
     {
         $faker = \Faker\Factory::create('pt_BR');
-        $category = $this->faker->randomElement(array_keys(self::$titles));
-        $title = $this->faker->randomElement(self::$titles[$category]);
+        $category = $faker->randomElement(array_keys(self::$titles));
+        $title = $faker->randomElement(self::$titles[$category]);
 
         return [
             'title' => $title,
             'description' => $faker->sentence(10),
             'category' => $category,
-            'is_featured' => $this->faker->boolean(25),
+            'is_featured' => $faker->boolean(25),
             'is_active' => true,
-            'sort_order' => $this->faker->numberBetween(1, 100),
+            'sort_order' => $faker->numberBetween(1, 100),
         ];
     }
 
     public function ambiente(): static
     {
-        return $this->state(function (array $attributes) {
+        $faker = \Faker\Factory::create();
+        return $this->state(function (array $attributes) use ($faker) {
             return [
                 'category' => Gallery::CATEGORY_AMBIENTE,
-                'title' => $this->faker->randomElement(self::$titles['ambiente']),
+                'title' => $faker->randomElement(self::$titles['ambiente']),
             ];
         });
     }
 
     public function pratos(): static
     {
-        return $this->state(function (array $attributes) {
+        $faker = \Faker\Factory::create();
+        return $this->state(function (array $attributes) use ($faker) {
             return [
                 'category' => Gallery::CATEGORY_PRATOS,
-                'title' => $this->faker->randomElement(self::$titles['pratos']),
+                'title' => $faker->randomElement(self::$titles['pratos']),
             ];
         });
     }
 
     public function eventos(): static
     {
-        return $this->state(function (array $attributes) {
+        $faker = \Faker\Factory::create();
+        return $this->state(function (array $attributes) use ($faker) {
             return [
                 'category' => Gallery::CATEGORY_EVENTOS,
-                'title' => $this->faker->randomElement(self::$titles['eventos']),
+                'title' => $faker->randomElement(self::$titles['eventos']),
             ];
         });
     }
 
     public function equipe(): static
     {
-        return $this->state(function (array $attributes) {
+        $faker = \Faker\Factory::create();
+        return $this->state(function (array $attributes) use ($faker) {
             return [
                 'category' => Gallery::CATEGORY_EQUIPE,
-                'title' => $this->faker->randomElement(self::$titles['equipe']),
+                'title' => $faker->randomElement(self::$titles['equipe']),
             ];
         });
     }

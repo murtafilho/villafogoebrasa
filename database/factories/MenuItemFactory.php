@@ -61,18 +61,19 @@ class MenuItemFactory extends Factory
             self::$bebidas
         );
 
-        $name = $this->faker->randomElement(array_keys($allItems));
+        $faker = \Faker\Factory::create();
+        $name = $faker->randomElement(array_keys($allItems));
         $item = $allItems[$name];
 
         return [
             'category_id' => MenuCategory::factory(),
-            'name' => $name . ' ' . $this->faker->unique()->numberBetween(1, 1000),
-            'slug' => Str::slug($name) . '-' . $this->faker->unique()->numberBetween(1, 1000),
+            'name' => $name . ' ' . $faker->unique()->numberBetween(1, 1000),
+            'slug' => Str::slug($name) . '-' . $faker->unique()->numberBetween(1, 1000),
             'description' => $item['desc'],
             'price' => $item['price'],
-            'is_featured' => $this->faker->boolean(20),
+            'is_featured' => $faker->boolean(20),
             'is_active' => true,
-            'sort_order' => $this->faker->numberBetween(1, 100),
+            'sort_order' => $faker->numberBetween(1, 100),
         ];
     }
 

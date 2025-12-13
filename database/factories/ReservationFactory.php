@@ -33,14 +33,14 @@ class ReservationFactory extends Factory
 
         return [
             'name' => $faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
+            'email' => $faker->unique()->safeEmail(),
             'phone' => $faker->cellphoneNumber(),
-            'date' => $this->faker->dateTimeBetween('now', '+2 months')->format('Y-m-d'),
-            'time' => $this->faker->randomElement(self::$timeSlots),
-            'guests' => $this->faker->numberBetween(1, 12),
-            'occasion' => $this->faker->randomElement(self::$occasions),
-            'notes' => $this->faker->boolean(30) ? $faker->sentence() : null,
-            'status' => $this->faker->randomElement([
+            'date' => $faker->dateTimeBetween('now', '+2 months')->format('Y-m-d'),
+            'time' => $faker->randomElement(self::$timeSlots),
+            'guests' => $faker->numberBetween(1, 12),
+            'occasion' => $faker->randomElement(self::$occasions),
+            'notes' => $faker->boolean(30) ? $faker->sentence() : null,
+            'status' => $faker->randomElement([
                 Reservation::STATUS_PENDING,
                 Reservation::STATUS_CONFIRMED,
                 Reservation::STATUS_COMPLETED,
@@ -50,25 +50,28 @@ class ReservationFactory extends Factory
 
     public function pending(): static
     {
+        $faker = \Faker\Factory::create();
         return $this->state(fn (array $attributes) => [
             'status' => Reservation::STATUS_PENDING,
-            'date' => $this->faker->dateTimeBetween('+1 day', '+2 months')->format('Y-m-d'),
+            'date' => $faker->dateTimeBetween('+1 day', '+2 months')->format('Y-m-d'),
         ]);
     }
 
     public function confirmed(): static
     {
+        $faker = \Faker\Factory::create();
         return $this->state(fn (array $attributes) => [
             'status' => Reservation::STATUS_CONFIRMED,
-            'date' => $this->faker->dateTimeBetween('+1 day', '+2 months')->format('Y-m-d'),
+            'date' => $faker->dateTimeBetween('+1 day', '+2 months')->format('Y-m-d'),
         ]);
     }
 
     public function completed(): static
     {
+        $faker = \Faker\Factory::create();
         return $this->state(fn (array $attributes) => [
             'status' => Reservation::STATUS_COMPLETED,
-            'date' => $this->faker->dateTimeBetween('-2 months', '-1 day')->format('Y-m-d'),
+            'date' => $faker->dateTimeBetween('-2 months', '-1 day')->format('Y-m-d'),
         ]);
     }
 
