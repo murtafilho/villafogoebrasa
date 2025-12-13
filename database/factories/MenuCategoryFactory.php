@@ -13,6 +13,8 @@ class MenuCategoryFactory extends Factory
 {
     protected $model = MenuCategory::class;
 
+    protected static ?string $faker_locale = 'pt_BR';
+
     protected static array $categories = [
         'Carnes Nobres' => 'As melhores carnes selecionadas para você',
         'Rodízio' => 'Nosso famoso rodízio de carnes premium',

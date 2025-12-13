@@ -57,16 +57,17 @@ class GalleryFactory extends Factory
 
     public function definition(): array
     {
-        $category = fake()->randomElement(array_keys(self::$titles));
-        $title = fake()->randomElement(self::$titles[$category]);
+        $faker = \Faker\Factory::create('pt_BR');
+        $category = $this->faker->randomElement(array_keys(self::$titles));
+        $title = $this->faker->randomElement(self::$titles[$category]);
 
         return [
             'title' => $title,
-            'description' => fake('pt_BR')->sentence(10),
+            'description' => $faker->sentence(10),
             'category' => $category,
-            'is_featured' => fake()->boolean(25),
+            'is_featured' => $this->faker->boolean(25),
             'is_active' => true,
-            'sort_order' => fake()->numberBetween(1, 100),
+            'sort_order' => $this->faker->numberBetween(1, 100),
         ];
     }
 
@@ -75,7 +76,7 @@ class GalleryFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'category' => Gallery::CATEGORY_AMBIENTE,
-                'title' => fake()->randomElement(self::$titles['ambiente']),
+                'title' => $this->faker->randomElement(self::$titles['ambiente']),
             ];
         });
     }
@@ -85,7 +86,7 @@ class GalleryFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'category' => Gallery::CATEGORY_PRATOS,
-                'title' => fake()->randomElement(self::$titles['pratos']),
+                'title' => $this->faker->randomElement(self::$titles['pratos']),
             ];
         });
     }
@@ -95,7 +96,7 @@ class GalleryFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'category' => Gallery::CATEGORY_EVENTOS,
-                'title' => fake()->randomElement(self::$titles['eventos']),
+                'title' => $this->faker->randomElement(self::$titles['eventos']),
             ];
         });
     }
@@ -105,7 +106,7 @@ class GalleryFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'category' => Gallery::CATEGORY_EQUIPE,
-                'title' => fake()->randomElement(self::$titles['equipe']),
+                'title' => $this->faker->randomElement(self::$titles['equipe']),
             ];
         });
     }
