@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Guia de Homologação - Villa Fogo & Brasa</title>
+  <style>
+    :root {
+      --cor-primaria: #1a1714;
+      --cor-secundaria: #c45c26;
+      --cor-gold: #d4a853;
+      --cor-sucesso: #22c55e;
+      --cor-alerta: #f59e0b;
+      --cor-erro: #ef4444;
+      --cor-info: #3b82f6;
+      --cor-texto: #333333;
+      --cor-cinza-claro: #f5f0e8;
+      --cor-cinza-medio: #e9e4dc;
+      --cor-borda: #d4cfc7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--cor-texto);
+      background: #fff;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      padding: 40px;
+      background: linear-gradient(135deg, var(--cor-primaria) 0%, #2d2520 100%);
+      color: white;
+      margin: -40px -20px 40px -20px;
+    }
+
+    .header img {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      opacity: 0.8;
+    }
+
+    /* ÍNDICE */
+    .indice {
+      background: var(--cor-cinza-claro);
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+    }
+
+    .indice h2 {
+      color: var(--cor-primaria);
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--cor-secundaria);
+    }
+
+    .indice ol {
+      list-style: none;
+      counter-reset: indice;
+    }
+
+    .indice > ol > li {
+      counter-increment: indice;
+      margin-bottom: 10px;
+    }
+
+    .indice > ol > li > a {
+      color: var(--cor-primaria);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .indice > ol > li > a::before {
+      content: counter(indice) ".";
+      color: var(--cor-secundaria);
+      font-weight: 700;
+    }
+
+    .indice > ol > li > a:hover {
+      color: var(--cor-secundaria);
+    }
+
+    .indice ol ol {
+      margin-left: 30px;
+      margin-top: 8px;
+    }
+
+    .indice ol ol li {
+      margin-bottom: 5px;
+    }
+
+    .indice ol ol a {
+      color: #666;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .indice ol ol a:hover {
+      color: var(--cor-secundaria);
+    }
+
+    /* SEÇÕES */
+    section {
+      margin-bottom: 50px;
+      padding-top: 20px;
+    }
+
+    h2 {
+      color: var(--cor-primaria);
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--cor-secundaria);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h3 {
+      color: var(--cor-secundaria);
+      font-size: 1.2rem;
+      margin: 25px 0 15px 0;
+    }
+
+    h4 {
+      color: var(--cor-primaria);
+      font-size: 1.05rem;
+      margin: 20px 0 10px 0;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    /* BOXES */
+    .box {
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .box-info {
+      background: #eff6ff;
+      border-left: 4px solid var(--cor-info);
+    }
+
+    .box-alerta {
+      background: #fffbeb;
+      border-left: 4px solid var(--cor-alerta);
+    }
+
+    .box-sucesso {
+      background: #f0fdf4;
+      border-left: 4px solid var(--cor-sucesso);
+    }
+
+    .box-erro {
+      background: #fef2f2;
+      border-left: 4px solid var(--cor-erro);
+    }
+
+    .box strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* CHECKLIST */
+    .checklist {
+      background: white;
+      border: 1px solid var(--cor-borda);
+      border-radius: 12px;
+      padding: 25px;
+      margin: 20px 0;
+    }
+
+    .checklist h4 {
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .checklist ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .checklist li {
+      padding: 12px 0 12px 35px;
+      position: relative;
+      border-bottom: 1px solid var(--cor-cinza-medio);
+    }
+
+    .checklist li:last-child {
+      border-bottom: none;
+    }
+
+    .checklist li::before {
+      content: "☐";
+      position: absolute;
+      left: 0;
+      font-size: 1.2rem;
+      color: var(--cor-borda);
+    }
+
+    /* CÓDIGO */
+    code {
+      background: #f1f5f9;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'Consolas', monospace;
+      font-size: 0.9rem;
+      color: var(--cor-secundaria);
+    }
+
+    pre {
+      background: var(--cor-primaria);
+      color: #f8fafc;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+
+    /* TABELA */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    th {
+      background: var(--cor-primaria);
+      color: white;
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    td {
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--cor-borda);
+    }
+
+    tr:nth-child(even) {
+      background: var(--cor-cinza-claro);
+    }
+
+    /* STEPS */
+    .steps {
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      padding-left: 60px;
+      margin-bottom: 30px;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      background: var(--cor-secundaria);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .step h4 {
+      margin-top: 0;
+    }
+
+    /* BADGES */
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .badge-sandbox {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .badge-producao {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .badge-obrigatorio {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    /* LINKS */
+    a {
+      color: var(--cor-secundaria);
+    }
+
+    a:hover {
+      color: var(--cor-primaria);
+    }
+
+    /* PRINT */
+    @media print {
+      .header {
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      section {
+        page-break-inside: avoid;
+      }
+
+      .checklist {
+        page-break-inside: avoid;
+      }
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .step {
+        padding-left: 50px;
+      }
+
+      .step::before {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <div class="header">
+      <img src="https://stage.villafogoebrasa.com.br/img/logo.webp" alt="Villa Fogo & Brasa">
+      <h1>GUIA DE HOMOLOGAÇÃO</h1>
+      <p>Validação e Testes da Plataforma Digital</p>
+    </div>
+
+    <!-- ÍNDICE -->
+    <nav class="indice">
+      <h2>📑 Índice</h2>
+      <ol>
+        <li>
+          <a href="#visao-geral">Visão Geral do Processo</a>
+        </li>
+        <li>
+          <a href="#ambiente">Ambientes de Teste</a>
+          <ol>
+            <li><a href="#ambiente-stage">Ambiente Stage (Homologação)</a></li>
+            <li><a href="#ambiente-producao">Ambiente Produção</a></li>
+          </ol>
+        </li>
+        <li>
+          <a href="#funcionalidades">Homologação de Funcionalidades</a>
+          <ol>
+            <li><a href="#func-navegacao">Navegação e Layout</a></li>
+            <li><a href="#func-responsivo">Design Responsivo</a></li>
+            <li><a href="#func-formularios">Formulários</a></li>
+            <li><a href="#func-admin">Painel Administrativo</a></li>
+          </ol>
+        </li>
+        <li>
+          <a href="#mercadopago">Integração Mercado Pago</a>
+          <ol>
+            <li><a href="#mp-conta">Conexão à Conta do Mercado Pago</a></li>
+            <li><a href="#mp-credenciais">Credenciais de Acesso</a></li>
+            <li><a href="#mp-sandbox">Ambiente Sandbox (Testes)</a></li>
+            <li><a href="#mp-producao">Ambiente de Produção</a></li>
+            <li><a href="#mp-checklist">Checklist de Testes</a></li>
+            <li><a href="#mp-webhooks">Webhooks e Notificações</a></li>
+          </ol>
+        </li>
+        <li>
+          <a href="#seguranca">Validação de Segurança</a>
+        </li>
+        <li>
+          <a href="#performance">Testes de Performance</a>
+        </li>
+        <li>
+          <a href="#aprovacao">Aprovação Final</a>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- 1. VISÃO GERAL -->
+    <section id="visao-geral">
+      <h2>1. Visão Geral do Processo</h2>
+      <p>Este documento orienta o processo de homologação da plataforma Villa Fogo & Brasa, garantindo que todas as funcionalidades estejam operando corretamente antes da publicação em produção.</p>
+
+      <div class="box box-info">
+        <strong>ℹ️ Objetivo da Homologação</strong>
+        Validar todas as funcionalidades, integrações e aspectos de segurança da plataforma em ambiente controlado antes de disponibilizar ao público.
+      </div>
+
+      <h3>Responsabilidades</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Papel</th>
+            <th>Responsabilidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cliente</strong></td>
+            <td>Validar conteúdo, fluxos de negócio e aprovar funcionalidades</td>
+          </tr>
+          <tr>
+            <td><strong>Desenvolvedor</strong></td>
+            <td>Corrigir bugs, ajustar funcionalidades e suporte técnico</td>
+          </tr>
+          <tr>
+            <td><strong>Homologador</strong></td>
+            <td>Executar testes, documentar problemas e validar correções</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 2. AMBIENTES -->
+    <section id="ambiente">
+      <h2>2. Ambientes de Teste</h2>
+
+      <div id="ambiente-stage">
+        <h3>2.1 Ambiente Stage (Homologação)</h3>
+        <table>
+          <tr>
+            <td><strong>URL</strong></td>
+            <td><a href="https://stage.villafogoebrasa.com.br" target="_blank">https://stage.villafogoebrasa.com.br</a></td>
+          </tr>
+          <tr>
+            <td><strong>Admin</strong></td>
+            <td><a href="https://stage.villafogoebrasa.com.br/admin" target="_blank">https://stage.villafogoebrasa.com.br/admin</a></td>
+          </tr>
+          <tr>
+            <td><strong>Propósito</strong></td>
+            <td>Testes e validação antes de ir para produção</td>
+          </tr>
+          <tr>
+            <td><strong>Mercado Pago</strong></td>
+            <td><span class="badge badge-sandbox">Sandbox</span></td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="ambiente-producao">
+        <h3>2.2 Ambiente Produção</h3>
+        <table>
+          <tr>
+            <td><strong>URL</strong></td>
+            <td><a href="https://villafogoebrasa.com.br" target="_blank">https://villafogoebrasa.com.br</a></td>
+          </tr>
+          <tr>
+            <td><strong>Admin</strong></td>
+            <td><a href="https://villafogoebrasa.com.br/admin" target="_blank">https://villafogoebrasa.com.br/admin</a></td>
+          </tr>
+          <tr>
+            <td><strong>Propósito</strong></td>
+            <td>Ambiente final para usuários reais</td>
+          </tr>
+          <tr>
+            <td><strong>Mercado Pago</strong></td>
+            <td><span class="badge badge-producao">Produção</span></td>
+          </tr>
+        </table>
+
+        <div class="box box-alerta">
+          <strong>⚠️ Atenção</strong>
+          O ambiente de produção só deve receber alterações após aprovação completa no ambiente Stage.
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FUNCIONALIDADES -->
+    <section id="funcionalidades">
+      <h2>3. Homologação de Funcionalidades</h2>
+
+      <div id="func-navegacao">
+        <h3>3.1 Navegação e Layout</h3>
+        <div class="checklist">
+          <h4>📋 Checklist de Navegação</h4>
+          <ul>
+            <li>Menu principal funciona corretamente</li>
+            <li>Todos os links internos direcionam para as seções corretas</li>
+            <li>Logo redireciona para a home</li>
+            <li>Scroll suave entre seções</li>
+            <li>Footer com links funcionais</li>
+            <li>Botão de WhatsApp abre conversa corretamente</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="func-responsivo">
+        <h3>3.2 Design Responsivo</h3>
+        <div class="checklist">
+          <h4>📱 Checklist Mobile/Desktop</h4>
+          <ul>
+            <li>Layout adapta corretamente em smartphones (320px - 480px)</li>
+            <li>Layout adapta corretamente em tablets (768px - 1024px)</li>
+            <li>Layout adapta corretamente em desktop (1024px+)</li>
+            <li>Imagens redimensionam sem distorção</li>
+            <li>Textos legíveis em todos os tamanhos</li>
+            <li>Menu mobile (hambúrguer) funciona corretamente</li>
+            <li>Barra de navegação inferior (mobile) funciona</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="func-formularios">
+        <h3>3.3 Formulários</h3>
+        <div class="checklist">
+          <h4>📝 Checklist de Formulários</h4>
+          <ul>
+            <li>Formulário de reserva envia dados corretamente</li>
+            <li>Validação de campos obrigatórios</li>
+            <li>Mensagens de erro claras</li>
+            <li>Integração com WhatsApp funcional</li>
+            <li>Formulário de contato operacional</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="func-admin">
+        <h3>3.4 Painel Administrativo</h3>
+        <div class="checklist">
+          <h4>⚙️ Checklist Admin</h4>
+          <ul>
+            <li>Login funciona corretamente</li>
+            <li>Dashboard carrega sem erros</li>
+            <li>Menu lateral/inferior funciona</li>
+            <li>Gestão de cardápio operacional</li>
+            <li>Logout funciona corretamente</li>
+            <li>Responsivo em dispositivos móveis</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. MERCADO PAGO -->
+    <section id="mercadopago">
+      <h2>4. Integração Mercado Pago</h2>
+
+      <div class="box box-info">
+        <strong>ℹ️ Sobre a Integração</strong>
+        A integração com Mercado Pago permite processar pagamentos online de forma segura. O processo envolve configuração de credenciais, testes em sandbox e ativação em produção.
+      </div>
+
+      <!-- 4.1 CONEXÃO À CONTA -->
+      <div id="mp-conta">
+        <h3>4.1 Conexão à Conta do Mercado Pago</h3>
+
+        <div class="steps">
+          <div class="step">
+            <h4>Criar ou acessar conta Mercado Pago</h4>
+            <p>Acesse <a href="https://www.mercadopago.com.br" target="_blank">mercadopago.com.br</a> e faça login com a conta empresarial do Villa Fogo & Brasa.</p>
+            <div class="box box-alerta">
+              <strong>⚠️ Importante</strong>
+              Use a conta PJ (CNPJ) do estabelecimento, não conta pessoal.
+            </div>
+          </div>
+
+          <div class="step">
+            <h4>Acessar Portal de Desenvolvedores</h4>
+            <p>Acesse <a href="https://www.mercadopago.com.br/developers" target="_blank">mercadopago.com.br/developers</a> para configurar as credenciais.</p>
+          </div>
+
+          <div class="step">
+            <h4>Criar Aplicação</h4>
+            <p>No painel de desenvolvedores:</p>
+            <ul>
+              <li>Clique em "Suas integrações"</li>
+              <li>Clique em "Criar aplicação"</li>
+              <li>Nome: <code>Villa Fogo & Brasa - Website</code></li>
+              <li>Selecione: "Pagamentos online"</li>
+              <li>Marque: "Checkout Pro" ou "Checkout Transparente"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4.2 CREDENCIAIS -->
+      <div id="mp-credenciais">
+        <h3>4.2 Credenciais de Acesso</h3>
+
+        <p>Após criar a aplicação, você terá acesso a dois conjuntos de credenciais:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Ambiente</th>
+              <th>Credencial</th>
+              <th>Uso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge badge-sandbox">Sandbox</span></td>
+              <td><code>TEST-xxxx</code></td>
+              <td>Testes sem movimentação financeira real</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-producao">Produção</span></td>
+              <td><code>APP_USR-xxxx</code></td>
+              <td>Pagamentos reais</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Credenciais Necessárias</h4>
+        <ul>
+          <li><strong>Public Key:</strong> Usada no frontend (JavaScript)</li>
+          <li><strong>Access Token:</strong> Usada no backend (PHP/Laravel) - <span class="badge badge-obrigatorio">Manter em segredo</span></li>
+        </ul>
+
+        <div class="box box-erro">
+          <strong>🔒 Segurança</strong>
+          NUNCA exponha o Access Token no código frontend ou em repositórios públicos. Use variáveis de ambiente (.env).
+        </div>
+
+        <h4>Configuração no Laravel (.env)</h4>
+        <pre><code># Sandbox (Testes)
+MERCADOPAGO_PUBLIC_KEY_SANDBOX=TEST-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+MERCADOPAGO_ACCESS_TOKEN_SANDBOX=TEST-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+# Produção
+MERCADOPAGO_PUBLIC_KEY=APP_USR-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+MERCADOPAGO_ACCESS_TOKEN=APP_USR-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+# Ambiente atual (sandbox ou production)
+MERCADOPAGO_ENV=sandbox</code></pre>
+      </div>
+
+      <!-- 4.3 SANDBOX -->
+      <div id="mp-sandbox">
+        <h3>4.3 Ambiente Sandbox (Testes)</h3>
+
+        <div class="box box-sucesso">
+          <strong>✅ Vantagens do Sandbox</strong>
+          Permite testar toda a integração sem movimentar dinheiro real. Simula aprovações, recusas e diferentes cenários de pagamento.
+        </div>
+
+        <h4>Usuários de Teste</h4>
+        <p>O Mercado Pago fornece usuários de teste para simular comprador e vendedor:</p>
+
+        <div class="steps">
+          <div class="step">
+            <h4>Criar usuários de teste</h4>
+            <p>No painel de desenvolvedores, acesse "Credenciais de teste" → "Usuários de teste" → "Criar usuário de teste"</p>
+            <ul>
+              <li>Crie um usuário <strong>comprador</strong></li>
+              <li>Crie um usuário <strong>vendedor</strong> (se necessário)</li>
+            </ul>
+          </div>
+
+          <div class="step">
+            <h4>Anotar credenciais dos usuários de teste</h4>
+            <table>
+              <tr>
+                <td><strong>E-mail do comprador teste</strong></td>
+                <td><code>TЕСТ_USER_xxxxxxxxx@testuser.com</code></td>
+              </tr>
+              <tr>
+                <td><strong>Senha</strong></td>
+                <td><code>qatest123</code> (padrão)</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <h4>Cartões de Teste</h4>
+        <p>Use estes cartões para simular pagamentos no sandbox:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Bandeira</th>
+              <th>Número</th>
+              <th>CVV</th>
+              <th>Validade</th>
+              <th>Resultado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mastercard</td>
+              <td><code>5031 4332 1540 6351</code></td>
+              <td>123</td>
+              <td>11/25</td>
+              <td>✅ Aprovado</td>
+            </tr>
+            <tr>
+              <td>Visa</td>
+              <td><code>4235 6477 2802 5682</code></td>
+              <td>123</td>
+              <td>11/25</td>
+              <td>✅ Aprovado</td>
+            </tr>
+            <tr>
+              <td>Mastercard</td>
+              <td><code>5031 4332 1540 6351</code></td>
+              <td>456</td>
+              <td>11/25</td>
+              <td>❌ Recusado</td>
+            </tr>
+            <tr>
+              <td>Visa</td>
+              <td><code>4235 6477 2802 5682</code></td>
+              <td>789</td>
+              <td>11/25</td>
+              <td>⏳ Pendente</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="box box-info">
+          <strong>ℹ️ CPF para Testes</strong>
+          Use qualquer CPF válido para testes (gerador online). Exemplo: <code>12345678909</code>
+        </div>
+      </div>
+
+      <!-- 4.4 PRODUÇÃO -->
+      <div id="mp-producao">
+        <h3>4.4 Ambiente de Produção</h3>
+
+        <div class="box box-alerta">
+          <strong>⚠️ Pré-requisitos para Produção</strong>
+          <ul style="margin-top: 10px; margin-left: 20px;">
+            <li>Todos os testes em sandbox aprovados</li>
+            <li>Credenciais de produção configuradas</li>
+            <li>SSL/HTTPS ativo no domínio</li>
+            <li>Webhooks configurados e testados</li>
+          </ul>
+        </div>
+
+        <h4>Ativando Produção</h4>
+        <div class="steps">
+          <div class="step">
+            <h4>Alterar variável de ambiente</h4>
+            <pre><code># No arquivo .env de PRODUÇÃO
+MERCADOPAGO_ENV=production</code></pre>
+          </div>
+
+          <div class="step">
+            <h4>Verificar credenciais de produção</h4>
+            <p>Confirme que as credenciais de produção (<code>APP_USR-xxx</code>) estão configuradas corretamente.</p>
+          </div>
+
+          <div class="step">
+            <h4>Limpar cache da aplicação</h4>
+            <pre><code>php artisan config:clear
+php artisan cache:clear</code></pre>
+          </div>
+
+          <div class="step">
+            <h4>Realizar transação de teste real</h4>
+            <p>Faça uma compra de valor mínimo (R$ 1,00) com cartão real para validar a integração.</p>
+            <div class="box box-info">
+              <strong>💡 Dica</strong>
+              Você pode estornar essa transação pelo painel do Mercado Pago após confirmar o funcionamento.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4.5 CHECKLIST -->
+      <div id="mp-checklist">
+        <h3>4.5 Checklist de Testes do Mercado Pago</h3>
+
+        <div class="checklist">
+          <h4>🧪 Testes em Sandbox</h4>
+          <ul>
+            <li>Checkout abre corretamente</li>
+            <li>Pagamento com cartão aprovado funciona</li>
+            <li>Pagamento com cartão recusado exibe mensagem correta</li>
+            <li>Pagamento pendente é tratado adequadamente</li>
+            <li>Pagamento via PIX gera QR Code</li>
+            <li>Pagamento via Boleto gera código de barras</li>
+            <li>Webhook recebe notificações corretamente</li>
+            <li>Status do pedido atualiza automaticamente</li>
+            <li>E-mail de confirmação é enviado ao cliente</li>
+            <li>Dados do pagamento são salvos no banco</li>
+          </ul>
+        </div>
+
+        <div class="checklist">
+          <h4>🚀 Validação em Produção</h4>
+          <ul>
+            <li>Credenciais de produção configuradas</li>
+            <li>Transação de teste real aprovada</li>
+            <li>Estorno de teste realizado com sucesso</li>
+            <li>Webhook de produção funcionando</li>
+            <li>Logs de transação registrados</li>
+            <li>Comprovantes gerados corretamente</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 4.6 WEBHOOKS -->
+      <div id="mp-webhooks">
+        <h3>4.6 Webhooks e Notificações</h3>
+
+        <p>Webhooks são notificações automáticas que o Mercado Pago envia quando há mudanças no status de um pagamento.</p>
+
+        <h4>Configuração do Webhook</h4>
+        <div class="steps">
+          <div class="step">
+            <h4>URL do Webhook</h4>
+            <table>
+              <tr>
+                <td><strong>Stage</strong></td>
+                <td><code>https://stage.villafogoebrasa.com.br/api/webhooks/mercadopago</code></td>
+              </tr>
+              <tr>
+                <td><strong>Produção</strong></td>
+                <td><code>https://villafogoebrasa.com.br/api/webhooks/mercadopago</code></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="step">
+            <h4>Configurar no Painel do Mercado Pago</h4>
+            <p>Acesse: Suas integrações → Selecione a aplicação → Webhooks → Configurar</p>
+            <ul>
+              <li>Cole a URL do webhook</li>
+              <li>Selecione os eventos: <code>payment</code></li>
+              <li>Salve as configurações</li>
+            </ul>
+          </div>
+
+          <div class="step">
+            <h4>Testar Webhook</h4>
+            <p>Use o botão "Simular" no painel do Mercado Pago ou faça um pagamento de teste.</p>
+          </div>
+        </div>
+
+        <h4>Eventos Importantes</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Evento</th>
+              <th>Descrição</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>payment.created</code></td>
+              <td>Pagamento criado</td>
+              <td>Registrar pedido como "aguardando"</td>
+            </tr>
+            <tr>
+              <td><code>payment.approved</code></td>
+              <td>Pagamento aprovado</td>
+              <td>Confirmar pedido, enviar e-mail</td>
+            </tr>
+            <tr>
+              <td><code>payment.rejected</code></td>
+              <td>Pagamento recusado</td>
+              <td>Notificar cliente, oferecer alternativa</td>
+            </tr>
+            <tr>
+              <td><code>payment.refunded</code></td>
+              <td>Pagamento estornado</td>
+              <td>Atualizar status, notificar</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. SEGURANÇA -->
+    <section id="seguranca">
+      <h2>5. Validação de Segurança</h2>
+
+      <div class="checklist">
+        <h4>🔒 Checklist de Segurança</h4>
+        <ul>
+          <li>Certificado SSL/HTTPS ativo e válido</li>
+          <li>Credenciais sensíveis em variáveis de ambiente (.env)</li>
+          <li>CSRF protection ativo em formulários</li>
+          <li>Senhas armazenadas com hash (bcrypt)</li>
+          <li>Rate limiting em endpoints de login</li>
+          <li>Validação de inputs no backend</li>
+          <li>Headers de segurança configurados</li>
+          <li>Backup de banco de dados configurado</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6. PERFORMANCE -->
+    <section id="performance">
+      <h2>6. Testes de Performance</h2>
+
+      <div class="checklist">
+        <h4>⚡ Checklist de Performance</h4>
+        <ul>
+          <li>Tempo de carregamento da home < 3 segundos</li>
+          <li>Imagens otimizadas e em formato WebP</li>
+          <li>CSS e JS minificados</li>
+          <li>Cache do navegador configurado</li>
+          <li>Lazy loading em imagens</li>
+          <li>Google PageSpeed Score > 80</li>
+        </ul>
+      </div>
+
+      <h4>Ferramentas de Teste</h4>
+      <ul>
+        <li><a href="https://pagespeed.web.dev/" target="_blank">Google PageSpeed Insights</a></li>
+        <li><a href="https://gtmetrix.com/" target="_blank">GTmetrix</a></li>
+        <li><a href="https://tools.pingdom.com/" target="_blank">Pingdom Tools</a></li>
+      </ul>
+    </section>
+
+    <!-- 7. APROVAÇÃO -->
+    <section id="aprovacao">
+      <h2>7. Aprovação Final</h2>
+
+      <div class="box box-sucesso">
+        <strong>✅ Critérios para Aprovação</strong>
+        <ul style="margin-top: 10px; margin-left: 20px;">
+          <li>Todos os checklists marcados como concluídos</li>
+          <li>Nenhum bug crítico pendente</li>
+          <li>Integração Mercado Pago testada e funcional</li>
+          <li>Cliente validou conteúdo e fluxos</li>
+          <li>Performance dentro dos parâmetros</li>
+        </ul>
+      </div>
+
+      <h3>Termo de Aceite</h3>
+      <div style="background: var(--cor-cinza-claro); padding: 30px; border-radius: 12px; margin-top: 20px;">
+        <p>Declaro que validei todas as funcionalidades descritas neste documento e aprovo a publicação da plataforma em ambiente de produção.</p>
+
+        <div style="margin-top: 40px;">
+          <div style="border-bottom: 1px solid #333; width: 300px; margin-bottom: 5px;"></div>
+          <p style="font-size: 0.9rem; color: #666;">Nome do Responsável</p>
+        </div>
+
+        <div style="margin-top: 30px;">
+          <div style="border-bottom: 1px solid #333; width: 300px; margin-bottom: 5px;"></div>
+          <p style="font-size: 0.9rem; color: #666;">Assinatura e Data</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="text-align: center; padding: 40px; margin-top: 40px; border-top: 1px solid var(--cor-borda); color: #666;">
+      <p>🔥 Villa Fogo & Brasa - Guia de Homologação</p>
+      <p style="font-size: 0.9rem;">Documento gerado em <span id="data-hoje"></span></p>
+    </footer>
+  </div>
+
+  <script>
+    const opcoes = { day: '2-digit', month: 'long', year: 'numeric' };
+    document.getElementById('data-hoje').textContent = new Date().toLocaleDateString('pt-BR', opcoes);
+  </script>
+</body>
+</html>
