@@ -55,7 +55,7 @@
                 @php
                     $icon = \App\Http\Controllers\HomeController::getCategoryIcon($categoria);
                 @endphp
-                <div class="menu-category mb-16" data-category="{{ md5($categoria) }}">
+                <div class="menu-category mb-16" data-category="{{ md5($categoria) }}" style="display: block; opacity: 1;">
                     <h2 class="font-display text-3xl lg:text-4xl font-semibold text-villa-cream mb-8 line-accent flex items-center gap-4">
                         <i data-lucide="{{ $icon }}" class="w-8 h-8 lg:w-10 lg:h-10 text-villa-ember"></i>
                         <span>{{ $categoria }}</span>
