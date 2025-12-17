@@ -36,9 +36,6 @@
                     <span>Reserve sua Mesa</span>
                     <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                 </a>
-                <a href="#menu" class="inline-flex items-center gap-3 px-8 py-4 border border-villa-gold/40 hover:border-villa-gold text-villa-gold tracking-wider uppercase transition-all duration-300">
-                    <span>Ver Cardápio</span>
-                </a>
             </div>
         </div>
 
@@ -115,9 +112,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Menu Section -->
-    @include('partials.menu-section')
 
     <!-- Experience Section -->
     @include('partials.experience-section')
