@@ -2,8 +2,10 @@
 
 @section('title', 'Cardápio - Villa Fogo & Brasa')
 
-@section('og:title', 'Cardápio Completo - Villa Fogo & Brasa')
-@section('og:description', 'Explore nosso cardápio completo com cortes nobres, pratos especiais, bebidas selecionadas e sobremesas. Autêntico churrasco gaúcho em Nova Lima.')
+@php
+    $ogTitle = 'Cardápio Completo - Villa Fogo & Brasa';
+    $ogDescription = 'Explore nosso cardápio completo com cortes nobres, pratos especiais, bebidas selecionadas e sobremesas. Autêntico churrasco gaúcho em Nova Lima.';
+@endphp
 
 @section('content')
 <section class="py-24 lg:py-32 bg-villa-charcoal texture-overlay relative">

@@ -12,10 +12,14 @@
     @endif
 
     <!-- Open Graph / Facebook / WhatsApp -->
+    @php
+        $ogTitle = isset($ogTitle) ? $ogTitle : (@yield('title', 'Villa Fogo & Brasa - Churrascaria Premium em Nova Lima'));
+        $ogDescription = isset($ogDescription) ? $ogDescription : 'Autêntico churrasco gaúcho com cortes nobres e ambiente sofisticado. Reserve sua mesa e viva uma experiência gastronômica única em Nova Lima!';
+    @endphp
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="@yield('og:title', @yield('title', 'Villa Fogo & Brasa - Churrascaria Premium em Nova Lima'))">
-    <meta property="og:description" content="@yield('og:description', 'Autêntico churrasco gaúcho com cortes nobres e ambiente sofisticado. Reserve sua mesa e viva uma experiência gastronômica única em Nova Lima!')">
+    <meta property="og:title" content="{{ $ogTitle }}">
+    <meta property="og:description" content="{{ $ogDescription }}">
     <meta property="og:image" content="{{ url(asset('img/logo.webp')) }}">
     <meta property="og:image:secure_url" content="{{ url(asset('img/logo.webp')) }}">
     <meta property="og:image:type" content="image/webp">
