@@ -35,8 +35,8 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="@yield('og:title', @yield('title', 'Villa Fogo & Brasa - Churrascaria Premium em Nova Lima'))">
-    <meta name="twitter:description" content="@yield('og:description', 'Autêntico churrasco gaúcho com cortes nobres e ambiente sofisticado. Reserve sua mesa e viva uma experiência gastronômica única em Nova Lima!')">
+    <meta name="twitter:title" content="{{ $ogTitle }}">
+    <meta name="twitter:description" content="{{ $ogDescription }}">
     <meta name="twitter:image" content="{{ url(asset('img/logo.webp')) }}">
     <meta name="twitter:image:alt" content="Villa Fogo & Brasa - Churrascaria Premium em Nova Lima">
 
