@@ -146,11 +146,13 @@
             });
         }, observerOptions);
 
-        // Observe elements with animation
-        document.querySelectorAll('section > div').forEach(el => {
-            el.style.opacity = '0';
-            observer.observe(el);
-        });
+        // Observe elements with animation (only on homepage)
+        if (window.location.pathname === '/' || window.location.pathname === '') {
+            document.querySelectorAll('section > div').forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+        }
 
         // Handle anchor links when coming from other pages
         if (window.location.hash) {
