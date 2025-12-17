@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Villa Fogo & Brasa - Churrascaria Premium em Nova Lima, MG. Autêntico churrasco gaúcho com cortes nobres e ambiente sofisticado.">
     <meta name="keywords" content="churrascaria, churrasco gaúcho, Nova Lima, carnes nobres, rodízio, restaurante premium">
-    <title>@yield('title', 'Villa Fogo & Brasa - Churrascaria Premium em Nova Lima')</title>
+    @php
+        $pageTitle = @yield('title') ?: 'Villa Fogo & Brasa - Churrascaria Premium em Nova Lima';
+        $ogTitle = isset($ogTitle) ? $ogTitle : $pageTitle;
+        $ogDescription = isset($ogDescription) ? $ogDescription : 'Autêntico churrasco gaúcho com cortes nobres e ambiente sofisticado. Reserve sua mesa e viva uma experiência gastronômica única em Nova Lima!';
+    @endphp
+    <title>{{ $pageTitle }}</title>
 
     @if(config('app.env') !== 'production')
     <meta name="robots" content="noindex, nofollow">
     @endif
 
     <!-- Open Graph / Facebook / WhatsApp -->
-    @php
-        $pageTitle = trim(\Illuminate\Support\Facades\View::yieldContent('title'));
-        $ogTitle = isset($ogTitle) ? $ogTitle : (!empty($pageTitle) ? $pageTitle : 'Villa Fogo & Brasa - Churrascaria Premium em Nova Lima');
-        $ogDescription = isset($ogDescription) ? $ogDescription : 'Autêntico churrasco gaúcho com cortes nobres e ambiente sofisticado. Reserve sua mesa e viva uma experiência gastronômica única em Nova Lima!';
-    @endphp
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="{{ $ogTitle }}">
