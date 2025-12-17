@@ -2,11 +2,6 @@
     <div style="max-width: 80rem; margin: 0 auto; padding: 0 1rem;">
         <div style="display: flex; align-items: center; justify-content: space-between; height: 64px;">
 
-            <!-- Logo -->
-            <a href="{{ url('/') }}#home" class="shrink-0">
-                <img src="{{ asset('img/logo.webp') }}" alt="Villa Fogo & Brasa" style="height: 32px; width: auto;">
-            </a>
-
             <!-- Desktop Menu -->
             <div class="desktop-menu" style="display: none;">
                 <a href="{{ url('/') }}#home" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Início</a>
@@ -100,9 +95,6 @@
         #mobile-menu {
             display: none !important;
         }
-        #navbar img {
-            height: 48px !important;
-        }
         #navbar > div > div {
             height: 96px !important;
         }
@@ -110,9 +102,6 @@
 
     /* Tablet adjustments */
     @media (min-width: 640px) and (max-width: 1023px) {
-        #navbar img {
-            height: 40px !important;
-        }
         #navbar > div > div {
             height: 80px !important;
         }
