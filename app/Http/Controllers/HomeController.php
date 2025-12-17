@@ -14,7 +14,16 @@ class HomeController extends Controller
 
     public function cardapio()
     {
-        $html = file_get_contents(base_path('teste.html'));
+        $htmlPath = base_path('teste.html');
+
+        if (! file_exists($htmlPath)) {
+            return view('cardapio', [
+                'menuData' => [],
+                'categories' => [],
+            ]);
+        }
+
+        $html = file_get_contents($htmlPath);
         $menuData = $this->parseMenuHtml($html);
 
         // Extrair lista de categorias para os filtros
