@@ -1,0 +1,670 @@
+{
+    "Aves": [
+        {
+            "nome": "Peito de frango com catupiry",
+            "preco": "75,00",
+            "subcategoria": "",
+            "descricao": "Peito de frango com catupiry braseado e raspas de limão siciliano"
+        },
+        {
+            "nome": "Galeto na brasa",
+            "preco": "70,00",
+            "subcategoria": "",
+            "descricao": ""
+        }
+    ],
+    "Bebidas": [
+        {
+            "nome": "Agua Mineral",
+            "preco": "5,00",
+            "subcategoria": "Não Alcoólicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Refrigerante",
+            "preco": "8,00",
+            "subcategoria": "Não Alcoólicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Suco Del Valle",
+            "preco": "8,00",
+            "subcategoria": "Não Alcoólicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Red Bull",
+            "preco": "15,00",
+            "subcategoria": "Não Alcoólicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Powerade",
+            "preco": "10,00",
+            "subcategoria": "Não Alcoólicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Shot de Limão",
+            "preco": "5,00",
+            "subcategoria": "Não Alcoólicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Jarra de Suco 500ml",
+            "preco": "19,00",
+            "subcategoria": "Não Alcoólicos",
+            "descricao": ""
+        }
+    ],
+    "Cafeteria": [
+        {
+            "nome": "Irish Coffe",
+            "preco": "20,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Capuccino Gelado",
+            "preco": "12,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Capuccino",
+            "preco": "12,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Chocolate Quente",
+            "preco": "12,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Café Expresso",
+            "preco": "8,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Chocolate Shake",
+            "preco": "18,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Cappuccino de Baunilha",
+            "preco": "12,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Ice Carmem Macchiatto",
+            "preco": "18,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Café Coado",
+            "preco": "8,00",
+            "subcategoria": "",
+            "descricao": ""
+        }
+    ],
+    "Carta de Vinhos": [
+        {
+            "nome": "Vinhos e Espumantes",
+            "preco": "",
+            "subcategoria": "",
+            "descricao": ""
+        }
+    ],
+    "Cervejas e Chopps Artesanais": [
+        {
+            "nome": "Chopps Artesanais",
+            "preco": "10,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Cervejas",
+            "preco": "12,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Cervejas Artesanais",
+            "preco": "",
+            "subcategoria": "",
+            "descricao": ""
+        }
+    ],
+    "Doses": [
+        {
+            "nome": "Doses",
+            "preco": "",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Gin",
+            "preco": "25,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Vodka Absolut",
+            "preco": "25,00",
+            "subcategoria": "",
+            "descricao": ""
+        }
+    ],
+    "Drinks": [
+        {
+            "nome": "Aperol Spritz",
+            "preco": "32,00",
+            "subcategoria": "Drinks Clássicos",
+            "descricao": "Refrescante e vibrante. Combina Aperol, espumante e um toque de água com gás — o clássico italiano que\r\n                colore o copo com o pôr do sol."
+        },
+        {
+            "nome": "Moscow Mule",
+            "preco": "32,00",
+            "subcategoria": "Drinks Clássicos",
+            "descricao": "Vodka, limão e gengibre em harmonia perfeita, finalizado com espuma cremosa. Picante e gelado na medida\r\n                certa."
+        },
+        {
+            "nome": "Carajillo",
+            "preco": "32,00",
+            "subcategoria": "Drinks Clássicos",
+            "descricao": "A intensidade do café expresso encontra o Licor 43 em um drink cremoso, frio na alma e marcante no\r\n                paladar."
+        },
+        {
+            "nome": "Gin Tônica",
+            "preco": "30,00",
+            "subcategoria": "Drinks Clássicos",
+            "descricao": "Clássico e versátil. Gin artesanal com tônica e toques de cítricos e especiarias — leve, aromático e\r\n                elegante."
+        },
+        {
+            "nome": "Caipirinha",
+            "preco": "24,00",
+            "subcategoria": "Drinks Clássicos",
+            "descricao": "O sabor do Brasil em sua forma mais pura: cachaça artesanal, limão fresco e açúcar equilibrados no\r\n                ponto."
+        },
+        {
+            "nome": "Whisky Sour",
+            "preco": "32,00",
+            "subcategoria": "Drinks Clássicos",
+            "descricao": "Equilíbrio entre força e suavidade. Whisky, limão siciliano e açúcar se unem em uma textura sedosa com\r\n                espuma delicada."
+        },
+        {
+            "nome": "Negroni",
+            "preco": "34,00",
+            "subcategoria": "Drinks Clássicos",
+            "descricao": "O amargo sofisticado. Gin, vermute rosso e Campari em partes iguais — um brinde ao equilíbrio perfeito."
+        },
+        {
+            "nome": "Dry Martini",
+            "preco": "34,00",
+            "subcategoria": "Drinks Clássicos",
+            "descricao": "Ícone da coquetelaria. Gin e vermute seco com toque de azeitona — puro, direto e atemporal."
+        },
+        {
+            "nome": "Old Fashioned",
+            "preco": "36,00",
+            "subcategoria": "Drinks Clássicos",
+            "descricao": "Whisky, açúcar e bitter, mexidos lentamente com gelo — o drink que nunca sai de moda, símbolo da\r\n                elegância clássica."
+        },
+        {
+            "nome": "Fitzgerald",
+            "preco": "30,00",
+            "subcategoria": "Drinks Clássicos",
+            "descricao": "Um coquetel leve e cítrico com gin, limão e um toque de bitter. Refrescante e perfeito para tardes na\r\n                varanda."
+        },
+        {
+            "nome": "Drinks com Energético",
+            "preco": "36,00",
+            "subcategoria": "Drinks com Energético",
+            "descricao": "Gin ou Vodka + Energético (Tropical \/ Melancia \/ Tradicional \/ Light)"
+        },
+        {
+            "nome": "Virgin Mojito",
+            "preco": "20,00",
+            "subcategoria": "Drinks Não Alcoolicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Blue Lagoon Kids",
+            "preco": "20,00",
+            "subcategoria": "Drinks Não Alcoolicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Mocktail Tropical Kids (Arco-Íris)",
+            "preco": "22,00",
+            "subcategoria": "Drinks Não Alcoolicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Villa Lemon Mist",
+            "preco": "25,00",
+            "subcategoria": "Drinks Não Alcoolicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Brisa de Jabuticaba",
+            "preco": "20,00",
+            "subcategoria": "Drinks Não Alcoolicos",
+            "descricao": "Leve e Tropical"
+        },
+        {
+            "nome": "Pink Lemonade",
+            "preco": "20,00",
+            "subcategoria": "Drinks Não Alcoolicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Green Soul -Maçã Verde",
+            "preco": "20,00",
+            "subcategoria": "Drinks Não Alcoolicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Poção Azul",
+            "preco": "20,00",
+            "subcategoria": "Drinks Não Alcoolicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Mojito",
+            "preco": "25,00",
+            "subcategoria": "Drinks Clássicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Caipvodka",
+            "preco": "30,00",
+            "subcategoria": "Drinks Clássicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Margarita",
+            "preco": "35,00",
+            "subcategoria": "Drinks Clássicos",
+            "descricao": ""
+        },
+        {
+            "nome": "Soda Italiana",
+            "preco": "22,00",
+            "subcategoria": "Drinks Não Alcoolicos",
+            "descricao": ""
+        }
+    ],
+    "Entradas": [
+        {
+            "nome": "Burrata",
+            "preco": "56,00",
+            "subcategoria": "",
+            "descricao": "Burrata maçaricada com tomate confit, pesto de manjericão"
+        },
+        {
+            "nome": "Carpaccio",
+            "preco": "52,00",
+            "subcategoria": "",
+            "descricao": "Carpaccio com parmesão braseado, rúcula, torradas"
+        },
+        {
+            "nome": "Pastel de Angu",
+            "preco": "28,00",
+            "subcategoria": "",
+            "descricao": "Queijo,Carne ou Misto"
+        },
+        {
+            "nome": "Pastel frito de feira",
+            "preco": "25,00",
+            "subcategoria": "",
+            "descricao": "Queijo"
+        },
+        {
+            "nome": "Torresmo de barriga",
+            "preco": "50,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Provoleta com abacaxi",
+            "preco": "38,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Choripán",
+            "preco": "45,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Linguiça da casa",
+            "preco": "32,00",
+            "subcategoria": "",
+            "descricao": "Pernil"
+        },
+        {
+            "nome": "Linguiça caçador picante",
+            "preco": "40,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Batata frita com Pulled Pork ou Brisket",
+            "preco": "45,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Pão de alho da casa",
+            "preco": "30,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Filé suíno na lata com molho de goiabada e toque picante",
+            "preco": "60,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Duo de Linguiça",
+            "preco": "55,00",
+            "subcategoria": "",
+            "descricao": "Linguiça da Casa e Linguiça Caçador Picante"
+        },
+        {
+            "nome": "Carne de Panela",
+            "preco": "55,00",
+            "subcategoria": "",
+            "descricao": "Acompanha Torradas"
+        },
+        {
+            "nome": "Croquete de Carne",
+            "preco": "28,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Porção de Tilapia- 300gramas",
+            "preco": "40,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Porção de Frango empanado",
+            "preco": "35,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Burrata com Ragu de Linguiça Calabresa ao Molho Pomodoro",
+            "preco": "65,00",
+            "subcategoria": "",
+            "descricao": ""
+        }
+    ],
+    "Guarnições": [
+        {
+            "nome": "Fettuccine Com Tornedor de Filé",
+            "preco": "99,00",
+            "subcategoria": "",
+            "descricao": "Massa ao molho de manteiga dourada,acompanhado de Tornedor de filé."
+        },
+        {
+            "nome": "Batata ao Roquefort",
+            "preco": "35,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Risoto Parmigiano",
+            "preco": "45,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Pimentovo",
+            "preco": "36,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Feijão tropeiro",
+            "preco": "42,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Batata frita tradicional",
+            "preco": "30,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Farofa de ovos",
+            "preco": "40,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Mandioca cozida",
+            "preco": "30,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Purê de batata",
+            "preco": "30,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Arroz branco",
+            "preco": "28,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Porção de Torradas",
+            "preco": "5,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Mandioca frita",
+            "preco": "30,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Arroz de Costela",
+            "preco": "45,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Legumes Braseados no Azeite",
+            "preco": "38,00",
+            "subcategoria": "",
+            "descricao": "Abobrinha,Aspargos e Pimentão assados na Brasa com azeite."
+        },
+        {
+            "nome": "Espaguete",
+            "preco": "38,00",
+            "subcategoria": "",
+            "descricao": ""
+        }
+    ],
+    "Parrilla Uruguaia": [
+        {
+            "nome": "Picanha",
+            "preco": "109,00",
+            "subcategoria": "",
+            "descricao": "Aproximadamente 280 gramas"
+        },
+        {
+            "nome": "Parmegiana de filé- Acompanha porção de arroz",
+            "preco": "119,00",
+            "subcategoria": "",
+            "descricao": "Para compartilhar"
+        },
+        {
+            "nome": "T-Bone",
+            "preco": "139,00",
+            "subcategoria": "",
+            "descricao": "Aproximadamente 450 gramas"
+        },
+        {
+            "nome": "Costela de boi",
+            "preco": "159,00",
+            "subcategoria": "",
+            "descricao": "Para compartilhar,\r\n                Aproximadamente 900 gramas"
+        },
+        {
+            "nome": "Chorizo Angus",
+            "preco": "89,00",
+            "subcategoria": "",
+            "descricao": "Aproximadamente 280 gramas"
+        },
+        {
+            "nome": "Ancho",
+            "preco": "89,00",
+            "subcategoria": "",
+            "descricao": "Aproximadamente 280 gramas"
+        },
+        {
+            "nome": "Bife de Vazio -Fraldinha",
+            "preco": "149,00",
+            "subcategoria": "",
+            "descricao": "Para compartilhar com a familia Aproximadamente 500 gramas"
+        },
+        {
+            "nome": "Filé Mignon na brasa",
+            "preco": "99,00",
+            "subcategoria": "",
+            "descricao": "Aproximadamente 280 gramas"
+        },
+        {
+            "nome": "Hambúrguer da Casa",
+            "preco": "49,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Prato Kids",
+            "preco": "45,00",
+            "subcategoria": "",
+            "descricao": "Arroz, feijão, escalope de file e batata frita"
+        },
+        {
+            "nome": "Trio de Miniburguer",
+            "preco": "35,00",
+            "subcategoria": "",
+            "descricao": "Mini Brioche amanteigado,carne artesanal selada na brasa finalizado com maionese defumada artesanal."
+        }
+    ],
+    "Saladas": [
+        {
+            "nome": "Salada Caesar",
+            "preco": "35,00",
+            "subcategoria": "",
+            "descricao": "Tradicional salada Caesar com peito de frango"
+        },
+        {
+            "nome": "Salada especial da casa",
+            "preco": "35,00",
+            "subcategoria": "",
+            "descricao": "Alface roxa, alface crespa, tomate confitado e muçarela de bufula"
+        }
+    ],
+    "Serviços": [
+        {
+            "nome": "Espaço Kids",
+            "preco": "25,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Day use (Society ou areia)",
+            "preco": "25,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Aluguel Campo Society",
+            "preco": "150,00",
+            "subcategoria": "",
+            "descricao": "Valor da hora.\r\n                Consulte disponibilidade"
+        },
+        {
+            "nome": "Aluguel quadra areia",
+            "preco": "120,00",
+            "subcategoria": "",
+            "descricao": "Valor da hora.\r\n                Consulte disponibilidade"
+        },
+        {
+            "nome": "Maquina de urso",
+            "preco": "2,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "EVENTO DEBORA",
+            "preco": "80,00",
+            "subcategoria": "",
+            "descricao": ""
+        }
+    ],
+    "Sobremesas": [
+        {
+            "nome": "Cheesecake",
+            "preco": "32,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Banana caramelizada",
+            "preco": "30,00",
+            "subcategoria": "",
+            "descricao": "Banana caramelizada com sorvete de doce de leite e flor de sal"
+        },
+        {
+            "nome": "Petit gâteau",
+            "preco": "35,00",
+            "subcategoria": "",
+            "descricao": "Petit gâteau de chocolate ou doce de leite com sorvete de creme"
+        },
+        {
+            "nome": "Açaizinho",
+            "preco": "8,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Açaizinho Zero Açucar",
+            "preco": "9,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Bola de Sorvete",
+            "preco": "10,00",
+            "subcategoria": "",
+            "descricao": ""
+        },
+        {
+            "nome": "Poção de Mini Churros- 6 unidades",
+            "preco": "25,00",
+            "subcategoria": "",
+            "descricao": "Acompanha calda de Chocolate"
+        }
+    ]
+}
