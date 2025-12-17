@@ -13,8 +13,8 @@
 
     <!-- Open Graph / Facebook / WhatsApp -->
     @php
-        $pageTitle = @yield('title');
-        $ogTitle = isset($ogTitle) ? $ogTitle : ($pageTitle ?: 'Villa Fogo & Brasa - Churrascaria Premium em Nova Lima');
+        $pageTitle = trim(\Illuminate\Support\Facades\View::yieldContent('title'));
+        $ogTitle = isset($ogTitle) ? $ogTitle : (!empty($pageTitle) ? $pageTitle : 'Villa Fogo & Brasa - Churrascaria Premium em Nova Lima');
         $ogDescription = isset($ogDescription) ? $ogDescription : 'Autêntico churrasco gaúcho com cortes nobres e ambiente sofisticado. Reserve sua mesa e viva uma experiência gastronômica única em Nova Lima!';
     @endphp
     <meta property="og:type" content="website">
