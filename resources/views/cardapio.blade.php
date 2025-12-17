@@ -46,6 +46,11 @@
 
         <!-- Menu Items by Category -->
         <div class="space-y-16" id="menu-container">
+            @if(empty($menuData) || count($menuData) === 0)
+                <div class="text-center py-12">
+                    <p class="text-villa-cream/70">Nenhum item encontrado no cardápio.</p>
+                </div>
+            @else
             @foreach($menuData as $categoria => $itens)
                 @php
                     $icon = \App\Http\Controllers\HomeController::getCategoryIcon($categoria);
@@ -92,6 +97,7 @@
                     @endforeach
                 </div>
             @endforeach
+            @endif
         </div>
     </div>
 </section>
