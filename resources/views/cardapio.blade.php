@@ -107,6 +107,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const menuCategories = document.querySelectorAll('.menu-category');
     
+    // Garantir que todas as categorias estejam visíveis inicialmente
+    menuCategories.forEach(category => {
+        category.style.display = 'block';
+        category.style.opacity = '1';
+    });
+    
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             const filter = this.getAttribute('data-filter');
@@ -127,15 +133,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (filter === 'all' || categoryId === filter) {
                     category.style.display = 'block';
                     // Animação suave
-                    category.style.opacity = '0';
-                    setTimeout(() => {
+                    requestAnimationFrame(() => {
                         category.style.transition = 'opacity 0.3s ease-in-out';
                         category.style.opacity = '1';
                         // Reinicializar ícones após mostrar
                         if (typeof lucide !== 'undefined') {
                             lucide.createIcons();
                         }
-                    }, 10);
+                    });
                 } else {
                     category.style.transition = 'opacity 0.3s ease-in-out';
                     category.style.opacity = '0';
