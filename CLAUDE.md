@@ -6,11 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Villa Fogo & Brasa is a premium Brazilian steakhouse (churrascaria) website built with Laravel 12 and Tailwind CSS 4. It's a single-page application showcasing the restaurant with sections for menu, experience, gallery, reservations, and contact.
 
-## Environments
+## Environment
 
 | Environment | SSH Alias | Directory | Domain |
 |-------------|-----------|-----------|--------|
-| Stage | `villafogo` | `~/stage.villafogoebrasa.com.br` | stage.villafogoebrasa.com.br |
 | Production | `villafogo` | `~/villafogoebrasa.com.br` | villafogoebrasa.com.br |
 
 ## Deploy Workflow
@@ -25,24 +24,11 @@ npm run build
 git add -A && git commit -m "message" && git push
 ```
 
-### 3. Deploy to STAGE (test first)
-```bash
-ssh villafogo "cd ~/stage.villafogoebrasa.com.br && git pull && php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear"
-scp -r public/build/* villafogo:~/stage.villafogoebrasa.com.br/public/build/
-```
-
-### 4. Deploy to PRODUCTION (after validating stage)
+### 3. Deploy to PRODUCTION
 ```bash
 ssh villafogo "cd ~/villafogoebrasa.com.br && git pull && php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear"
 scp -r public/build/* villafogo:~/villafogoebrasa.com.br/public/build/
 ```
-
-### SEO Indexing
-
-| Environment | Indexed by Search Engines |
-|-------------|---------------------------|
-| Stage | ❌ No (robots.txt + noindex meta) |
-| Production | ✅ Yes |
 
 ## CRITICAL WARNINGS
 

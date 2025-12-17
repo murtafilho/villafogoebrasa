@@ -11,7 +11,7 @@
     <meta name="robots" content="noindex, nofollow">
     @endif
 
-    <!-- Open Graph / WhatsApp / Facebook -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('title', 'Villa Fogo & Brasa - Churrascaria Premium em Nova Lima')">
