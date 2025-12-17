@@ -104,11 +104,41 @@
 
 @push('scripts')
 <script>
-// Apenas inicializar ícones do Lucide - sem filtros por enquanto
 document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar ícones do Lucide
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
+
+    // Filtro de categorias
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const categories = document.querySelectorAll('.menu-category');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+
+            // Atualizar estado ativo dos botões
+            filterBtns.forEach(b => {
+                b.classList.remove('active', 'bg-villa-ember', 'text-white');
+                b.classList.add('border', 'border-villa-coffee', 'text-villa-cream/70');
+            });
+            this.classList.add('active', 'bg-villa-ember', 'text-white');
+            this.classList.remove('border', 'border-villa-coffee', 'text-villa-cream/70');
+
+            // Filtrar categorias
+            categories.forEach(category => {
+                const categoryId = category.getAttribute('data-category');
+
+                if (filter === 'all' || categoryId === filter) {
+                    category.style.display = 'block';
+                    category.style.opacity = '1';
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+        });
+    });
 });
 </script>
 @endpush

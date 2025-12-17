@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MenuCategory;
+
 class HomeController extends Controller
 {
     public function index()
@@ -11,24 +13,36 @@ class HomeController extends Controller
 
     public function cardapio()
     {
-        $jsonPath = database_path('data/menu_data.json');
+        // Buscar categorias ativas com seus itens ativos
+        $categoriesFromDb = MenuCategory::query()
+            ->where('is_active', true)
+            ->orderBy('sort_order')
+            ->with(['items' => function ($query) {
+                $query->where('is_active', true)
+                    ->orderBy('sort_order');
+            }])
+            ->get();
 
-        if (! file_exists($jsonPath)) {
-            return view('cardapio', [
-                'menuData' => [],
-                'categories' => [],
-            ]);
+        // Transformar para o formato esperado pela view
+        $menuData = [];
+        $categories = [];
+
+        foreach ($categoriesFromDb as $category) {
+            if ($category->items->isEmpty()) {
+                continue;
+            }
+
+            $categories[] = $category->name;
+
+            $menuData[$category->name] = $category->items->map(function ($item) {
+                return [
+                    'nome' => $item->name,
+                    'preco' => $item->price ? number_format($item->price, 2, ',', '.') : '',
+                    'descricao' => $item->description ?? '',
+                    'subcategoria' => $item->subcategory ?? '',
+                ];
+            })->toArray();
         }
-
-        $jsonContent = file_get_contents($jsonPath);
-        $menuData = json_decode($jsonContent, true);
-
-        if (! is_array($menuData)) {
-            $menuData = [];
-        }
-
-        // Extrair lista de categorias para os filtros
-        $categories = array_keys($menuData);
 
         return view('cardapio', [
             'menuData' => $menuData,
