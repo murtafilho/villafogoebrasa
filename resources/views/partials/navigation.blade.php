@@ -11,7 +11,7 @@
             <div class="desktop-menu" style="display: none;">
                 <a href="#home" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Início</a>
                 <a href="#about" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Quem Somos</a>
-                <a href="#menu" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Cardápio</a>
+                <a href="{{ url('/cardapio') }}" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Cardápio</a>
                 <a href="#experience" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Experiência</a>
                 <a href="#gallery" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Galeria</a>
                 <a href="#contact" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Contato</a>
@@ -56,7 +56,7 @@
         <div style="padding: 24px 16px;">
             <a href="#home" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Início</a>
             <a href="#about" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Quem Somos</a>
-            <a href="#menu" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Cardápio</a>
+            <a href="{{ url('/cardapio') }}" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Cardápio</a>
             <a href="#experience" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Experiência</a>
             <a href="#gallery" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Galeria</a>
             <a href="#contact" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Contato</a>

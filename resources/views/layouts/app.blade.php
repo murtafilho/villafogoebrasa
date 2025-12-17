@@ -61,7 +61,7 @@
     <!-- Mobile Bottom Navigation -->
     <nav class="fixed bottom-0 left-0 right-0 z-50 bg-villa-charcoal/95 backdrop-blur-lg border-t border-villa-gold/20 lg:hidden">
         <div class="flex justify-around items-center py-3">
-            <a href="#menu" class="flex flex-col items-center gap-1 text-villa-cream/70 hover:text-villa-gold transition-colors">
+            <a href="{{ url('/cardapio') }}" class="flex flex-col items-center gap-1 text-villa-cream/70 hover:text-villa-gold transition-colors">
                 <i data-lucide="utensils" class="w-5 h-5"></i>
                 <span class="text-xs">Menu</span>
             </a>

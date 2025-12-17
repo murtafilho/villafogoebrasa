@@ -7,7 +7,7 @@
             <!-- Links -->
             <div class="flex flex-wrap justify-center gap-4 sm:gap-8">
                 <a href="#home" class="text-villa-cream/60 hover:text-villa-gold text-xs sm:text-sm tracking-wider uppercase transition-colors">Início</a>
-                <a href="#menu" class="text-villa-cream/60 hover:text-villa-gold text-xs sm:text-sm tracking-wider uppercase transition-colors">Cardápio</a>
+                <a href="{{ url('/cardapio') }}" class="text-villa-cream/60 hover:text-villa-gold text-xs sm:text-sm tracking-wider uppercase transition-colors">Cardápio</a>
                 <a href="#reservas" class="text-villa-cream/60 hover:text-villa-gold text-xs sm:text-sm tracking-wider uppercase transition-colors">Reservas</a>
                 <a href="#contact" class="text-villa-cream/60 hover:text-villa-gold text-xs sm:text-sm tracking-wider uppercase transition-colors">Contato</a>
             </div>
