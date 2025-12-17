@@ -26,6 +26,7 @@ class HomeController extends Controller
         // Transformar para o formato esperado pela view
         $menuData = [];
         $categories = [];
+        $categorySubcategories = [];
 
         foreach ($categoriesFromDb as $category) {
             if ($category->items->isEmpty()) {
@@ -33,6 +34,16 @@ class HomeController extends Controller
             }
 
             $categories[] = $category->name;
+
+            // Coletar subcategorias únicas desta categoria
+            $subcategories = $category->items
+                ->pluck('subcategory')
+                ->filter(fn($sub) => !empty($sub))
+                ->unique()
+                ->values()
+                ->toArray();
+
+            $categorySubcategories[$category->name] = $subcategories;
 
             $menuData[$category->name] = $category->items->map(function ($item) {
                 return [
@@ -47,6 +58,7 @@ class HomeController extends Controller
         return view('cardapio', [
             'menuData' => $menuData,
             'categories' => $categories,
+            'categorySubcategories' => $categorySubcategories,
         ]);
     }
 
@@ -55,28 +67,33 @@ class HomeController extends Controller
         $iconMap = [
             'Carnes' => 'drumstick',
             'Carnes Nobres' => 'drumstick',
+            'Parrilla' => 'flame',
             'Rodízio' => 'chef-hat',
             'Rodízio Completo' => 'chef-hat',
             'Acompanhamentos' => 'salad',
+            'Guarnições' => 'salad',
             'Sobremesas' => 'cake',
             'Bebidas' => 'wine',
             'Carta de Vinhos' => 'wine',
             'Vinhos' => 'wine',
+            'Cervejas' => 'beer',
+            'Chopps' => 'beer',
+            'Doses' => 'glass-water',
+            'Drinks' => 'martini',
             'Entradas' => 'utensils-crossed',
             'Pratos Executivos' => 'briefcase',
             'Especiais da Casa' => 'sparkles',
             'Pratos Especiais' => 'star',
-            'Saladas' => 'salad',
+            'Saladas' => 'leaf',
             'Massas' => 'utensils',
             'Peixes' => 'fish',
             'Frutos do Mar' => 'fish',
-            'Aves' => 'chicken',
+            'Aves' => 'egg',
             'Vegetarianos' => 'leaf',
             'Kids' => 'baby',
             'Infantil' => 'baby',
-            'Bebidas Não Alcoólicas' => 'glass-water',
-            'Refrigerantes' => 'glass-water',
-            'Sucos' => 'glass-water',
+            'Serviços' => 'concierge-bell',
+            'Cafeteria' => 'coffee',
             'Cafés' => 'coffee',
             'Café' => 'coffee',
         ];
