@@ -3,23 +3,23 @@
         <div style="display: flex; align-items: center; justify-content: space-between; height: 64px;">
 
             <!-- Logo -->
-            <a href="#home" class="shrink-0">
+            <a href="{{ url('/') }}#home" class="shrink-0">
                 <img src="{{ asset('img/logo.webp') }}" alt="Villa Fogo & Brasa" style="height: 32px; width: auto;">
             </a>
 
             <!-- Desktop Menu -->
             <div class="desktop-menu" style="display: none;">
-                <a href="#home" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Início</a>
-                <a href="#about" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Quem Somos</a>
+                <a href="{{ url('/') }}#home" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Início</a>
+                <a href="{{ url('/') }}#about" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Quem Somos</a>
                 <a href="{{ url('/cardapio') }}" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Cardápio</a>
-                <a href="#experience" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Experiência</a>
-                <a href="#gallery" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Galeria</a>
-                <a href="#contact" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Contato</a>
+                <a href="{{ url('/') }}#experience" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Experiência</a>
+                <a href="{{ url('/') }}#gallery" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Galeria</a>
+                <a href="{{ url('/') }}#contact" class="nav-link" style="color: #f5f0e8; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; margin: 0 16px;">Contato</a>
             </div>
 
             <!-- Desktop CTA -->
             <div class="desktop-cta" style="display: none; align-items: center; gap: 16px;">
-                <a href="#reservas" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background-color: #c45c26; color: white; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border-radius: 4px;">
+                <a href="{{ url('/') }}#reservas" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background-color: #c45c26; color: white; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border-radius: 4px;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
@@ -54,15 +54,15 @@
     <!-- Mobile Menu Panel -->
     <div id="mobile-menu" style="display: none; background-color: #1a1714; border-top: 1px solid #3d352e;">
         <div style="padding: 24px 16px;">
-            <a href="#home" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Início</a>
-            <a href="#about" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Quem Somos</a>
+            <a href="{{ url('/') }}#home" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Início</a>
+            <a href="{{ url('/') }}#about" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Quem Somos</a>
             <a href="{{ url('/cardapio') }}" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Cardápio</a>
-            <a href="#experience" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Experiência</a>
-            <a href="#gallery" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Galeria</a>
-            <a href="#contact" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Contato</a>
+            <a href="{{ url('/') }}#experience" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Experiência</a>
+            <a href="{{ url('/') }}#gallery" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Galeria</a>
+            <a href="{{ url('/') }}#contact" onclick="closeMobileMenu()" style="display: block; padding: 12px 16px; color: #f5f0e8; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Contato</a>
 
             <div style="padding-top: 16px; margin-top: 16px; border-top: 1px solid #3d352e;">
-                <a href="#reservas" onclick="closeMobileMenu()" style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 16px 24px; background-color: #c45c26; color: white; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; border-radius: 8px;">
+                <a href="{{ url('/') }}#reservas" onclick="closeMobileMenu()" style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 16px 24px; background-color: #c45c26; color: white; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; border-radius: 8px;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>

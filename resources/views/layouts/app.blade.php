@@ -65,11 +65,11 @@
                 <i data-lucide="utensils" class="w-5 h-5"></i>
                 <span class="text-xs">Menu</span>
             </a>
-            <a href="#reservations" class="flex flex-col items-center gap-1 text-villa-ember hover:text-villa-flame transition-colors">
+            <a href="{{ url('/') }}#reservas" class="flex flex-col items-center gap-1 text-villa-ember hover:text-villa-flame transition-colors">
                 <i data-lucide="calendar" class="w-6 h-6"></i>
                 <span class="text-xs font-medium">Reservas</span>
             </a>
-            <a href="#contact" class="flex flex-col items-center gap-1 text-villa-cream/70 hover:text-villa-gold transition-colors">
+            <a href="{{ url('/') }}#contact" class="flex flex-col items-center gap-1 text-villa-cream/70 hover:text-villa-gold transition-colors">
                 <i data-lucide="phone" class="w-5 h-5"></i>
                 <span class="text-xs">Contato</span>
             </a>
@@ -133,6 +133,21 @@
             el.style.opacity = '0';
             observer.observe(el);
         });
+
+        // Handle anchor links when coming from other pages
+        if (window.location.hash) {
+            const hash = window.location.hash;
+            const targetElement = document.querySelector(hash);
+            
+            if (targetElement) {
+                setTimeout(() => {
+                    targetElement.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
+            }
+        }
     </script>
 </body>
 </html>
