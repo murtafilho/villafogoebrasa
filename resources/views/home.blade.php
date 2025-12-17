@@ -29,7 +29,7 @@
 </head>
 <body>
     <img 
-        src="{{ asset('img/quinta-16-12.jpeg') }}" 
+        src="/img/quinta-16-12.jpeg" 
         alt="Villa Fogo & Brasa - Quinta-feira 16/12"
     >
 </body>
