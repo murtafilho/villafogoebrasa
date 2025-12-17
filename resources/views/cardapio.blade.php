@@ -104,65 +104,11 @@
 
 @push('scripts')
 <script>
+// Apenas inicializar ícones do Lucide - sem filtros por enquanto
 document.addEventListener('DOMContentLoaded', function() {
-    // Inicializar ícones do Lucide
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
-    
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const menuCategories = document.querySelectorAll('.menu-category');
-    
-    // Garantir que todas as categorias estejam visíveis inicialmente
-    menuCategories.forEach(category => {
-        category.style.display = 'block';
-        category.style.opacity = '1';
-    });
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const filter = this.getAttribute('data-filter');
-            
-            // Atualizar estado dos botões
-            filterButtons.forEach(btn => {
-                btn.classList.remove('active', 'bg-villa-ember', 'text-white');
-                btn.classList.add('border', 'border-villa-coffee', 'text-villa-cream/70');
-            });
-            
-            this.classList.add('active', 'bg-villa-ember', 'text-white');
-            this.classList.remove('border', 'border-villa-coffee', 'text-villa-cream/70');
-            
-            // Filtrar categorias
-            menuCategories.forEach(category => {
-                const categoryId = category.getAttribute('data-category');
-                
-                if (filter === 'all' || categoryId === filter) {
-                    category.style.display = 'block';
-                    // Animação suave
-                    requestAnimationFrame(() => {
-                        category.style.transition = 'opacity 0.3s ease-in-out';
-                        category.style.opacity = '1';
-                        // Reinicializar ícones após mostrar
-                        if (typeof lucide !== 'undefined') {
-                            lucide.createIcons();
-                        }
-                    });
-                } else {
-                    category.style.transition = 'opacity 0.3s ease-in-out';
-                    category.style.opacity = '0';
-                    setTimeout(() => {
-                        category.style.display = 'none';
-                    }, 300);
-                }
-            });
-            
-            // Scroll suave para o topo do container
-            document.getElementById('menu-container').scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
-            });
-        });
-    });
 });
 </script>
 @endpush
