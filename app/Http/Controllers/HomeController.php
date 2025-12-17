@@ -17,7 +17,13 @@ class HomeController extends Controller
         $html = file_get_contents(base_path('teste.html'));
         $menuData = $this->parseMenuHtml($html);
 
-        return view('cardapio', ['menuData' => $menuData]);
+        // Extrair lista de categorias para os filtros
+        $categories = array_keys($menuData);
+
+        return view('cardapio', [
+            'menuData' => $menuData,
+            'categories' => $categories,
+        ]);
     }
 
     private function parseMenuHtml(string $html): array

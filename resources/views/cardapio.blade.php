@@ -16,10 +16,28 @@
             </p>
         </div>
 
+        <!-- Filters -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button 
+                class="filter-btn px-6 py-2 bg-villa-ember text-white text-sm tracking-wider uppercase transition-all hover:bg-villa-flame active" 
+                data-filter="all"
+            >
+                Todos
+            </button>
+            @foreach($categories as $category)
+                <button 
+                    class="filter-btn px-6 py-2 border border-villa-coffee text-villa-cream/70 hover:border-villa-gold hover:text-villa-gold text-sm tracking-wider uppercase transition-all" 
+                    data-filter="{{ md5($category) }}"
+                >
+                    {{ $category }}
+                </button>
+            @endforeach
+        </div>
+
         <!-- Menu Items by Category -->
-        <div class="space-y-16">
+        <div class="space-y-16" id="menu-container">
             @foreach($menuData as $categoria => $itens)
-                <div class="mb-16">
+                <div class="menu-category mb-16" data-category="{{ md5($categoria) }}">
                     <h2 class="font-display text-3xl lg:text-4xl font-semibold text-villa-cream mb-8 line-accent">
                         {{ $categoria }}
                     </h2>
@@ -63,5 +81,55 @@
         </div>
     </div>
 </section>
-@endsection
 
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const menuCategories = document.querySelectorAll('.menu-category');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Atualizar estado dos botões
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active', 'bg-villa-ember', 'text-white');
+                btn.classList.add('border', 'border-villa-coffee', 'text-villa-cream/70');
+            });
+            
+            this.classList.add('active', 'bg-villa-ember', 'text-white');
+            this.classList.remove('border', 'border-villa-coffee', 'text-villa-cream/70');
+            
+            // Filtrar categorias
+            menuCategories.forEach(category => {
+                const categoryId = category.getAttribute('data-category');
+                
+                if (filter === 'all' || categoryId === filter) {
+                    category.style.display = 'block';
+                    // Animação suave
+                    category.style.opacity = '0';
+                    setTimeout(() => {
+                        category.style.transition = 'opacity 0.3s ease-in-out';
+                        category.style.opacity = '1';
+                    }, 10);
+                } else {
+                    category.style.transition = 'opacity 0.3s ease-in-out';
+                    category.style.opacity = '0';
+                    setTimeout(() => {
+                        category.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            // Scroll suave para o topo do container
+            document.getElementById('menu-container').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        });
+    });
+});
+</script>
+@endpush
+@endsection
