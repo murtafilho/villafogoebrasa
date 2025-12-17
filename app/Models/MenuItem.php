@@ -18,6 +18,7 @@ class MenuItem extends Model implements HasMedia
         'name',
         'slug',
         'description',
+        'subcategory',
         'price',
         'is_featured',
         'is_active',

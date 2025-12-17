@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/cardapio', [HomeController::class, 'cardapio'])->name('cardapio');
 
 // Admin Routes
 Route::prefix('admin')

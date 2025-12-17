@@ -16,6 +16,7 @@ class MenuCategory extends Model implements HasMedia
     protected $fillable = [
         'name',
         'slug',
+        'menu_type',
         'description',
         'sort_order',
         'is_active',
