@@ -22,17 +22,22 @@
         <!-- Filters -->
         <div class="flex flex-wrap justify-center gap-3 mb-12">
             <button 
-                class="filter-btn px-6 py-2 bg-villa-ember text-white text-sm tracking-wider uppercase transition-all hover:bg-villa-flame active" 
+                class="filter-btn px-6 py-2 bg-villa-ember text-white text-sm tracking-wider uppercase transition-all hover:bg-villa-flame active flex items-center gap-2" 
                 data-filter="all"
             >
-                Todos
+                <i data-lucide="grid" class="w-4 h-4"></i>
+                <span>Todos</span>
             </button>
             @foreach($categories as $category)
+                @php
+                    $icon = \App\Http\Controllers\HomeController::getCategoryIcon($category);
+                @endphp
                 <button 
-                    class="filter-btn px-6 py-2 border border-villa-coffee text-villa-cream/70 hover:border-villa-gold hover:text-villa-gold text-sm tracking-wider uppercase transition-all" 
+                    class="filter-btn px-6 py-2 border border-villa-coffee text-villa-cream/70 hover:border-villa-gold hover:text-villa-gold text-sm tracking-wider uppercase transition-all flex items-center gap-2" 
                     data-filter="{{ md5($category) }}"
                 >
-                    {{ $category }}
+                    <i data-lucide="{{ $icon }}" class="w-4 h-4"></i>
+                    <span>{{ $category }}</span>
                 </button>
             @endforeach
         </div>
@@ -40,9 +45,13 @@
         <!-- Menu Items by Category -->
         <div class="space-y-16" id="menu-container">
             @foreach($menuData as $categoria => $itens)
+                @php
+                    $icon = \App\Http\Controllers\HomeController::getCategoryIcon($categoria);
+                @endphp
                 <div class="menu-category mb-16" data-category="{{ md5($categoria) }}">
-                    <h2 class="font-display text-3xl lg:text-4xl font-semibold text-villa-cream mb-8 line-accent">
-                        {{ $categoria }}
+                    <h2 class="font-display text-3xl lg:text-4xl font-semibold text-villa-cream mb-8 line-accent flex items-center gap-4">
+                        <i data-lucide="{{ $icon }}" class="w-8 h-8 lg:w-10 lg:h-10 text-villa-ember"></i>
+                        <span>{{ $categoria }}</span>
                     </h2>
                     
                     @php
@@ -88,6 +97,11 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar ícones do Lucide
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+    
     const filterButtons = document.querySelectorAll('.filter-btn');
     const menuCategories = document.querySelectorAll('.menu-category');
     
@@ -115,6 +129,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(() => {
                         category.style.transition = 'opacity 0.3s ease-in-out';
                         category.style.opacity = '1';
+                        // Reinicializar ícones após mostrar
+                        if (typeof lucide !== 'undefined') {
+                            lucide.createIcons();
+                        }
                     }, 10);
                 } else {
                     category.style.transition = 'opacity 0.3s ease-in-out';

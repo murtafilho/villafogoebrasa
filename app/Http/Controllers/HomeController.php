@@ -26,6 +26,48 @@ class HomeController extends Controller
         ]);
     }
 
+    public static function getCategoryIcon(string $category): string
+    {
+        $iconMap = [
+            'Carnes' => 'drumstick',
+            'Carnes Nobres' => 'drumstick',
+            'Rodízio' => 'chef-hat',
+            'Rodízio Completo' => 'chef-hat',
+            'Acompanhamentos' => 'salad',
+            'Sobremesas' => 'cake',
+            'Bebidas' => 'wine',
+            'Carta de Vinhos' => 'wine',
+            'Vinhos' => 'wine',
+            'Entradas' => 'utensils-crossed',
+            'Pratos Executivos' => 'briefcase',
+            'Especiais da Casa' => 'sparkles',
+            'Pratos Especiais' => 'star',
+            'Saladas' => 'salad',
+            'Massas' => 'utensils',
+            'Peixes' => 'fish',
+            'Frutos do Mar' => 'fish',
+            'Aves' => 'chicken',
+            'Vegetarianos' => 'leaf',
+            'Kids' => 'baby',
+            'Infantil' => 'baby',
+            'Bebidas Não Alcoólicas' => 'glass-water',
+            'Refrigerantes' => 'glass-water',
+            'Sucos' => 'glass-water',
+            'Cafés' => 'coffee',
+            'Café' => 'coffee',
+        ];
+
+        // Buscar correspondência exata ou parcial
+        foreach ($iconMap as $key => $icon) {
+            if (stripos($category, $key) !== false) {
+                return $icon;
+            }
+        }
+
+        // Ícone padrão
+        return 'utensils';
+    }
+
     private function parseMenuHtml(string $html): array
     {
         $dom = new DOMDocument;
