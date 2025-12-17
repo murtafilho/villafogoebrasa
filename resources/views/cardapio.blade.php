@@ -238,6 +238,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let totalMatches = 0;
 
         categories.forEach(category => {
+            const categoryName = normalizeText(category.getAttribute('data-category-name') || '');
+            const categoryNameMatches = categoryName.includes(normalizedQuery);
+
             let categoryMatchCount = 0;
 
             // Esconder tudo primeiro
@@ -245,8 +248,38 @@ document.addEventListener('DOMContentLoaded', function() {
             category.querySelectorAll('[data-subcategory-group]').forEach(g => g.style.display = 'none');
             category.querySelectorAll('.menu-item').forEach(i => i.style.display = 'none');
 
-            // Buscar em cada item
+            // Se o nome da categoria corresponde, mostrar tudo dela
+            if (categoryNameMatches) {
+                showAllItemsInCategory(category);
+                category.style.display = 'block';
+                category.style.opacity = '1';
+                categoryMatchCount = category.querySelectorAll('.menu-item').length;
+                totalMatches += categoryMatchCount;
+                return; // próxima categoria
+            }
+
+            // Verificar subcategorias
+            category.querySelectorAll('.subcategory-header').forEach(header => {
+                const subcatName = normalizeText(header.getAttribute('data-subcategory-name') || '');
+                if (subcatName.includes(normalizedQuery)) {
+                    header.style.display = 'block';
+                    const subcatHash = header.getAttribute('data-subcategory');
+                    const group = category.querySelector(`[data-subcategory-group="${subcatHash}"]`);
+                    if (group) {
+                        group.style.display = 'grid';
+                        group.querySelectorAll('.menu-item').forEach(item => {
+                            item.style.display = 'block';
+                            categoryMatchCount++;
+                        });
+                    }
+                }
+            });
+
+            // Buscar em cada item (nome e descrição)
             category.querySelectorAll('.menu-item').forEach(item => {
+                // Se já está visível por subcategoria, pular
+                if (item.style.display === 'block') return;
+
                 const itemName = normalizeText(item.getAttribute('data-item-name') || '');
                 const itemDesc = normalizeText(item.getAttribute('data-item-description') || '');
 
