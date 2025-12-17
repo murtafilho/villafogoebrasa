@@ -238,68 +238,41 @@ document.addEventListener('DOMContentLoaded', function() {
         let totalMatches = 0;
 
         categories.forEach(category => {
-            const categoryName = normalizeText(category.getAttribute('data-category-name') || '');
-            const categoryMatches = categoryName.includes(normalizedQuery);
+            let categoryMatchCount = 0;
 
-            let hasVisibleItems = false;
+            // Esconder tudo primeiro
+            category.querySelectorAll('.subcategory-header').forEach(h => h.style.display = 'none');
+            category.querySelectorAll('[data-subcategory-group]').forEach(g => g.style.display = 'none');
+            category.querySelectorAll('.menu-item').forEach(i => i.style.display = 'none');
 
-            // Verificar subcategorias e itens
-            category.querySelectorAll('.subcategory-header').forEach(header => {
-                const subcatName = normalizeText(header.getAttribute('data-subcategory-name') || '');
-                const subcatMatches = subcatName.includes(normalizedQuery);
-                header.style.display = subcatMatches || categoryMatches ? 'block' : 'none';
-            });
-
+            // Buscar em cada item
             category.querySelectorAll('.menu-item').forEach(item => {
                 const itemName = normalizeText(item.getAttribute('data-item-name') || '');
                 const itemDesc = normalizeText(item.getAttribute('data-item-description') || '');
-                const itemSubcat = item.closest('[data-subcategory-group]');
-                const subcatName = itemSubcat ? normalizeText(document.querySelector(`.subcategory-header[data-subcategory="${itemSubcat.getAttribute('data-subcategory-group')}"]`)?.getAttribute('data-subcategory-name') || '') : '';
 
-                const matches = categoryMatches ||
-                               itemName.includes(normalizedQuery) ||
-                               itemDesc.includes(normalizedQuery) ||
-                               subcatName.includes(normalizedQuery);
-
-                if (matches) {
+                if (itemName.includes(normalizedQuery) || itemDesc.includes(normalizedQuery)) {
                     item.style.display = 'block';
-                    hasVisibleItems = true;
-                    totalMatches++;
+                    categoryMatchCount++;
 
-                    // Mostrar o grupo pai se o item é visível
+                    // Mostrar o grupo pai
+                    const itemSubcat = item.closest('[data-subcategory-group]');
                     if (itemSubcat) {
                         itemSubcat.style.display = 'grid';
                         const subcatHash = itemSubcat.getAttribute('data-subcategory-group');
                         const header = category.querySelector(`.subcategory-header[data-subcategory="${subcatHash}"]`);
                         if (header) header.style.display = 'block';
                     }
-                } else {
-                    item.style.display = 'none';
                 }
             });
 
-            // Mostrar/esconder categoria
-            if (hasVisibleItems || categoryMatches) {
+            // Mostrar/esconder categoria baseado em matches
+            if (categoryMatchCount > 0) {
                 category.style.display = 'block';
                 category.style.opacity = '1';
-
-                // Se a categoria inteira corresponde, mostrar todos os itens
-                if (categoryMatches) {
-                    showAllItemsInCategory(category);
-                    totalMatches = category.querySelectorAll('.menu-item').length;
-                }
+                totalMatches += categoryMatchCount;
             } else {
                 category.style.display = 'none';
             }
-
-            // Esconder grupos vazios
-            category.querySelectorAll('[data-subcategory-group]').forEach(group => {
-                const visibleItems = group.querySelectorAll('.menu-item[style*="display: block"], .menu-item:not([style*="display: none"])');
-                const hasVisible = Array.from(group.querySelectorAll('.menu-item')).some(i => i.style.display !== 'none');
-                if (!hasVisible && !categoryMatches) {
-                    group.style.display = 'none';
-                }
-            });
         });
 
         // Atualizar contador de resultados
