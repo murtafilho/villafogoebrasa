@@ -1,27 +1,22 @@
 {
-    "mcpServers": {
-        "laravel-boost": {
-            "command": "php",
-            "args": [
-                "artisan",
-                "boost:mcp"
-            ]
-        },
-        "context7": {
-            "command": "npx",
-            "args": [
-                "-y",
-                "@upstash/context7-mcp",
-                "--api-key",
-                "ctx7sk-9e2c75f6-b14d-45df-9a44-636a52c2c6da"
-            ]
-        },
-        "tailwindcss": {
-            "command": "npx",
-            "args": [
-                "-y",
-                "tailwindcss-mcp-server"
-            ]
-        }
+  "mcpServers": {
+    "laravel-boost": {
+      "type": "stdio",
+      "command": "php",
+      "args": [
+        "artisan",
+        "boost:mcp"
+      ],
+      "env": {}
+    },
+    "tailwindcss": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "tailwindcss-mcp-server"
+      ],
+      "env": {}
     }
+  }
 }
