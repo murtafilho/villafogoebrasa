@@ -101,10 +101,8 @@ class HomeController extends Controller
                 $featuredItems[] = $processItem($item);
             }
 
-            // Adicionar apenas itens regulares ao menu normal
-            if ($regularItems->isNotEmpty()) {
-                $menuData[$category->name] = $regularItems->map($processItem)->toArray();
-            }
+            // Adicionar TODOS os itens (destacados + regulares) ao menu normal para duplicação
+            $menuData[$category->name] = $category->items->map($processItem)->toArray();
         }
 
         return view('cardapio', [
