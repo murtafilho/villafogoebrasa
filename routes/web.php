@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/cardapio', [HomeController::class, 'cardapio'])->name('cardapio');
+Route::get('/cardapio/item/{id}', [HomeController::class, 'showMenuItem'])->name('cardapio.item.show');
 
 // Admin Routes
 Route::prefix('admin')

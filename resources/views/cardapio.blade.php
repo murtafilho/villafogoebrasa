@@ -121,8 +121,12 @@
                                                 <p class="text-villa-cream/60 text-sm leading-relaxed mb-1">{{ $item['descricao'] }}</p>
                                             @endif
                                             @if(!empty($item['categoria']))
-                                                <p class="text-villa-gold/70 text-xs uppercase tracking-wider">{{ $item['categoria'] }}</p>
+                                                <p class="text-villa-gold/70 text-xs uppercase tracking-wider mb-2">{{ $item['categoria'] }}</p>
                                             @endif
+                                            <a href="{{ route('cardapio.item.show', $item['id']) }}" class="inline-flex items-center gap-1 text-villa-gold hover:text-villa-ember text-sm font-medium transition-colors">
+                                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                                <span>Ver detalhes</span>
+                                            </a>
                                         </div>
                                     </div>
                                             @if(!empty($item['preco']))
@@ -190,15 +194,21 @@
                                                     </div>
                                                 @endif
                                                 <div class="flex-1 min-w-0">
-                                                    <h3 class="item-name font-display text-xl text-villa-cream font-semibold mb-1">
-                                                        {{ $item['nome'] }}
-                                                    </h3>
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <h3 class="item-name font-display text-xl text-villa-cream font-semibold">
+                                                            {{ $item['nome'] }}
+                                                        </h3>
+                                                    </div>
                                                     @if(!empty($item['descricao']))
                                                         <p class="text-villa-cream/60 text-sm leading-relaxed mb-1">{{ $item['descricao'] }}</p>
                                                     @endif
                                                     @if(!empty($item['categoria']))
-                                                        <p class="text-villa-gold/70 text-xs uppercase tracking-wider">{{ $item['categoria'] }}</p>
+                                                        <p class="text-villa-gold/70 text-xs uppercase tracking-wider mb-2">{{ $item['categoria'] }}</p>
                                                     @endif
+                                                    <a href="{{ route('cardapio.item.show', $item['id']) }}" class="inline-flex items-center gap-1 text-villa-gold hover:text-villa-ember text-sm font-medium transition-colors">
+                                                        <i data-lucide="eye" class="w-4 h-4"></i>
+                                                        <span>Ver detalhes</span>
+                                                    </a>
                                                 </div>
                                             </div>
                                             @if(!empty($item['preco']))

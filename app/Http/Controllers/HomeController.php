@@ -53,6 +53,7 @@ class HomeController extends Controller
             }
 
             return [
+                'id' => $item->id,
                 'nome' => $item->name,
                 'preco' => $item->price ? number_format($item->price, 2, ',', '.') : '',
                 'descricao' => $item->description ?? '',
@@ -159,5 +160,36 @@ class HomeController extends Controller
 
         // Ícone padrão
         return 'utensils';
+    }
+
+    public function showMenuItem($id)
+    {
+        $item = \App\Models\MenuItem::with('category')
+            ->where('id', $id)
+            ->where('is_active', true)
+            ->firstOrFail();
+
+        $imageUrl = null;
+        if ($item->hasMedia('photo')) {
+            try {
+                $media = $item->getFirstMedia('photo');
+                $imageUrl = $media->getUrl();
+
+                if (str_contains($imageUrl, 'http://localhost')) {
+                    $imageUrl = str_replace('http://localhost', '', $imageUrl);
+                }
+
+                if (! str_starts_with($imageUrl, '/storage')) {
+                    $imageUrl = '/storage/'.$media->id.'/'.$media->file_name;
+                }
+            } catch (\Exception $e) {
+                $imageUrl = null;
+            }
+        }
+
+        return view('menu-item-show', [
+            'item' => $item,
+            'imageUrl' => $imageUrl,
+        ]);
     }
 }
