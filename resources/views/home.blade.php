@@ -5,7 +5,7 @@
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <!-- Background Video/Image Placeholder -->
         <div class="absolute inset-0 bg-gradient-to-br from-villa-espresso via-villa-charcoal to-black">
-            <div class="absolute inset-0 bg-[url('{{ asset('img/cardapio/costelao.jpg') }}')] bg-cover bg-center opacity-50"></div>
+            <div class="absolute inset-0 bg-cover bg-center opacity-50" style="background-image: url('{{ asset('img/cardapio/costelao.jpg') }}');"></div>
             <div class="hero-overlay absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         </div>
 
