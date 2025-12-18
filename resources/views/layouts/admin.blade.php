@@ -60,6 +60,10 @@
                 <i data-lucide="image" class="w-5 h-5"></i>
                 <span>Galeria</span>
             </a>
+            <a href="{{ route('admin.eventos.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg text-villa-cream/80 hover:bg-villa-espresso hover:text-villa-gold transition-colors {{ request()->routeIs('admin.eventos.*') ? 'bg-villa-espresso text-villa-gold' : '' }}">
+                <i data-lucide="calendar" class="w-5 h-5"></i>
+                <span>Eventos</span>
+            </a>
             <a href="{{ route('admin.usuarios.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg text-villa-cream/80 hover:bg-villa-espresso hover:text-villa-gold transition-colors {{ request()->routeIs('admin.usuarios.*') ? 'bg-villa-espresso text-villa-gold' : '' }}">
                 <i data-lucide="users" class="w-5 h-5"></i>
                 <span>Usuários</span>

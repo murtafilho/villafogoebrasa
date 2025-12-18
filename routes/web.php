@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\MenuCategoryController;
 use App\Http\Controllers\Admin\MenuItemController;
@@ -47,6 +48,7 @@ Route::prefix('admin')
         Route::patch('cardapio/itens/{item}/toggle-featured', [MenuItemController::class, 'toggleFeatured'])
             ->name('cardapio.itens.toggle-featured');
         Route::resource('galeria', GalleryController::class)->parameters(['galeria' => 'galeria']);
+        Route::resource('eventos', EventController::class)->parameters(['eventos' => 'evento']);
         Route::resource('usuarios', UserController::class)->parameters(['usuarios' => 'usuario']);
     });
 
