@@ -123,11 +123,26 @@ class MigrateImagesToMediaLibrary extends Command
             $menuItem = $this->findMenuItemByFileName($fileName);
 
             if ($menuItem) {
-                // Verificar se já tem imagem
-                if ($menuItem->hasMedia('photo')) {
+                // Verificar se já tem imagem E se o arquivo existe fisicamente
+                $hasMedia = $menuItem->hasMedia('photo');
+                $fileExists = false;
+                
+                if ($hasMedia) {
+                    $media = $menuItem->getFirstMedia('photo');
+                    $filePath = storage_path('app/public/' . $media->id . '/' . $media->file_name);
+                    $fileExists = file_exists($filePath);
+                }
+                
+                if ($hasMedia && $fileExists) {
                     $this->warn("  → Item '{$menuItem->name}' já possui imagem. Pulando...");
                     $skipped++;
                     continue;
+                }
+                
+                // Se tem registro mas arquivo não existe, limpar e recriar
+                if ($hasMedia && !$fileExists) {
+                    $this->warn("  → Item '{$menuItem->name}' tem registro mas arquivo não existe. Removendo registro...");
+                    $menuItem->clearMediaCollection('photo');
                 }
 
                 try {
