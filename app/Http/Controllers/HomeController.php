@@ -36,18 +36,22 @@ class HomeController extends Controller
                 try {
                     $cardPath = storage_path('app/public/' . $media->id . '/conversions/' . pathinfo($media->file_name, PATHINFO_FILENAME) . '-card.' . pathinfo($media->file_name, PATHINFO_EXTENSION));
                     if (file_exists($cardPath)) {
-                        $imageUrl = $media->getUrl('card');
+                        $imageUrl = url($media->getUrl('card'));
                     } else {
                         $thumbPath = storage_path('app/public/' . $media->id . '/conversions/' . pathinfo($media->file_name, PATHINFO_FILENAME) . '-thumb.' . pathinfo($media->file_name, PATHINFO_EXTENSION));
                         if (file_exists($thumbPath)) {
-                            $imageUrl = $media->getUrl('thumb');
+                            $imageUrl = url($media->getUrl('thumb'));
                         } else {
-                            $imageUrl = $media->getUrl();
+                            $imageUrl = url($media->getUrl());
                         }
                     }
                 } catch (\Exception $e) {
                     // Fallback para URL original se houver erro
-                    $imageUrl = $media->getUrl();
+                    try {
+                        $imageUrl = url($media->getUrl());
+                    } catch (\Exception $e2) {
+                        $imageUrl = null;
+                    }
                 }
             }
             
