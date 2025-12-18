@@ -19,11 +19,44 @@ class HomeController extends Controller
             ->orderBy('sort_order')
             ->with(['items' => function ($query) {
                 $query->where('is_active', true)
-                    ->orderBy('sort_order');
+                    ->orderBy('is_featured', 'desc') // Itens em destaque primeiro
+                    ->orderBy('sort_order')
+                    ->orderBy('name');
             }])
             ->get();
 
-        // Transformar para o formato esperado pela view
+        // Função auxiliar para processar item
+        $processItem = function ($item) {
+            $media = $item->getFirstMedia('photo');
+            $imageUrl = null;
+            
+            if ($media) {
+                // Tentar usar a conversão 'card' primeiro, depois 'thumb', depois original
+                $cardPath = storage_path('app/public/' . $media->id . '/conversions/' . pathinfo($media->file_name, PATHINFO_FILENAME) . '-card.' . pathinfo($media->file_name, PATHINFO_EXTENSION));
+                $thumbPath = storage_path('app/public/' . $media->id . '/conversions/' . pathinfo($media->file_name, PATHINFO_FILENAME) . '-thumb.' . pathinfo($media->file_name, PATHINFO_EXTENSION));
+                
+                if (file_exists($cardPath)) {
+                    $imageUrl = '/storage/' . $media->id . '/conversions/' . basename($cardPath);
+                } elseif (file_exists($thumbPath)) {
+                    $imageUrl = '/storage/' . $media->id . '/conversions/' . basename($thumbPath);
+                } else {
+                    $imageUrl = '/storage/' . $media->id . '/' . $media->file_name;
+                }
+            }
+            
+            return [
+                'nome' => $item->name,
+                'preco' => $item->price ? number_format($item->price, 2, ',', '.') : '',
+                'descricao' => $item->description ?? '',
+                'subcategoria' => $item->subcategory ?? '',
+                'imagem' => $imageUrl,
+                'is_featured' => $item->is_featured,
+                'categoria' => $item->category->name ?? '',
+            ];
+        };
+
+        // Separar itens em destaque para a seção "Indicações do Chef"
+        $featuredItems = [];
         $menuData = [];
         $categories = [];
         $categorySubcategories = [];
@@ -45,17 +78,23 @@ class HomeController extends Controller
 
             $categorySubcategories[$category->name] = $subcategories;
 
-            $menuData[$category->name] = $category->items->map(function ($item) {
-                return [
-                    'nome' => $item->name,
-                    'preco' => $item->price ? number_format($item->price, 2, ',', '.') : '',
-                    'descricao' => $item->description ?? '',
-                    'subcategoria' => $item->subcategory ?? '',
-                ];
-            })->toArray();
+            // Separar itens em destaque dos demais
+            $featuredInCategory = $category->items->filter(fn($item) => $item->is_featured);
+            $regularItems = $category->items->filter(fn($item) => !$item->is_featured);
+
+            // Adicionar itens em destaque à seção especial
+            foreach ($featuredInCategory as $item) {
+                $featuredItems[] = $processItem($item);
+            }
+
+            // Adicionar itens regulares à categoria
+            if ($regularItems->isNotEmpty()) {
+                $menuData[$category->name] = $regularItems->map($processItem)->toArray();
+            }
         }
 
         return view('cardapio', [
+            'featuredItems' => $featuredItems,
             'menuData' => $menuData,
             'categories' => $categories,
             'categorySubcategories' => $categorySubcategories,

@@ -16,7 +16,7 @@
         <div class="flex items-center justify-between">
             <div>
                 <p class="text-sm text-gray-500">Reservas Hoje</p>
-                <p class="text-2xl font-bold text-gray-800">0</p>
+                <p class="text-2xl font-bold text-gray-800">{{ $stats['reservations_today'] }}</p>
             </div>
             <div class="w-12 h-12 bg-villa-ember/10 rounded-full flex items-center justify-center">
                 <i data-lucide="calendar" class="w-6 h-6 text-villa-ember"></i>
@@ -27,11 +27,12 @@
     <div class="bg-white rounded-xl shadow-sm p-6">
         <div class="flex items-center justify-between">
             <div>
-                <p class="text-sm text-gray-500">Clientes</p>
-                <p class="text-2xl font-bold text-gray-800">0</p>
+                <p class="text-sm text-gray-500">Total Reservas</p>
+                <p class="text-2xl font-bold text-gray-800">{{ $stats['reservations_total'] }}</p>
+                <p class="text-xs text-gray-400 mt-1">{{ $stats['reservations_pending'] }} pendentes</p>
             </div>
             <div class="w-12 h-12 bg-villa-gold/10 rounded-full flex items-center justify-center">
-                <i data-lucide="users" class="w-6 h-6 text-villa-gold"></i>
+                <i data-lucide="calendar-check" class="w-6 h-6 text-villa-gold"></i>
             </div>
         </div>
     </div>
@@ -40,7 +41,8 @@
         <div class="flex items-center justify-between">
             <div>
                 <p class="text-sm text-gray-500">Itens do Menu</p>
-                <p class="text-2xl font-bold text-gray-800">0</p>
+                <p class="text-2xl font-bold text-gray-800">{{ $stats['menu_items_total'] }}</p>
+                <p class="text-xs text-gray-400 mt-1">{{ $stats['menu_items_active'] }} ativos</p>
             </div>
             <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
                 <i data-lucide="utensils" class="w-6 h-6 text-green-600"></i>
@@ -52,7 +54,8 @@
         <div class="flex items-center justify-between">
             <div>
                 <p class="text-sm text-gray-500">Fotos na Galeria</p>
-                <p class="text-2xl font-bold text-gray-800">0</p>
+                <p class="text-2xl font-bold text-gray-800">{{ $stats['gallery_total'] }}</p>
+                <p class="text-xs text-gray-400 mt-1">{{ $stats['gallery_active'] }} ativas</p>
             </div>
             <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
                 <i data-lucide="image" class="w-6 h-6 text-purple-600"></i>
@@ -65,15 +68,15 @@
 <div class="bg-white rounded-xl shadow-sm p-6">
     <h3 class="text-lg font-semibold text-gray-800 mb-4">Acesso Rápido</h3>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <a href="#" class="flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 hover:border-villa-ember hover:bg-villa-ember/5 transition-colors">
+        <a href="{{ route('admin.reservas.create') }}" class="flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 hover:border-villa-ember hover:bg-villa-ember/5 transition-colors">
             <i data-lucide="calendar-plus" class="w-8 h-8 text-villa-ember"></i>
             <span class="text-sm text-gray-700">Nova Reserva</span>
         </a>
-        <a href="#" class="flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 hover:border-villa-ember hover:bg-villa-ember/5 transition-colors">
+        <a href="{{ route('admin.cardapio.itens.create') }}" class="flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 hover:border-villa-ember hover:bg-villa-ember/5 transition-colors">
             <i data-lucide="plus-circle" class="w-8 h-8 text-villa-ember"></i>
             <span class="text-sm text-gray-700">Adicionar Prato</span>
         </a>
-        <a href="#" class="flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 hover:border-villa-ember hover:bg-villa-ember/5 transition-colors">
+        <a href="{{ route('admin.galeria.create') }}" class="flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 hover:border-villa-ember hover:bg-villa-ember/5 transition-colors">
             <i data-lucide="upload" class="w-8 h-8 text-villa-ember"></i>
             <span class="text-sm text-gray-700">Upload Foto</span>
         </a>
