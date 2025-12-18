@@ -37,11 +37,18 @@ class CreateAdminUser extends Command
         $existingUser = User::where('email', $email)->first();
 
         if ($existingUser) {
+            // Atualizar senha se fornecida
+            if ($password) {
+                $existingUser->password = Hash::make($password);
+                $existingUser->save();
+                $this->info("Senha atualizada para o usuario: {$email}");
+            }
+
             if (! $existingUser->hasRole('admin')) {
                 $existingUser->assignRole('admin');
                 $this->info("Role 'admin' atribuida ao usuario existente: {$email}");
             } else {
-                $this->warn("Usuario {$email} ja existe e ja e administrador.");
+                $this->info("Usuario {$email} ja existe e ja e administrador.");
             }
 
             return self::SUCCESS;
