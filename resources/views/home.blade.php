@@ -32,10 +32,24 @@
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fadeInUp stagger-3">
-                <a href="#reservas" class="group inline-flex items-center gap-3 px-8 py-4 bg-villa-ember hover:bg-villa-flame text-white tracking-wider uppercase transition-all duration-300 ember-glow">
-                    <span>Reserve sua Mesa</span>
-                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                </a>
+                @auth
+                    @if(auth()->user()->hasRole('admin'))
+                        <a href="{{ route('admin.dashboard') }}" class="group inline-flex items-center gap-3 px-8 py-4 bg-villa-ember hover:bg-villa-flame text-white tracking-wider uppercase transition-all duration-300 ember-glow">
+                            <span>Administrar</span>
+                            <i data-lucide="settings" class="w-4 h-4 group-hover:rotate-90 transition-transform"></i>
+                        </a>
+                    @else
+                        <a href="#reservas" class="group inline-flex items-center gap-3 px-8 py-4 bg-villa-ember hover:bg-villa-flame text-white tracking-wider uppercase transition-all duration-300 ember-glow">
+                            <span>Reserve sua Mesa</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    @endif
+                @else
+                    <a href="#reservas" class="group inline-flex items-center gap-3 px-8 py-4 bg-villa-ember hover:bg-villa-flame text-white tracking-wider uppercase transition-all duration-300 ember-glow">
+                        <span>Reserve sua Mesa</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                @endauth
                 <a href="{{ route('cardapio') }}" class="group inline-flex items-center gap-3 px-8 py-4 bg-villa-ember hover:bg-villa-flame text-white tracking-wider uppercase transition-all duration-300 ember-glow">
                     <span>Confira nosso Cardápio</span>
                     <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
