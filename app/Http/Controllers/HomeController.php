@@ -27,20 +27,18 @@ class HomeController extends Controller
 
         // Função auxiliar para processar item
         $processItem = function ($item) {
-            $media = $item->getFirstMedia('photo');
             $imageUrl = null;
             
-            if ($media) {
-                // Tentar usar a conversão 'card' primeiro, depois 'thumb', depois original
-                $cardPath = storage_path('app/public/' . $media->id . '/conversions/' . pathinfo($media->file_name, PATHINFO_FILENAME) . '-card.' . pathinfo($media->file_name, PATHINFO_EXTENSION));
-                $thumbPath = storage_path('app/public/' . $media->id . '/conversions/' . pathinfo($media->file_name, PATHINFO_FILENAME) . '-thumb.' . pathinfo($media->file_name, PATHINFO_EXTENSION));
+            if ($item->hasMedia('photo')) {
+                $media = $item->getFirstMedia('photo');
                 
-                if (file_exists($cardPath)) {
-                    $imageUrl = '/storage/' . $media->id . '/conversions/' . basename($cardPath);
-                } elseif (file_exists($thumbPath)) {
-                    $imageUrl = '/storage/' . $media->id . '/conversions/' . basename($thumbPath);
+                // Usar método do Spatie para obter URL da conversão 'card', fallback para 'thumb', depois original
+                if ($media->hasGeneratedConversion('card')) {
+                    $imageUrl = $media->getUrl('card');
+                } elseif ($media->hasGeneratedConversion('thumb')) {
+                    $imageUrl = $media->getUrl('thumb');
                 } else {
-                    $imageUrl = '/storage/' . $media->id . '/' . $media->file_name;
+                    $imageUrl = $media->getUrl();
                 }
             }
             
