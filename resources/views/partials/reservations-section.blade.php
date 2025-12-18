@@ -53,7 +53,7 @@
                     </div>
                     <div>
                         <label class="block text-villa-cream/60 text-sm mb-2">Telefone *</label>
-                        <input type="tel" name="phone" required class="w-full bg-villa-charcoal/50 border border-villa-coffee focus:border-villa-ember text-villa-cream px-4 py-3 outline-none transition-colors" placeholder="(31) 99999-9999">
+                        <input type="tel" name="phone" id="phone" required class="w-full bg-villa-charcoal/50 border border-villa-coffee focus:border-villa-ember text-villa-cream px-4 py-3 outline-none transition-colors" placeholder="(31) 984182096" maxlength="15">
                     </div>
                     <div class="grid sm:grid-cols-2 gap-6">
                         <div>
@@ -100,12 +100,58 @@
 </section>
 
 <script>
+    // Máscara de telefone no formato (31) 984182096
+    document.addEventListener('DOMContentLoaded', function() {
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não é número
+                
+                if (value.length > 0) {
+                    if (value.length <= 2) {
+                        value = '(' + value;
+                    } else if (value.length <= 11) {
+                        value = '(' + value.substring(0, 2) + ') ' + value.substring(2);
+                    } else {
+                        value = '(' + value.substring(0, 2) + ') ' + value.substring(2, 11);
+                    }
+                }
+                
+                e.target.value = value;
+            });
+            
+            phoneInput.addEventListener('keydown', function(e) {
+                // Permitir backspace, delete, tab, escape, enter
+                if ([8, 9, 27, 13, 46].indexOf(e.keyCode) !== -1 ||
+                    // Permitir Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                    (e.keyCode === 65 && e.ctrlKey === true) ||
+                    (e.keyCode === 67 && e.ctrlKey === true) ||
+                    (e.keyCode === 86 && e.ctrlKey === true) ||
+                    (e.keyCode === 88 && e.ctrlKey === true) ||
+                    // Permitir home, end, left, right
+                    (e.keyCode >= 35 && e.keyCode <= 39)) {
+                    return;
+                }
+                // Garantir que é um número
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+            });
+        }
+    });
+
     document.getElementById('reservationForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
         const form = this;
         const submitButton = form.querySelector('button[type="submit"]');
         const originalText = submitButton.innerHTML;
+        
+        // Remover máscara do telefone antes de enviar
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.value = phoneInput.value.replace(/\D/g, '');
+        }
         
         // Desabilitar botão e mostrar loading
         submitButton.disabled = true;
