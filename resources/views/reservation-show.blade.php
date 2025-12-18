@@ -32,10 +32,10 @@
                 <i data-lucide="check-circle" class="w-12 h-12 text-green-500"></i>
             </div>
             <h1 class="font-display text-3xl lg:text-4xl font-semibold text-villa-cream mb-4">
-                Reserva Confirmada!
+                Reserva Recebida!
             </h1>
             <p class="text-villa-cream/70 text-lg">
-                Sua reserva foi recebida com sucesso. Entraremos em contato em breve para confirmar.
+                Entraremos em contato para confirmação da sua reserva.
             </p>
         </div>
 
