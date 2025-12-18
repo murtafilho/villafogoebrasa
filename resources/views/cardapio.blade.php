@@ -125,7 +125,7 @@
                                     <div class="flex items-start gap-4 flex-1 min-w-0">
                                         @if(!empty($item['imagem']))
                                             <div class="max-w-32 max-h-32 w-32 aspect-[16/9] shrink-0 rounded-lg overflow-hidden border border-villa-coffee/30">
-                                                <img src="{{ $item['imagem'] }}" alt="{{ $item['nome'] }}" class="w-full h-full object-contain">
+                                                <img src="{{ asset($item['imagem']) }}" alt="{{ $item['nome'] }}" class="w-full h-full object-contain">
                                             </div>
                                         @else
                                             <div class="max-w-32 max-h-32 w-32 aspect-[16/9] shrink-0 rounded-lg bg-villa-coffee/30 border border-villa-coffee/30 flex items-center justify-center">
@@ -203,7 +203,7 @@
                                             <div class="flex items-start gap-4 flex-1 min-w-0">
                                                 @if(!empty($item['imagem']))
                                                     <div class="max-w-32 max-h-32 w-32 aspect-[16/9] shrink-0 rounded-lg overflow-hidden border border-villa-coffee/30">
-                                                        <img src="{{ $item['imagem'] }}" alt="{{ $item['nome'] }}" class="w-full h-full object-contain">
+                                                        <img src="{{ asset($item['imagem']) }}" alt="{{ $item['nome'] }}" class="w-full h-full object-contain">
                                                     </div>
                                                 @else
                                                     <div class="max-w-32 max-h-32 w-32 aspect-[16/9] shrink-0 rounded-lg bg-villa-coffee/30 border border-villa-coffee/30 flex items-center justify-center">
@@ -326,7 +326,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Busca auto-filtrante
+    // Função auxiliar para verificar se o texto corresponde à busca
+    function matchesSearch(text, query) {
+        if (!text || !query) return false;
+        const normalizedText = normalizeText(text);
+        const normalizedQuery = normalizeText(query);
+        
+        // Busca exata ou parcial
+        if (normalizedText.includes(normalizedQuery)) return true;
+        
+        // Busca por palavras individuais (para queries com múltiplas palavras)
+        const queryWords = normalizedQuery.split(/\s+/).filter(w => w.length > 0);
+        if (queryWords.length > 1) {
+            // Se todas as palavras estão presentes no texto
+            return queryWords.every(word => normalizedText.includes(word));
+        }
+        
+        return false;
+    }
+
+    // Busca auto-filtrante melhorada
     function performSearch(query) {
         const normalizedQuery = normalizeText(query.trim());
         const chefSection = document.querySelector('.chef-recommendations');
@@ -348,10 +367,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (chefSection) {
             let chefMatchCount = 0;
             chefSection.querySelectorAll('.menu-item-row').forEach(item => {
-                const itemName = normalizeText(item.getAttribute('data-item-name') || '');
-                const itemDesc = normalizeText(item.getAttribute('data-item-description') || '');
+                const itemName = item.getAttribute('data-item-name') || '';
+                const itemDesc = item.getAttribute('data-item-description') || '';
                 
-                if (itemName.includes(normalizedQuery) || itemDesc.includes(normalizedQuery)) {
+                if (matchesSearch(itemName, normalizedQuery) || matchesSearch(itemDesc, normalizedQuery)) {
                     item.style.display = 'block';
                     chefMatchCount++;
                 } else {
@@ -369,8 +388,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         categories.forEach(category => {
-            const categoryName = normalizeText(category.getAttribute('data-category-name') || '');
-            const categoryNameMatches = categoryName.includes(normalizedQuery);
+            const categoryName = category.getAttribute('data-category-name') || '';
+            const categoryNameMatches = matchesSearch(categoryName, normalizedQuery);
 
             let categoryMatchCount = 0;
 
@@ -391,8 +410,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Verificar subcategorias
             category.querySelectorAll('.subcategory-header').forEach(header => {
-                const subcatName = normalizeText(header.getAttribute('data-subcategory-name') || '');
-                if (subcatName.includes(normalizedQuery)) {
+                const subcatName = header.getAttribute('data-subcategory-name') || '';
+                if (matchesSearch(subcatName, normalizedQuery)) {
                     header.style.display = 'block';
                     const subcatHash = header.getAttribute('data-subcategory');
                     const group = category.querySelector(`[data-subcategory-group="${subcatHash}"]`);
@@ -411,10 +430,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Se já está visível por subcategoria, pular
                 if (item.style.display === 'block') return;
 
-                const itemName = normalizeText(item.getAttribute('data-item-name') || '');
-                const itemDesc = normalizeText(item.getAttribute('data-item-description') || '');
+                const itemName = item.getAttribute('data-item-name') || '';
+                const itemDesc = item.getAttribute('data-item-description') || '';
 
-                if (itemName.includes(normalizedQuery) || itemDesc.includes(normalizedQuery)) {
+                if (matchesSearch(itemName, normalizedQuery) || matchesSearch(itemDesc, normalizedQuery)) {
                     item.style.display = 'block';
                     categoryMatchCount++;
 
