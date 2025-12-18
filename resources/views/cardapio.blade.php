@@ -13,40 +13,18 @@
         position: relative;
     }
     
-    /* Linha pontilhada entre nome e preço */
-    .menu-item-row > .flex {
-        position: relative;
-    }
-    
-    /* Container principal que contém imagem e texto */
-    .menu-item-row > .flex > .flex-1 {
-        position: relative;
-    }
-    
-    /* Linha pontilhada - começa após a imagem e fica abaixo da categoria */
-    .menu-item-row > .flex > .flex-1::after {
-        content: '';
-        position: absolute;
-        bottom: 0.5rem;
-        left: 0;
-        right: 0;
+    /* Linha pontilhada separadora - em linha própria */
+    .menu-separator {
         height: 1px;
         background-image: repeating-linear-gradient(
             to right,
             transparent,
             transparent 3px,
-            rgba(196, 92, 38, 0.2) 3px,
-            rgba(196, 92, 38, 0.2) 6px
+            rgba(217, 83, 30, 0.4) 3px,
+            rgba(217, 83, 30, 0.4) 6px
         );
-        pointer-events: none;
+        margin: 0.75rem 0;
         margin-left: calc(8rem + 1rem); /* 128px (w-32) + gap-4 (1rem) */
-    }
-    
-    .menu-item-row > .flex > .shrink-0 {
-        position: relative;
-        z-index: 1;
-        background-color: rgba(26, 23, 20, 0.9);
-        padding-left: 0.5rem;
     }
 </style>
 @endpush
@@ -147,14 +125,15 @@
                                             @endif
                                         </div>
                                     </div>
-                                    @if(!empty($item['preco']))
-                                        <div class="flex items-center gap-2 shrink-0">
-                                            <span class="text-villa-gold font-display text-lg font-semibold whitespace-nowrap">R$ {{ $item['preco'] }}</span>
+                                            @if(!empty($item['preco']))
+                                                <div class="flex items-center gap-2 shrink-0">
+                                                    <span class="text-villa-gold font-display text-lg font-semibold whitespace-nowrap">R$ {{ $item['preco'] }}</span>
+                                                </div>
+                                            @endif
                                         </div>
-                                    @endif
-                                </div>
-                            </div>
-                        @endforeach
+                                        <div class="menu-separator"></div>
+                                    </div>
+                                @endforeach
                     </div>
                 </div>
             </div>
@@ -228,6 +207,7 @@
                                                 </div>
                                             @endif
                                         </div>
+                                        <div class="menu-separator"></div>
                                     </div>
                                 @endforeach
                             </div>
