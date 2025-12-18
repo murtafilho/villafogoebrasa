@@ -32,12 +32,21 @@ class HomeController extends Controller
             if ($item->hasMedia('photo')) {
                 $media = $item->getFirstMedia('photo');
                 
-                // Usar método do Spatie para obter URL da conversão 'card', fallback para 'thumb', depois original
-                if ($media->hasGeneratedConversion('card')) {
-                    $imageUrl = $media->getUrl('card');
-                } elseif ($media->hasGeneratedConversion('thumb')) {
-                    $imageUrl = $media->getUrl('thumb');
-                } else {
+                // Tentar usar conversão 'card', se não existir usar 'thumb', senão original
+                try {
+                    $cardPath = storage_path('app/public/' . $media->id . '/conversions/' . pathinfo($media->file_name, PATHINFO_FILENAME) . '-card.' . pathinfo($media->file_name, PATHINFO_EXTENSION));
+                    if (file_exists($cardPath)) {
+                        $imageUrl = $media->getUrl('card');
+                    } else {
+                        $thumbPath = storage_path('app/public/' . $media->id . '/conversions/' . pathinfo($media->file_name, PATHINFO_FILENAME) . '-thumb.' . pathinfo($media->file_name, PATHINFO_EXTENSION));
+                        if (file_exists($thumbPath)) {
+                            $imageUrl = $media->getUrl('thumb');
+                        } else {
+                            $imageUrl = $media->getUrl();
+                        }
+                    }
+                } catch (\Exception $e) {
+                    // Fallback para URL original se houver erro
                     $imageUrl = $media->getUrl();
                 }
             }
