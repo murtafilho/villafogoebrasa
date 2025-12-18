@@ -21,8 +21,7 @@ class HomeController extends Controller
             ->with(['items' => function ($query) {
                 $query->where('is_active', true)
                     ->orderBy('is_featured', 'desc') // Itens em destaque primeiro
-                    ->orderBy('sort_order')
-                    ->orderBy('name');
+                    ->orderBy('name', 'asc'); // Ordem alfabética
             }])
             ->get();
 
@@ -102,7 +101,9 @@ class HomeController extends Controller
             }
 
             // Adicionar TODOS os itens (destacados + regulares) ao menu normal para duplicação
-            $menuData[$category->name] = $category->items->map($processItem)->toArray();
+            // Ordenar por nome alfabeticamente
+            $sortedItems = $category->items->sortBy('name')->values();
+            $menuData[$category->name] = $sortedItems->map($processItem)->toArray();
         }
 
         return view('cardapio', [
