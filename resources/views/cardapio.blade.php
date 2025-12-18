@@ -93,9 +93,12 @@
                 </label>
                 <select
                     id="category-filter"
-                    class="filter-select w-full px-4 py-2 bg-villa-espresso/50 border border-villa-coffee/50 text-villa-cream focus:border-villa-gold focus:outline-none transition-colors rounded-lg"
+                    class="filter-select w-full px-4 py-2 bg-black text-white text-lg border border-gray-300 rounded-lg focus:ring-2 focus:ring-villa-ember focus:border-villa-ember outline-none"
                 >
                     <option value="all">Todas as categorias</option>
+                    @if(!empty($featuredItems) && count($featuredItems) > 0)
+                        <option value="chef-recommendations">Indicações do Chef</option>
+                    @endif
                     @foreach($categories as $category)
                         <option value="{{ md5($category) }}">{{ $category }}</option>
                     @endforeach
@@ -252,6 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('menu-search');
     const clearSearchBtn = document.getElementById('clear-search');
     const searchResultsCount = document.getElementById('search-results-count');
+    const categoryFilter = document.getElementById('category-filter');
     const categories = document.querySelectorAll('.menu-category');
 
     // Função para normalizar texto (remover acentos)
@@ -264,9 +268,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // Mostrar/esconder seção de indicações do chef
         const chefSection = document.querySelector('.chef-recommendations');
         if (chefSection) {
-            if (filterValue === 'all') {
-                chefSection.style.display = 'block';
-                chefSection.style.opacity = '1';
+            if (filterValue === 'all' || filterValue === 'chef-recommendations') {
+                if (filterValue === 'chef-recommendations') {
+                    // Mostrar apenas indicações do chef
+                    chefSection.style.display = 'block';
+                    chefSection.style.opacity = '1';
+                } else {
+                    // Mostrar indicações do chef quando "all"
+                    chefSection.style.display = 'block';
+                    chefSection.style.opacity = '1';
+                }
             } else {
                 chefSection.style.display = 'none';
             }
@@ -275,7 +286,16 @@ document.addEventListener('DOMContentLoaded', function() {
         categories.forEach(category => {
             const categoryId = category.getAttribute('data-category');
 
-            if (filterValue === 'all' || categoryId === filterValue) {
+            if (filterValue === 'all') {
+                // Mostrar todas as categorias
+                category.style.display = 'block';
+                category.style.opacity = '1';
+                showAllItemsInCategory(category);
+            } else if (filterValue === 'chef-recommendations') {
+                // Esconder todas as categorias normais quando filtrar por indicações do chef
+                category.style.display = 'none';
+            } else if (categoryId === filterValue) {
+                // Mostrar apenas a categoria selecionada
                 category.style.display = 'block';
                 category.style.opacity = '1';
                 showAllItemsInCategory(category);
@@ -354,7 +374,9 @@ document.addEventListener('DOMContentLoaded', function() {
             showAll();
             clearSearchBtn.classList.add('hidden');
             searchResultsCount.classList.add('hidden');
-            categoryFilter.value = 'all';
+            if (categoryFilter) {
+                categoryFilter.value = 'all';
+            }
             applyCategoryFilter('all');
             return;
         }
@@ -482,15 +504,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Filtro de categorias via select
-    categoryFilter.addEventListener('change', function() {
-        // Limpar busca ao mudar filtro
-        searchInput.value = '';
-        clearSearchBtn.classList.add('hidden');
-        searchResultsCount.classList.add('hidden');
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', function() {
+            // Limpar busca ao mudar filtro
+            searchInput.value = '';
+            clearSearchBtn.classList.add('hidden');
+            searchResultsCount.classList.add('hidden');
 
-        const filterValue = this.value;
-        applyCategoryFilter(filterValue);
-    });
+            const filterValue = this.value;
+            applyCategoryFilter(filterValue);
+        });
+    }
 });
 </script>
 @endpush
