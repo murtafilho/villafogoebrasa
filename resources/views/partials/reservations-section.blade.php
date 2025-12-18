@@ -39,44 +39,50 @@
 
             <!-- Form -->
             <div class="bg-villa-coffee/30 p-8 lg:p-10 border border-villa-coffee/50">
-                <form id="reservationForm" class="space-y-6" action="#" method="POST">
+                <form id="reservationForm" class="space-y-6" action="{{ route('reservations.store') }}" method="POST">
                     @csrf
                     <div class="grid sm:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-villa-cream/60 text-sm mb-2">Nome Completo</label>
-                            <input type="text" name="name" class="w-full bg-villa-charcoal/50 border border-villa-coffee focus:border-villa-ember text-villa-cream px-4 py-3 outline-none transition-colors" placeholder="Seu nome">
+                            <label class="block text-villa-cream/60 text-sm mb-2">Nome Completo *</label>
+                            <input type="text" name="name" required class="w-full bg-villa-charcoal/50 border border-villa-coffee focus:border-villa-ember text-villa-cream px-4 py-3 outline-none transition-colors" placeholder="Seu nome">
                         </div>
                         <div>
-                            <label class="block text-villa-cream/60 text-sm mb-2">Telefone</label>
-                            <input type="tel" name="phone" class="w-full bg-villa-charcoal/50 border border-villa-coffee focus:border-villa-ember text-villa-cream px-4 py-3 outline-none transition-colors" placeholder="(31) 99999-9999">
+                            <label class="block text-villa-cream/60 text-sm mb-2">E-mail *</label>
+                            <input type="email" name="email" required class="w-full bg-villa-charcoal/50 border border-villa-coffee focus:border-villa-ember text-villa-cream px-4 py-3 outline-none transition-colors" placeholder="seu@email.com">
                         </div>
+                    </div>
+                    <div>
+                        <label class="block text-villa-cream/60 text-sm mb-2">Telefone *</label>
+                        <input type="tel" name="phone" required class="w-full bg-villa-charcoal/50 border border-villa-coffee focus:border-villa-ember text-villa-cream px-4 py-3 outline-none transition-colors" placeholder="(31) 99999-9999">
                     </div>
                     <div class="grid sm:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-villa-cream/60 text-sm mb-2">Data</label>
-                            <input type="date" name="date" class="w-full bg-villa-charcoal/50 border border-villa-coffee focus:border-villa-ember text-villa-cream px-4 py-3 outline-none transition-colors">
+                            <label class="block text-villa-cream/60 text-sm mb-2">Data *</label>
+                            <input type="date" name="date" required min="{{ date('Y-m-d') }}" class="w-full bg-villa-charcoal/50 border border-villa-coffee focus:border-villa-ember text-villa-cream px-4 py-3 outline-none transition-colors">
                         </div>
                         <div>
-                            <label class="block text-villa-cream/60 text-sm mb-2">Horário</label>
-                            <select name="time" class="w-full bg-black border border-villa-coffee focus:border-villa-ember text-villa-cream text-lg px-4 py-3 outline-none transition-colors">
-                                <option>12:00</option>
-                                <option>13:00</option>
-                                <option>14:00</option>
-                                <option>19:00</option>
-                                <option>20:00</option>
-                                <option>21:00</option>
+                            <label class="block text-villa-cream/60 text-sm mb-2">Horário *</label>
+                            <select name="time" required class="w-full bg-black text-white text-lg border border-villa-coffee focus:border-villa-ember px-4 py-3 outline-none transition-colors">
+                                <option value="">Selecione</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="19:00">19:00</option>
+                                <option value="20:00">20:00</option>
+                                <option value="21:00">21:00</option>
                             </select>
                         </div>
                     </div>
                     <div>
-                        <label class="block text-villa-cream/60 text-sm mb-2">Número de Pessoas</label>
-                        <select name="guests" class="w-full bg-black border border-villa-coffee focus:border-villa-ember text-villa-cream text-lg px-4 py-3 outline-none transition-colors">
-                            <option>2 pessoas</option>
-                            <option>3 pessoas</option>
-                            <option>4 pessoas</option>
-                            <option>5 pessoas</option>
-                            <option>6 pessoas</option>
-                            <option>7+ pessoas</option>
+                        <label class="block text-villa-cream/60 text-sm mb-2">Número de Pessoas *</label>
+                        <select name="guests" required class="w-full bg-black text-white text-lg border border-villa-coffee focus:border-villa-ember px-4 py-3 outline-none transition-colors">
+                            <option value="">Selecione</option>
+                            <option value="2 pessoas">2 pessoas</option>
+                            <option value="3 pessoas">3 pessoas</option>
+                            <option value="4 pessoas">4 pessoas</option>
+                            <option value="5 pessoas">5 pessoas</option>
+                            <option value="6 pessoas">6 pessoas</option>
+                            <option value="7 pessoas">7+ pessoas</option>
                         </select>
                     </div>
                     <div>
@@ -97,17 +103,53 @@
     document.getElementById('reservationForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
+        const form = this;
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
         
-        // Format date to Brazilian format if possible
-        let dateStr = data.date;
-        if (dateStr) {
-            const [year, month, day] = dateStr.split('-');
-            dateStr = `${day}/${month}/${year}`;
+        // Desabilitar botão e mostrar loading
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> <span>Enviando...</span>';
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
         }
-
-        // TODO: Implementar envio de reserva via backend
-        alert('Reserva enviada com sucesso! Entraremos em contato em breve.');
+        
+        const formData = new FormData(form);
+        
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message || 'Reserva enviada com sucesso! Entraremos em contato em breve.');
+                form.reset();
+            } else {
+                let errorMessage = 'Erro ao enviar reserva. ';
+                if (data.errors) {
+                    const errors = Object.values(data.errors).flat();
+                    errorMessage += errors.join(' ');
+                } else if (data.message) {
+                    errorMessage += data.message;
+                }
+                alert(errorMessage);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Erro ao enviar reserva. Por favor, tente novamente ou entre em contato pelo telefone.');
+        })
+        .finally(() => {
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalText;
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
     });
 </script>

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePublicReservationRequest;
 use App\Models\MenuCategory;
+use App\Models\Reservation;
+use Illuminate\Http\JsonResponse;
 
 class HomeController extends Controller
 {
@@ -190,6 +193,30 @@ class HomeController extends Controller
         return view('menu-item-show', [
             'item' => $item,
             'imageUrl' => $imageUrl,
+        ]);
+    }
+
+    public function storeReservation(StorePublicReservationRequest $request): JsonResponse
+    {
+        $data = $request->validated();
+        $data['status'] = Reservation::STATUS_PENDING;
+
+        // Processar número de convidados se vier como "2 pessoas"
+        if (isset($data['guests']) && is_string($data['guests'])) {
+            $guestsStr = trim($data['guests']);
+            // Extrair número do texto "2 pessoas" ou "7+ pessoas"
+            if (preg_match('/(\d+)/', $guestsStr, $matches)) {
+                $data['guests'] = (int) $matches[1];
+            } else {
+                $data['guests'] = 2; // Default
+            }
+        }
+
+        Reservation::create($data);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Reserva enviada com sucesso! Entraremos em contato em breve.',
         ]);
     }
 }
