@@ -63,11 +63,12 @@ class HomeController extends Controller
             ];
         };
 
-        // Separar itens da categoria "Indicações do Chef" para a seção especial
+        // Separar itens da categoria "Indicações do Chef" e itens destacados para a seção especial
         $featuredItems = [];
         $menuData = [];
         $categories = [];
         $categorySubcategories = [];
+        $chefCategory = $categoriesFromDb->firstWhere('slug', 'indicacoes-do-chef');
 
         foreach ($categoriesFromDb as $category) {
             if ($category->items->isEmpty()) {
@@ -95,8 +96,24 @@ class HomeController extends Controller
 
             $categorySubcategories[$category->name] = $subcategories;
 
-            // Adicionar todos os itens da categoria ao menu normal
-            $menuData[$category->name] = $category->items->map($processItem)->toArray();
+            // Separar itens destacados dos regulares
+            $featuredInCategory = $category->items->filter(fn ($item) => $item->is_featured);
+            $regularItems = $category->items->filter(fn ($item) => ! $item->is_featured);
+
+            // Se não há itens na categoria "Indicações do Chef", adicionar itens destacados à seção especial
+            if (empty($featuredItems) && $featuredInCategory->isNotEmpty()) {
+                foreach ($featuredInCategory as $item) {
+                    $featuredItems[] = $processItem($item);
+                }
+            }
+
+            // Adicionar apenas itens regulares ao menu normal
+            if ($regularItems->isNotEmpty()) {
+                $menuData[$category->name] = $regularItems->map($processItem)->toArray();
+            } elseif ($featuredInCategory->isEmpty()) {
+                // Se não há itens destacados e não há regulares, adicionar todos
+                $menuData[$category->name] = $category->items->map($processItem)->toArray();
+            }
         }
 
         return view('cardapio', [
