@@ -36,9 +36,9 @@
                     <span>Reserve sua Mesa</span>
                     <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                 </a>
-                <a href="{{ route('cardapio') }}" class="group inline-flex items-center gap-3 px-8 py-4 border-2 border-villa-gold/60 hover:border-villa-gold bg-transparent hover:bg-villa-gold/10 text-villa-gold tracking-wider uppercase transition-all duration-300">
+                <a href="{{ route('cardapio') }}" class="group inline-flex items-center gap-3 px-8 py-4 bg-villa-ember hover:bg-villa-flame text-white tracking-wider uppercase transition-all duration-300 ember-glow">
                     <span>Confira nosso Cardápio</span>
-                    <i data-lucide="utensils" class="w-4 h-4 group-hover:rotate-12 transition-transform"></i>
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                 </a>
             </div>
         </div>
