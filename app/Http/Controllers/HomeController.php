@@ -30,28 +30,25 @@ class HomeController extends Controller
             $imageUrl = null;
             
             if ($item->hasMedia('photo')) {
-                $media = $item->getFirstMedia('photo');
-                
-                // Tentar usar conversão 'card', se não existir usar 'thumb', senão original
                 try {
-                    $cardPath = storage_path('app/public/' . $media->id . '/conversions/' . pathinfo($media->file_name, PATHINFO_FILENAME) . '-card.' . pathinfo($media->file_name, PATHINFO_EXTENSION));
-                    if (file_exists($cardPath)) {
-                        $imageUrl = url($media->getUrl('card'));
-                    } else {
-                        $thumbPath = storage_path('app/public/' . $media->id . '/conversions/' . pathinfo($media->file_name, PATHINFO_FILENAME) . '-thumb.' . pathinfo($media->file_name, PATHINFO_EXTENSION));
-                        if (file_exists($thumbPath)) {
-                            $imageUrl = url($media->getUrl('thumb'));
-                        } else {
-                            $imageUrl = url($media->getUrl());
-                        }
+                    $media = $item->getFirstMedia('photo');
+                    
+                    // Usar URL original diretamente - mais confiável
+                    $imageUrl = $media->getUrl();
+                    
+                    // Se a URL retornada contém 'http://localhost', remover para usar relativa
+                    if (str_contains($imageUrl, 'http://localhost')) {
+                        $imageUrl = str_replace('http://localhost', '', $imageUrl);
+                    }
+                    
+                    // Garantir que comece com /storage
+                    if (!str_starts_with($imageUrl, '/storage')) {
+                        // Se não começa com /storage, construir manualmente
+                        $imageUrl = '/storage/' . $media->id . '/' . $media->file_name;
                     }
                 } catch (\Exception $e) {
-                    // Fallback para URL original se houver erro
-                    try {
-                        $imageUrl = url($media->getUrl());
-                    } catch (\Exception $e2) {
-                        $imageUrl = null;
-                    }
+                    // Se houver erro, não definir imagem
+                    $imageUrl = null;
                 }
             }
             
