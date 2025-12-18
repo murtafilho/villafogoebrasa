@@ -13,9 +13,10 @@ class HomeController extends Controller
 
     public function cardapio()
     {
-        // Buscar categorias ativas com seus itens ativos
+        // Buscar categorias ativas com seus itens ativos (excluindo "Indicações do Chef")
         $categoriesFromDb = MenuCategory::query()
             ->where('is_active', true)
+            ->where('slug', '!=', 'indicacoes-do-chef')
             ->orderBy('sort_order')
             ->with(['items' => function ($query) {
                 $query->where('is_active', true)
@@ -63,25 +64,20 @@ class HomeController extends Controller
             ];
         };
 
-        // Separar itens da categoria "Indicações do Chef" e itens destacados para a seção especial
+        // Separar itens destacados (is_featured) para a seção "Indicações do Chef"
         $featuredItems = [];
         $menuData = [];
         $categories = [];
         $categorySubcategories = [];
-        $chefCategory = $categoriesFromDb->firstWhere('slug', 'indicacoes-do-chef');
 
         foreach ($categoriesFromDb as $category) {
             if ($category->items->isEmpty()) {
                 continue;
             }
 
-            // Se for a categoria "Indicações do Chef", adicionar todos os itens à seção especial
+            // Ignorar categoria "Indicações do Chef" - não é mais uma categoria de menu
             if ($category->slug === 'indicacoes-do-chef') {
-                foreach ($category->items as $item) {
-                    $featuredItems[] = $processItem($item);
-                }
-
-                continue; // Não adicionar ao menuData normal
+                continue;
             }
 
             $categories[] = $category->name;
@@ -100,19 +96,14 @@ class HomeController extends Controller
             $featuredInCategory = $category->items->filter(fn ($item) => $item->is_featured);
             $regularItems = $category->items->filter(fn ($item) => ! $item->is_featured);
 
-            // Se não há itens na categoria "Indicações do Chef", adicionar itens destacados à seção especial
-            if (empty($featuredItems) && $featuredInCategory->isNotEmpty()) {
-                foreach ($featuredInCategory as $item) {
-                    $featuredItems[] = $processItem($item);
-                }
+            // Adicionar itens destacados à seção especial "Indicações do Chef"
+            foreach ($featuredInCategory as $item) {
+                $featuredItems[] = $processItem($item);
             }
 
             // Adicionar apenas itens regulares ao menu normal
             if ($regularItems->isNotEmpty()) {
                 $menuData[$category->name] = $regularItems->map($processItem)->toArray();
-            } elseif ($featuredInCategory->isEmpty()) {
-                // Se não há itens destacados e não há regulares, adicionar todos
-                $menuData[$category->name] = $category->items->map($processItem)->toArray();
             }
         }
 

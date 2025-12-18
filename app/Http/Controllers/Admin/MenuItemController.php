@@ -32,7 +32,10 @@ class MenuItemController extends Controller
         }
 
         $items = $query->orderBy('sort_order')->orderBy('name')->paginate(15);
-        $categories = MenuCategory::orderBy('sort_order')->orderBy('name')->get();
+        $categories = MenuCategory::where('slug', '!=', 'indicacoes-do-chef')
+            ->orderBy('sort_order')
+            ->orderBy('name')
+            ->get();
 
         return view('admin.menu-items.index', [
             'items' => $items,
@@ -45,12 +48,12 @@ class MenuItemController extends Controller
      */
     public function create(): View
     {
-        $categories = MenuCategory::orderBy('sort_order')->orderBy('name')->get();
-        
-        // Buscar categoria "Indicações do Chef" como padrão
-        $defaultCategory = MenuCategory::where('slug', 'indicacoes-do-chef')->first();
+        $categories = MenuCategory::where('slug', '!=', 'indicacoes-do-chef')
+            ->orderBy('sort_order')
+            ->orderBy('name')
+            ->get();
 
-        return view('admin.menu-items.create', compact('categories', 'defaultCategory'));
+        return view('admin.menu-items.create', compact('categories'));
     }
 
     /**
@@ -75,15 +78,14 @@ class MenuItemController extends Controller
      */
     public function edit(MenuItem $item): View
     {
-        $categories = MenuCategory::orderBy('sort_order')->orderBy('name')->get();
-        
-        // Buscar categoria "Indicações do Chef" como padrão (para referência)
-        $defaultCategory = MenuCategory::where('slug', 'indicacoes-do-chef')->first();
+        $categories = MenuCategory::where('slug', '!=', 'indicacoes-do-chef')
+            ->orderBy('sort_order')
+            ->orderBy('name')
+            ->get();
 
         return view('admin.menu-items.edit', [
             'item' => $item,
             'categories' => $categories,
-            'defaultCategory' => $defaultCategory,
         ]);
     }
 
@@ -111,7 +113,7 @@ class MenuItemController extends Controller
     public function toggleFeatured(MenuItem $item): \Illuminate\Http\JsonResponse|RedirectResponse
     {
         $item->update([
-            'is_featured' => !$item->is_featured,
+            'is_featured' => ! $item->is_featured,
         ]);
 
         $status = $item->is_featured ? 'ativado' : 'desativado';
