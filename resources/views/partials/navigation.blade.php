@@ -20,13 +20,49 @@
                     </svg>
                     Reservar Mesa
                 </a>
-                @guest
+                @auth
+                <div class="user-menu" style="position: relative;">
+                    <button id="user-menu-btn" onclick="toggleUserMenu()" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px; background-color: rgba(196, 92, 38, 0.2); border: 1px solid rgba(196, 92, 38, 0.4); border-radius: 4px; color: #f5f0e8; font-size: 14px; cursor: pointer; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        <span>{{ auth()->user()->name }}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="transition: transform 0.3s;" id="user-menu-arrow">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="user-menu-dropdown" style="display: none; position: absolute; top: calc(100% + 8px); right: 0; background-color: #1a1714; border: 1px solid #3d352e; border-radius: 8px; min-width: 200px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); z-index: 1000; overflow: hidden;">
+                        <div style="padding: 12px 16px; border-bottom: 1px solid #3d352e;">
+                            <div style="color: #f5f0e8; font-size: 14px; font-weight: 500;">{{ auth()->user()->name }}</div>
+                            <div style="color: #c45c26; font-size: 12px; margin-top: 4px;">{{ auth()->user()->email }}</div>
+                        </div>
+                        @if(auth()->user()->hasRole('admin'))
+                        <a href="{{ route('admin.dashboard') }}" style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; color: #f5f0e8; font-size: 14px; text-decoration: none; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='rgba(196, 92, 38, 0.2)'" onmouseout="this.style.backgroundColor='transparent'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>Painel Admin</span>
+                        </a>
+                        @endif
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" style="display: flex; align-items: center; gap: 8px; width: 100%; padding: 12px 16px; color: #f5f0e8; font-size: 14px; text-align: left; background: none; border: none; cursor: pointer; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='rgba(196, 92, 38, 0.2)'" onmouseout="this.style.backgroundColor='transparent'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                </svg>
+                                <span>Sair</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                @else
                 <a href="{{ route('login') }}" style="color: #c45c26; text-decoration: none;" title="Login">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                     </svg>
                 </a>
-                @endguest
+                @endauth
             </div>
 
             <!-- Mobile Menu Button - ALWAYS VISIBLE ON MOBILE -->
@@ -65,7 +101,37 @@
                 </a>
             </div>
 
-            @guest
+            @auth
+            <div style="padding-top: 16px; margin-top: 16px; border-top: 1px solid #3d352e;">
+                <div style="padding: 12px 16px; background-color: rgba(196, 92, 38, 0.1); border-radius: 8px; margin-bottom: 12px;">
+                    <div style="display: flex; align-items: center; gap: 8px; color: #f5f0e8; font-size: 16px; font-weight: 500; margin-bottom: 4px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        <span>{{ auth()->user()->name }}</span>
+                    </div>
+                    <div style="color: #c45c26; font-size: 12px;">{{ auth()->user()->email }}</div>
+                </div>
+                @if(auth()->user()->hasRole('admin'))
+                <a href="{{ route('admin.dashboard') }}" onclick="closeMobileMenu()" style="display: flex; align-items: center; gap: 8px; width: 100%; padding: 12px 16px; color: #f5f0e8; font-size: 14px; text-decoration: none; border-radius: 8px; background-color: rgba(196, 92, 38, 0.1); margin-bottom: 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span>Painel Admin</span>
+                </a>
+                @endif
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" onclick="closeMobileMenu()" style="display: flex; align-items: center; gap: 8px; width: 100%; padding: 12px 16px; border: 2px solid #c45c26; color: #c45c26; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; background: transparent; border-radius: 8px; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                        Sair
+                    </button>
+                </form>
+            </div>
+            @else
             <div style="padding-top: 8px;">
                 <a href="{{ route('login') }}" onclick="closeMobileMenu()" style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 24px; border: 2px solid #c45c26; color: #c45c26; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; border-radius: 8px; background: transparent;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -74,7 +140,7 @@
                     Login
                 </a>
             </div>
-            @endguest
+            @endauth
         </div>
     </div>
 </nav>
@@ -134,4 +200,29 @@ function closeMobileMenu() {
     menuIcon.style.display = 'block';
     closeIcon.style.display = 'none';
 }
+
+function toggleUserMenu() {
+    var dropdown = document.getElementById('user-menu-dropdown');
+    var arrow = document.getElementById('user-menu-arrow');
+    
+    if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+        dropdown.style.display = 'block';
+        arrow.style.transform = 'rotate(180deg)';
+    } else {
+        dropdown.style.display = 'none';
+        arrow.style.transform = 'rotate(0deg)';
+    }
+}
+
+// Fechar dropdown ao clicar fora
+document.addEventListener('click', function(event) {
+    var userMenu = document.querySelector('.user-menu');
+    var dropdown = document.getElementById('user-menu-dropdown');
+    var arrow = document.getElementById('user-menu-arrow');
+    
+    if (userMenu && !userMenu.contains(event.target)) {
+        dropdown.style.display = 'none';
+        arrow.style.transform = 'rotate(0deg)';
+    }
+});
 </script>
