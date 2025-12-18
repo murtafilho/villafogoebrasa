@@ -9,13 +9,6 @@
             <div class="hero-overlay absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         </div>
 
-        <!-- Floating Embers Effect -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-villa-ember rounded-full animate-flicker opacity-60"></div>
-            <div class="absolute top-1/3 right-1/3 w-1 h-1 bg-villa-flame rounded-full animate-flicker opacity-40" style="animation-delay: 0.5s;"></div>
-            <div class="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-villa-gold rounded-full animate-flicker opacity-50" style="animation-delay: 1s;"></div>
-        </div>
-
         <!-- Content -->
         <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
             <p class="text-villa-gold text-sm tracking-[0.3em] uppercase mb-6 opacity-0 animate-fadeInUp">
