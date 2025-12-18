@@ -96,9 +96,6 @@
                     class="filter-select w-full px-4 py-2 bg-black text-white text-lg border border-gray-300 rounded-lg focus:ring-2 focus:ring-villa-ember focus:border-villa-ember outline-none"
                 >
                     <option value="all">Todas as categorias</option>
-                    @if(!empty($featuredItems) && count($featuredItems) > 0)
-                        <option value="chef-recommendations">Indicações do Chef</option>
-                    @endif
                     @foreach($categories as $category)
                         <option value="{{ md5($category) }}">{{ $category }}</option>
                     @endforeach
