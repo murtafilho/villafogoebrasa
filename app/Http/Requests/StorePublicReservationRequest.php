@@ -27,7 +27,7 @@ class StorePublicReservationRequest extends FormRequest
             'phone' => ['required', 'string', 'max:20'],
             'date' => ['required', 'date', 'after_or_equal:today'],
             'time' => ['required', 'string'],
-            'guests' => ['required'],
+            'guests' => ['required', 'integer', 'min:1', 'max:50'],
             'occasion' => ['nullable', 'string', 'max:255'],
             'notes' => ['nullable', 'string'],
         ];
