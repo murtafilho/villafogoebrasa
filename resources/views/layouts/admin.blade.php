@@ -160,10 +160,45 @@
         <header class="hidden lg:flex h-16 bg-white shadow-sm items-center justify-between px-6">
             <h1 class="text-lg font-semibold text-gray-800">@yield('header', 'Dashboard')</h1>
 
-            <a href="{{ url('/') }}" target="_blank" class="text-sm text-gray-600 hover:text-villa-ember transition-colors flex items-center gap-1">
-                <i data-lucide="external-link" class="w-4 h-4"></i>
-                Ver Site
-            </a>
+            <div class="flex items-center gap-4">
+                <a href="{{ url('/') }}" target="_blank" class="text-sm text-gray-600 hover:text-villa-ember transition-colors flex items-center gap-1">
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                    Ver Site
+                </a>
+
+                <!-- User Menu -->
+                <div class="relative">
+                    <button id="admin-user-menu-btn" onclick="toggleAdminUserMenu()" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">
+                        <div class="w-8 h-8 rounded-full bg-villa-ember flex items-center justify-center">
+                            <span class="text-white text-sm font-semibold">{{ substr(auth()->user()->name, 0, 1) }}</span>
+                        </div>
+                        <div class="text-left">
+                            <p class="text-sm font-medium text-gray-800">{{ auth()->user()->name }}</p>
+                            <p class="text-xs text-gray-500">{{ auth()->user()->email }}</p>
+                        </div>
+                        <svg id="admin-user-menu-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="text-gray-500 transition-transform">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="admin-user-menu-dropdown" class="hidden absolute right-0 top-full mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                        <div class="px-4 py-3 border-b border-gray-200">
+                            <p class="text-sm font-medium text-gray-800">{{ auth()->user()->name }}</p>
+                            <p class="text-xs text-gray-500 mt-1">{{ auth()->user()->email }}</p>
+                        </div>
+                        <a href="{{ url('/') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+                            <i data-lucide="home" class="w-4 h-4"></i>
+                            <span>Ir para o Site</span>
+                        </a>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+                                <i data-lucide="log-out" class="w-4 h-4"></i>
+                                <span>Sair</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </header>
 
         <!-- Page Content -->
@@ -223,6 +258,32 @@
                 mobileDrawer.classList.add('hidden');
             });
         }
+
+        // Admin user menu toggle
+        function toggleAdminUserMenu() {
+            const dropdown = document.getElementById('admin-user-menu-dropdown');
+            const arrow = document.getElementById('admin-user-menu-arrow');
+            
+            if (dropdown.classList.contains('hidden')) {
+                dropdown.classList.remove('hidden');
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                dropdown.classList.add('hidden');
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Fechar dropdown ao clicar fora
+        document.addEventListener('click', function(event) {
+            const userMenuBtn = document.getElementById('admin-user-menu-btn');
+            const dropdown = document.getElementById('admin-user-menu-dropdown');
+            const arrow = document.getElementById('admin-user-menu-arrow');
+            
+            if (userMenuBtn && dropdown && !userMenuBtn.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.add('hidden');
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        });
     </script>
 </body>
 </html>
