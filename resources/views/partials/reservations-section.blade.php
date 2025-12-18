@@ -127,8 +127,13 @@
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert(data.message || 'Reserva enviada com sucesso! Entraremos em contato em breve.');
-                form.reset();
+                // Redirecionar para página de confirmação
+                if (data.redirect_url) {
+                    window.location.href = data.redirect_url;
+                } else {
+                    alert(data.message || 'Reserva enviada com sucesso! Entraremos em contato em breve.');
+                    form.reset();
+                }
             } else {
                 let errorMessage = 'Erro ao enviar reserva. ';
                 if (data.errors) {

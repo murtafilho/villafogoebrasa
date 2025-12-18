@@ -201,11 +201,22 @@ class HomeController extends Controller
         $data = $request->validated();
         $data['status'] = Reservation::STATUS_PENDING;
 
-        Reservation::create($data);
+        $reservation = Reservation::create($data);
 
         return response()->json([
             'success' => true,
             'message' => 'Reserva enviada com sucesso! Entraremos em contato em breve.',
+            'reservation_id' => $reservation->id,
+            'redirect_url' => route('reservations.show', $reservation->id),
+        ]);
+    }
+
+    public function showReservation($id)
+    {
+        $reservation = Reservation::findOrFail($id);
+
+        return view('reservation-show', [
+            'reservation' => $reservation,
         ]);
     }
 }

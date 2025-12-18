@@ -15,6 +15,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/cardapio', [HomeController::class, 'cardapio'])->name('cardapio');
 Route::get('/cardapio/item/{id}', [HomeController::class, 'showMenuItem'])->name('cardapio.item.show');
 Route::post('/reservas', [HomeController::class, 'storeReservation'])->name('reservations.store');
+Route::get('/reservas/{id}', [HomeController::class, 'showReservation'])->name('reservations.show');
 
 // Admin Routes
 Route::prefix('admin')
