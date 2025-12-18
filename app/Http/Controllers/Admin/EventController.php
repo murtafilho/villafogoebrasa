@@ -16,32 +16,9 @@ class EventController extends Controller
      */
     public function index(): View
     {
-        $query = Event::query();
-
-        if (request()->has('search') && request('search') !== '') {
-            $search = request('search');
-            $query->where(function ($q) use ($search) {
-                $q->where('title', 'like', "%{$search}%")
-                    ->orWhere('description', 'like', "%{$search}%")
-                    ->orWhere('location', 'like', "%{$search}%");
-            });
-        }
-
-        if (request()->has('status') && request('status') !== '') {
-            if (request('status') === 'active') {
-                $query->where('is_active', true);
-            } elseif (request('status') === 'inactive') {
-                $query->where('is_active', false);
-            }
-        }
-
-        $events = $query->orderBy('event_date', 'desc')
-            ->orderBy('sort_order')
-            ->orderBy('title')
-            ->paginate(15);
-
         return view('admin.events.index', [
-            'events' => $events,
+            'events' => collect([]),
+            'in_development' => true,
         ]);
     }
 

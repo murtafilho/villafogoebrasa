@@ -4,6 +4,23 @@
 @section('header', 'Gerenciar Eventos')
 
 @section('content')
+@if(isset($in_development) && $in_development)
+    <div class="bg-white rounded-xl shadow-sm p-12">
+        <div class="text-center">
+            <div class="inline-flex items-center justify-center w-24 h-24 bg-yellow-100 rounded-full mb-6">
+                <i data-lucide="construction" class="w-12 h-12 text-yellow-600"></i>
+            </div>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Em Desenvolvimento</h2>
+            <p class="text-gray-600 mb-8">
+                Esta funcionalidade está em desenvolvimento e estará disponível em breve.
+            </p>
+            <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center gap-2 px-6 py-3 bg-villa-ember text-white rounded-lg hover:bg-villa-ember/90 transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Voltar ao Dashboard</span>
+            </a>
+        </div>
+    </div>
+@else
 <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
     <!-- Filtros -->
     <form method="GET" action="{{ route('admin.eventos.index') }}" class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -137,6 +154,7 @@
         </div>
     @endif
 </div>
+@endif
 
 @push('scripts')
 <script>
