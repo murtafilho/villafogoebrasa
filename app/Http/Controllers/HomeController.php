@@ -28,30 +28,30 @@ class HomeController extends Controller
         // Função auxiliar para processar item
         $processItem = function ($item) {
             $imageUrl = null;
-            
+
             if ($item->hasMedia('photo')) {
                 try {
                     $media = $item->getFirstMedia('photo');
-                    
+
                     // Usar URL original diretamente - mais confiável
                     $imageUrl = $media->getUrl();
-                    
+
                     // Se a URL retornada contém 'http://localhost', remover para usar relativa
                     if (str_contains($imageUrl, 'http://localhost')) {
                         $imageUrl = str_replace('http://localhost', '', $imageUrl);
                     }
-                    
+
                     // Garantir que comece com /storage
-                    if (!str_starts_with($imageUrl, '/storage')) {
+                    if (! str_starts_with($imageUrl, '/storage')) {
                         // Se não começa com /storage, construir manualmente
-                        $imageUrl = '/storage/' . $media->id . '/' . $media->file_name;
+                        $imageUrl = '/storage/'.$media->id.'/'.$media->file_name;
                     }
                 } catch (\Exception $e) {
                     // Se houver erro, não definir imagem
                     $imageUrl = null;
                 }
             }
-            
+
             return [
                 'nome' => $item->name,
                 'preco' => $item->price ? number_format($item->price, 2, ',', '.') : '',
@@ -63,7 +63,7 @@ class HomeController extends Controller
             ];
         };
 
-        // Separar itens em destaque para a seção "Indicações do Chef"
+        // Separar itens da categoria "Indicações do Chef" para a seção especial
         $featuredItems = [];
         $menuData = [];
         $categories = [];
@@ -74,31 +74,29 @@ class HomeController extends Controller
                 continue;
             }
 
+            // Se for a categoria "Indicações do Chef", adicionar todos os itens à seção especial
+            if ($category->slug === 'indicacoes-do-chef') {
+                foreach ($category->items as $item) {
+                    $featuredItems[] = $processItem($item);
+                }
+
+                continue; // Não adicionar ao menuData normal
+            }
+
             $categories[] = $category->name;
 
             // Coletar subcategorias únicas desta categoria
             $subcategories = $category->items
                 ->pluck('subcategory')
-                ->filter(fn($sub) => !empty($sub))
+                ->filter(fn ($sub) => ! empty($sub))
                 ->unique()
                 ->values()
                 ->toArray();
 
             $categorySubcategories[$category->name] = $subcategories;
 
-            // Separar itens em destaque dos demais
-            $featuredInCategory = $category->items->filter(fn($item) => $item->is_featured);
-            $regularItems = $category->items->filter(fn($item) => !$item->is_featured);
-
-            // Adicionar itens em destaque à seção especial
-            foreach ($featuredInCategory as $item) {
-                $featuredItems[] = $processItem($item);
-            }
-
-            // Adicionar itens regulares à categoria
-            if ($regularItems->isNotEmpty()) {
-                $menuData[$category->name] = $regularItems->map($processItem)->toArray();
-            }
+            // Adicionar todos os itens da categoria ao menu normal
+            $menuData[$category->name] = $category->items->map($processItem)->toArray();
         }
 
         return view('cardapio', [

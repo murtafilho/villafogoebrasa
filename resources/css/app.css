@@ -146,4 +146,10 @@
         opacity: 0.03;
         pointer-events: none;
     }
+
+    /* Select with black background */
+    select.bg-black option {
+        background-color: #000;
+        color: #fff;
+    }
 }

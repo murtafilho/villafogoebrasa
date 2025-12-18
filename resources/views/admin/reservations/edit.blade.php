@@ -68,7 +68,7 @@
 
             <div>
                 <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status *</label>
-                <select name="status" id="status" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-villa-ember focus:border-villa-ember outline-none @error('status') border-red-500 @enderror">
+                <select name="status" id="status" required class="w-full px-4 py-2 bg-black text-white text-lg border border-gray-300 rounded-lg focus:ring-2 focus:ring-villa-ember focus:border-villa-ember outline-none @error('status') border-red-500 @enderror">
                     @foreach($statuses as $key => $label)
                         <option value="{{ $key }}" {{ old('status', $reservation->status) == $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach

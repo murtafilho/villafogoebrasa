@@ -46,8 +46,11 @@ class MenuItemController extends Controller
     public function create(): View
     {
         $categories = MenuCategory::orderBy('sort_order')->orderBy('name')->get();
+        
+        // Buscar categoria "Indicações do Chef" como padrão
+        $defaultCategory = MenuCategory::where('slug', 'indicacoes-do-chef')->first();
 
-        return view('admin.menu-items.create', compact('categories'));
+        return view('admin.menu-items.create', compact('categories', 'defaultCategory'));
     }
 
     /**
@@ -73,10 +76,14 @@ class MenuItemController extends Controller
     public function edit(MenuItem $item): View
     {
         $categories = MenuCategory::orderBy('sort_order')->orderBy('name')->get();
+        
+        // Buscar categoria "Indicações do Chef" como padrão (para referência)
+        $defaultCategory = MenuCategory::where('slug', 'indicacoes-do-chef')->first();
 
         return view('admin.menu-items.edit', [
             'item' => $item,
             'categories' => $categories,
+            'defaultCategory' => $defaultCategory,
         ]);
     }
 

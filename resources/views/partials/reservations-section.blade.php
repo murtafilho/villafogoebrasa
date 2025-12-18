@@ -58,7 +58,7 @@
                         </div>
                         <div>
                             <label class="block text-villa-cream/60 text-sm mb-2">Horário</label>
-                            <select name="time" class="w-full bg-villa-charcoal/50 border border-villa-coffee focus:border-villa-ember text-villa-cream px-4 py-3 outline-none transition-colors">
+                            <select name="time" class="w-full bg-black border border-villa-coffee focus:border-villa-ember text-villa-cream text-lg px-4 py-3 outline-none transition-colors">
                                 <option>12:00</option>
                                 <option>13:00</option>
                                 <option>14:00</option>
@@ -70,7 +70,7 @@
                     </div>
                     <div>
                         <label class="block text-villa-cream/60 text-sm mb-2">Número de Pessoas</label>
-                        <select name="guests" class="w-full bg-villa-charcoal/50 border border-villa-coffee focus:border-villa-ember text-villa-cream px-4 py-3 outline-none transition-colors">
+                        <select name="guests" class="w-full bg-black border border-villa-coffee focus:border-villa-ember text-villa-cream text-lg px-4 py-3 outline-none transition-colors">
                             <option>2 pessoas</option>
                             <option>3 pessoas</option>
                             <option>4 pessoas</option>
