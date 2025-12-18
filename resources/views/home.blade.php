@@ -5,8 +5,8 @@
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <!-- Background Video/Image Placeholder -->
         <div class="absolute inset-0 bg-gradient-to-br from-villa-espresso via-villa-charcoal to-black">
-            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544025162-d76694265947?w=1920')] bg-cover bg-center opacity-40"></div>
-            <div class="hero-overlay absolute inset-0"></div>
+            <div class="absolute inset-0 bg-[url('{{ asset('img/cardapio/costelão.jpg') }}')] bg-cover bg-center opacity-50"></div>
+            <div class="hero-overlay absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         </div>
 
         <!-- Floating Embers Effect -->
