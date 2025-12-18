@@ -22,11 +22,13 @@ claude mcp list
 claude mcp remove laravel-boost
 claude mcp remove tailwindcss
 claude mcp add --transport stdio laravel-boost --scope project -- php artisan boost:mcp
-claude mcp add --transport stdio tailwindcss --scope project -- npx -y tailwindcss-mcp-server
+claude mcp add --transport stdio tailwindcss --scope project -- cmd /c npx -y tailwindcss-mcp-server
 
 # 3. Recarregar VS Code
 Ctrl+Shift+P → "Developer: Reload Window"
 ```
+
+> **IMPORTANTE (Windows):** Comandos `npx` devem ser executados via `cmd /c` no Windows.
 
 ### Cursor
 
@@ -67,8 +69,8 @@ notepad %APPDATA%\Claude\claude_desktop_config.json
     },
     "tailwindcss": {
       "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "tailwindcss-mcp-server"],
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "tailwindcss-mcp-server"],
       "env": {}
     }
   }
@@ -86,8 +88,8 @@ notepad %APPDATA%\Claude\claude_desktop_config.json
       "cwd": "C:\\laragon\\www\\vilafogoebrasa-prod"
     },
     "tailwindcss": {
-      "command": "npx",
-      "args": ["-y", "tailwindcss-mcp-server"]
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "tailwindcss-mcp-server"]
     }
   }
 }
@@ -104,8 +106,8 @@ notepad %APPDATA%\Claude\claude_desktop_config.json
       "cwd": "C:\\laragon\\www\\vilafogoebrasa-prod"
     },
     "tailwindcss": {
-      "command": "npx",
-      "args": ["-y", "tailwindcss-mcp-server"]
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "tailwindcss-mcp-server"]
     }
   }
 }
@@ -122,6 +124,7 @@ notepad %APPDATA%\Claude\claude_desktop_config.json
 | JSON inválido | Validar em https://jsonlint.com |
 | Alteração não aplicou | Reiniciar a IDE completamente |
 | Barras erradas | Usar `\\` no Windows, não `\` |
+| Warning "cmd /c" no Windows | Usar `"command": "cmd"` com `"args": ["/c", "npx", ...]` |
 
 ---
 
