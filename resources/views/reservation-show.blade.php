@@ -3,18 +3,18 @@
 @section('title', 'Confirmação de Reserva - Villa Fogo & Brasa')
 
 @php
-    // Função para formatar telefone
+    // Função para formatar telefone no formato (31) 984182096
     function formatPhone($phone) {
         // Remove tudo que não é número
         $phone = preg_replace('/\D/', '', $phone);
         
-        // Se tiver 11 dígitos (com DDD e 9º dígito)
+        // Se tiver 11 dígitos (com DDD e 9º dígito) - formato (31) 984182096
         if (strlen($phone) == 11) {
-            return '(' . substr($phone, 0, 2) . ') ' . substr($phone, 2, 5) . substr($phone, 7);
+            return '(' . substr($phone, 0, 2) . ') ' . substr($phone, 2);
         }
-        // Se tiver 10 dígitos (com DDD sem 9º dígito)
+        // Se tiver 10 dígitos (com DDD sem 9º dígito) - formato (31) 34182096
         elseif (strlen($phone) == 10) {
-            return '(' . substr($phone, 0, 2) . ') ' . substr($phone, 2, 4) . '-' . substr($phone, 6);
+            return '(' . substr($phone, 0, 2) . ') ' . substr($phone, 2);
         }
         // Retorna original se não conseguir formatar
         return $phone;
